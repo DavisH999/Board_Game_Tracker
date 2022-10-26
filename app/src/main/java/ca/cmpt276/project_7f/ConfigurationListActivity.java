@@ -12,5 +12,6 @@ public class ConfigurationListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_configuration_list);
         // this is a comment.
         // Davis code testing.
+        // Davis code testing2.
     }
 }
