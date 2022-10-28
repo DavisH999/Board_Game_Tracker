@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Project_7F</string>
+    <string name="achievement_1">Victorious Whales</string>
+    <string name="achievement_2">Glorious Giraffes</string>
+    <string name="achievement_3">Brave Bears</string>
+    <string name="achievement_4">Pretty Penguins</string>
+    <string name="achievement_5">Reckless Racoons</string>
+    <string name="achievement_6">Crazy Crows</string>
+    <string name="achievement_7">Rowdy Rats</string>
+    <string name="achievement_8">Fat Flies</string>
+    <string name="achievement_9">Lazy Lizards</string>
+    <string name="achievement_10">Slow Snakes</string>
 </resources>
