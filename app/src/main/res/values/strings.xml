@@ -10,4 +10,6 @@
     <string name="achievement_8">Fat Flies</string>
     <string name="achievement_9">Lazy Lizards</string>
     <string name="achievement_10">Slow Snakes</string>
+    <string name="achievementActivity_numPlayers">Number of Players:</string>
+
 </resources>
