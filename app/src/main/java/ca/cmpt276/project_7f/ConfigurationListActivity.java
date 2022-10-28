@@ -10,8 +10,10 @@ public class ConfigurationListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration_list);
-        // this is a comment.
-        // Davis code testing.
-        // Davis code testing2.
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

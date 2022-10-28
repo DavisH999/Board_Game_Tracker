@@ -11,4 +11,9 @@ public class ConfigurationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuration);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }
