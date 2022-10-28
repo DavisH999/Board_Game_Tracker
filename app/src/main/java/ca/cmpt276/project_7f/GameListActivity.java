@@ -11,4 +11,9 @@ public class GameListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_list);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }
