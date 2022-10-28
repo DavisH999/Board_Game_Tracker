@@ -53,7 +53,7 @@ public class GameManager {
         }
     }
 
-    private Game getGameById(String configName,int id)
+    private Game getGameByIndex(String configName,int index)
     {
         ArrayList<Game> tempGameList = new ArrayList<>();
         for(int i = 0; i < gameList.size(); i++)
@@ -64,7 +64,7 @@ public class GameManager {
                 tempGameList.add(game);
             }
         }
-        return tempGameList.get(id);
+        return tempGameList.get(index);
     }
 
 
