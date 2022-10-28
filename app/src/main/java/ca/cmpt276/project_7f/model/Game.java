@@ -79,4 +79,12 @@ public class Game {
                 achievement = "10";
         }
     }
+
+    public String getStringOfDisplayGame()
+    {
+        String str = "Time created " + time + "\t"
+                + "Combined score: " + score + "\t"
+                + "Achievement: " + achievement;
+        return str;
+    }
 }

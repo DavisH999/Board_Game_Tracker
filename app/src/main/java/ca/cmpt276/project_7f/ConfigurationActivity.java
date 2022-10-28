@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import ca.cmpt276.project_7f.model.Config;
+import ca.cmpt276.project_7f.model.ConfigManager;
+
 public class ConfigurationActivity extends AppCompatActivity {
 
     private boolean isAddMode;
@@ -31,6 +34,16 @@ public class ConfigurationActivity extends AppCompatActivity {
         extractDataFromIntent();
         setButtonInvisible();
         toolbar();
+        onClickButtons();
+    }
+
+    private void onClickButtons() {
+        ConfigManager instance = ConfigManager.getInstance();
+        Config configByIndex = instance.getConfigByIndex(indexOfConfigInList);
+        String nameOfConfig = configByIndex.getName();
+        // TODO: pass this name in makeIntent in GameListActivity!
+        GameListActivity.makeIntent(this, nameOfConfig);
+
     }
 
     private void setButtonInvisible() {

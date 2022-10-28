@@ -21,6 +21,12 @@ public class GameManager {
         return instance;
     }
 
+    public ArrayList<Game> getGameList()
+    {
+        return gameList;
+    }
+
+
     public void addGame(String configName, int numOfPlayer, int score)
     {
         Game game = new Game(configName,numOfPlayer,score);

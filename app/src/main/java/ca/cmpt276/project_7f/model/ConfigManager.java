@@ -67,9 +67,9 @@ public class ConfigManager {
         return null;
     }
 
-    public Config getConfigById(int id)
+    public Config getConfigByIndex(int index)
     {
-        return configList.get(id);
+        return configList.get(index);
     }
 
 }
