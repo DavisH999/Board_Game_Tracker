@@ -74,11 +74,5 @@ public class ConfigurationActivity extends AppCompatActivity {
             supportActionBar.setTitle("Edit a configuration");
     }
 
-    public static Intent makeIntent(Context context, int index)
-    {
-        Intent intent = new Intent(context, ConfigurationActivity.class);
-        intent.putExtra("IndexOfConfigInList", index);
-        return intent;
-    }
 
 }
