@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class GameListActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class AchievementsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_list);
+        setContentView(R.layout.activity_achivements);
     }
 
     @Override
@@ -23,6 +26,8 @@ public class GameListActivity extends AppCompatActivity {
 
     private void toolbar() {
         ActionBar supportActionBar = getSupportActionBar();
-        supportActionBar.setTitle("Configuration List");
+        supportActionBar.setTitle("Achievements");
+
+
     }
 }

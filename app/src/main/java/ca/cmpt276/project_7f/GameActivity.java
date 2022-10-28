@@ -1,5 +1,6 @@
 package ca.cmpt276.project_7f;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -15,5 +16,13 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        toolbar();
+
+    }
+
+    private void toolbar() {
+        ActionBar supportActionBar = getSupportActionBar();
+        supportActionBar.setTitle("Configuration List");
     }
 }
