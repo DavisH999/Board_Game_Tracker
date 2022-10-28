@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ConfigurationActivity">
 
+    <Button
+        android:id="@+id/btn_goToGameList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="290dp"
+        tools:layout_editor_absoluteY="188dp" />
+
+    <Button
+        android:id="@+id/btn_goToAchievements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="288dp"
+        tools:layout_editor_absoluteY="338dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,10 @@ public class ConfigManager {
     private ArrayList<Config> configList;
     private static ConfigManager instance;
 
+    public ArrayList<Config> getConfigList() {
+        return configList;
+    }
+
     private ConfigManager() {
         configList = new ArrayList<>();
     }
