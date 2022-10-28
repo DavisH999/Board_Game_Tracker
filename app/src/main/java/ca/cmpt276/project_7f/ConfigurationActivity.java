@@ -87,5 +87,4 @@ public class ConfigurationActivity extends AppCompatActivity {
             supportActionBar.setTitle("Edit a configuration");
     }
 
-
 }
