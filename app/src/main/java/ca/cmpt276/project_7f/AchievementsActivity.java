@@ -37,7 +37,7 @@ public class AchievementsActivity extends AppCompatActivity {
     }
 
     private void showData() {
-        // TODO: create game object from gettters and populate with that
+        // TODO: create game object from getters and populate with that
         ConfigManager instance = ConfigManager.getInstance();
         Config configByIndex = instance.getConfigByIndex(indexOfConfigInList);
         String name = configByIndex.getName();
