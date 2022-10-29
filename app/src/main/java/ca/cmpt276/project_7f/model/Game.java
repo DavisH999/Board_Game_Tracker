@@ -2,6 +2,7 @@ package ca.cmpt276.project_7f.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class Game {
     private String configName;
@@ -43,10 +44,38 @@ public class Game {
         return achievement;
     }
 
+    public ArrayList<String> getStringOfRanges() {
+        ConfigManager configManager = ConfigManager.getInstance();
+        Config configByName = configManager.getConfigByName(configName);
+
+        // Create an array of strings which stores the ranges
+        ArrayList<String> ranges = new ArrayList<>();
+
+        int greatScore = configByName.getGreatScore();
+        int poorScore = configByName.getPoorScore();
+        int highestExpectedLevel = greatScore * numOfPlayers;
+        int lowestExpectedLevel = poorScore * numOfPlayers;
+        int unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
+
+        ranges.add(highestExpectedLevel + " and above");
+
+        for (int i = 8; i > 0; --i) {
+            int lowerLimit = lowestExpectedLevel + unit * (i - 1);
+            int higherLevel = lowestExpectedLevel + unit * i;
+            String range = lowerLimit + " - " + higherLevel;
+            ranges.add(range);
+        }
+
+        ranges.add(lowestExpectedLevel + " and below");
+
+        return ranges;
+    }
+
     public void computeAchievement()
     {
         ConfigManager configManager = ConfigManager.getInstance();
         Config configByName = configManager.getConfigByName(configName);
+
         if(configByName == null)
         {
             throw new IllegalArgumentException("No such name found.");
@@ -57,26 +86,27 @@ public class Game {
             int highestExpectedLevel = greatScore * numOfPlayers;
             int lowestExpectedLevel = poorScore * numOfPlayers;
             int unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
+
             if (score >= highestExpectedLevel)
-                achievement = "1";
+                achievement = "Victorious Whales";
             else if (score >= lowestExpectedLevel + unit * 7 && score < lowestExpectedLevel + unit * 8)
-                achievement = "2";
+                achievement = "Glorious Giraffes";
             else if (score >= lowestExpectedLevel + unit * 6 && score < lowestExpectedLevel + unit * 7)
-                achievement = "3";
+                achievement = "Brave Bears";
             else if (score >= lowestExpectedLevel + unit * 5 && score < lowestExpectedLevel + unit * 6)
-                achievement = "4";
+                achievement = "Pretty Penguins";
             else if (score >= lowestExpectedLevel + unit * 4 && score < lowestExpectedLevel + unit * 5)
-                achievement = "5";
+                achievement = "Reckless Racoons";
             else if (score >= lowestExpectedLevel + unit * 3 && score < lowestExpectedLevel + unit * 4)
-                achievement = "6";
+                achievement = "Crazy Crows";
             else if (score >= lowestExpectedLevel + unit * 2 && score < lowestExpectedLevel + unit * 3)
-                achievement = "7";
+                achievement = "Rowdy Rats";
             else if (score >= lowestExpectedLevel + unit && score < lowestExpectedLevel + unit * 2)
-                achievement = "8";
+                achievement = "Fat Flies";
             else if (score >= lowestExpectedLevel && score < lowestExpectedLevel + unit)
-                achievement = "9";
+                achievement = "Lazy Lizard";
             else if (score < lowestExpectedLevel)
-                achievement = "10";
+                achievement = "Slow Snakes";
         }
     }
 }
