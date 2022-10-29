@@ -109,4 +109,12 @@ public class Game {
                 achievement = "Slow Snakes";
         }
     }
+
+    public String getStringOfDisplayGame()
+    {
+        String str = "Time created " + time + "\t"
+                + "Combined score: " + score + "\t"
+                + "Achievement: " + achievement;
+        return str;
+    }
 }

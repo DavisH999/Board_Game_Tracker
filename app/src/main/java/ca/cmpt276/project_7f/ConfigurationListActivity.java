@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
 import java.util.ArrayList;
+
 import ca.cmpt276.project_7f.model.Config;
 import ca.cmpt276.project_7f.model.ConfigManager;
 
@@ -16,6 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class ConfigurationListActivity extends AppCompatActivity {
 
     FloatingActionButton fab_config_list;
+
     ListView listview_config_list;
 
     @Override
@@ -59,7 +62,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
         // Build adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this,
-                        R.layout.list_of_configs,   // layout to use
+                        R.layout.item,   // layout to use
                         configsToDisplay);          // Items to be displayed
 
         // Configure the list view

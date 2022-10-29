@@ -8,13 +8,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import ca.cmpt276.project_7f.model.Config;
+import ca.cmpt276.project_7f.model.ConfigManager;
 
 public class ConfigurationActivity extends AppCompatActivity {
 
+    ConfigManager instanceOfCM;
     private boolean isAddMode;
     int indexOfConfigInList;
     Button btn_goToGameList;
     Button btn_goToAchievements;
+    Button btn_save;
+    Button btn_delete;
+    EditText et_configName;
+    EditText et_configGreatScore;
+    EditText et_configPoorScore;
 
 
     @Override
@@ -30,7 +41,111 @@ public class ConfigurationActivity extends AppCompatActivity {
         initial();
         extractDataFromIntent();
         setButtonInvisible();
+        fillData();
         toolbar();
+        onClickButtons();
+    }
+
+    private void fillData() {
+        if(!isAddMode)
+        {
+            Config configByIndex = instanceOfCM.getConfigByIndex(indexOfConfigInList);
+            String name = configByIndex.getName();
+            int greatScore = configByIndex.getGreatScore();
+            int poorScore = configByIndex.getPoorScore();
+            et_configName.setText(name);
+            et_configGreatScore.setText(greatScore);
+            et_configPoorScore.setText(poorScore);
+        }
+    }
+
+    private void onClickButtons() {
+        // click save
+        btn_save.setOnClickListener(v->onSaveCLick());
+        // click delete
+        btn_delete.setOnClickListener(v->onDeleteClick());
+        // click go_to_game_list
+        btn_goToGameList.setOnClickListener(v->onGameListClick());
+        // click go_to_achievements
+        btn_goToAchievements.setOnClickListener(v->onAchievements());
+    }
+
+    private void onAchievements() {
+        Intent intent = AchievementsActivity.makeIntent(this, indexOfConfigInList);
+        startActivity(intent);
+    }
+
+    private void onGameListClick() {
+        Intent intent = GameListActivity.makeIntent(this, indexOfConfigInList);
+        startActivity(intent);
+    }
+
+    private void onDeleteClick() {
+        instanceOfCM.removeConfig(indexOfConfigInList);
+        finish();
+    }
+
+    private void onSaveCLick() {
+        if(et_configName.length() == 0 || et_configGreatScore.length() == 0 || et_configPoorScore.length() == 0)
+        {
+            Toast.makeText(this,"All fields must not be empty",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String configName = et_configName.getText().toString();
+        String configGreatScore = et_configGreatScore.getText().toString();
+        String configPoorScore = et_configPoorScore.getText().toString();
+        int greatScore = stringToInt(configGreatScore);
+        int poorScore = stringToInt(configPoorScore);
+        Config config = new Config();
+        config.setName(configName);
+        config.setGreatScore(greatScore);
+        config.setPoorScore(poorScore);
+        if(indexOfConfigInList == -1)
+        {
+            if(instanceOfCM.isNameExisted(configName))
+            {
+                Toast.makeText(this,
+                        "The name of " + configName + " has been existed. please use another name.",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+            // add mode
+            instanceOfCM.addConfig(config);
+        }
+        else
+        {
+            // edit mode
+            Config configByIndex = instanceOfCM.getConfigByIndex(indexOfConfigInList);
+            String oldName = configByIndex.getName();
+            // if name remains same then directly edit it
+            if(configName.equals(oldName))
+            {
+                instanceOfCM.editConfig(indexOfConfigInList,config);
+            }
+            // if name has been changed then check if new name existed.
+            else
+            {
+                // if name existed then reject.
+                if(instanceOfCM.isNameExisted(configName))
+                {
+                    Toast.makeText(this,
+                            "The name of " + configName + " has been existed. please use another name.",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                // if name not existed, then edit it.
+                else
+                {
+                    instanceOfCM.editConfig(indexOfConfigInList,config);
+                }
+            }
+        }
+        finish();
+    }
+
+    private int stringToInt(String str)
+    {
+        return Integer.parseInt(str);
     }
 
      private void setButtonInvisible() {
@@ -38,12 +153,19 @@ public class ConfigurationActivity extends AppCompatActivity {
         {
             btn_goToGameList.setVisibility(View.INVISIBLE);
             btn_goToAchievements.setVisibility(View.INVISIBLE);
+            btn_delete.setVisibility(View.INVISIBLE);
         }
     }
 
     private void initial() {
         btn_goToGameList = findViewById(R.id.btn_goToGameList);
         btn_goToAchievements = findViewById(R.id.btn_goToAchievements);
+        btn_save = findViewById(R.id.btn_save);
+        btn_delete = findViewById(R.id.btn_delete);
+        et_configName = findViewById(R.id.et_configName);
+        et_configGreatScore = findViewById(R.id.et_configGreatScore);
+        et_configPoorScore = findViewById(R.id.et_configPoorScore);
+        instanceOfCM = ConfigManager.getInstance();
     }
 
     private void extractDataFromIntent() {
@@ -68,7 +190,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     private void toolbar() {
         ActionBar supportActionBar = getSupportActionBar();
-        if(isAddMode == true)
+        if(isAddMode)
             supportActionBar.setTitle("Add a Configuration");
         else
             supportActionBar.setTitle("Edit a configuration");
