@@ -26,6 +26,19 @@ public class ConfigManager {
         return instance;
     }
 
+    public boolean isNameExisted(String configName)
+    {
+        for(int i = 0; i < configList.size(); i++)
+        {
+            Config config = configList.get(i);
+            String name = config.getName();
+            if(configName.equals(name))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void addConfig(Config config)
     {
@@ -37,7 +50,6 @@ public class ConfigManager {
         Config oldConfig = configList.get(indexInConfigList);
         String oldConfigName = oldConfig.getName();
         String newConfigName = newConfig.getName();
-
         configList.set(indexInConfigList,newConfig);
         // update games as well.
         GameManager instanceOfGameManager = GameManager.getInstance();

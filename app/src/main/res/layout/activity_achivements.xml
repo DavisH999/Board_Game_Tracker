@@ -7,7 +7,7 @@
     tools:context=".AchievementsActivity">
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/et_numPlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

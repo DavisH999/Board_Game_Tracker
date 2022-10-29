@@ -37,8 +37,10 @@ public class AchievementsActivity extends AppCompatActivity {
         supportActionBar.setTitle("Achievements");
     }
 
-    public static Intent makeIntent(Context context)
+    public static Intent makeIntent(Context context, int indexOfConfigInList)
     {
-        return new Intent(context, AchievementsActivity.class);
+        Intent intent = new Intent(context, AchievementsActivity.class);
+        intent.putExtra("indexOfConfigInList", indexOfConfigInList);
+        return intent;
     }
 }

@@ -62,7 +62,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
         // Build adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this,
-                        R.layout.list_of_configs,   // layout to use
+                        R.layout.item,   // layout to use
                         configsToDisplay);          // Items to be displayed
 
         // Configure the list view

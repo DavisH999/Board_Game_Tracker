@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 
 public class GameActivity extends AppCompatActivity {
 
-    int indexOfGameInList;
-    boolean isAddMode;
+    EditText et_numPlayer;
+    EditText et_score;
+    EditText et_achievementForOneGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,46 +25,28 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
 
         initial();
-        extractDataFromIntent();
         toolbar();
+        saveData();
+    }
 
-
+    private void saveData() {
+        // TODO: save a new game.
     }
 
     private void initial() {
-
-    }
-
-    private void extractDataFromIntent() {
-        Intent intent = getIntent();
-        indexOfGameInList = intent.getIntExtra("indexOfGameInList", -1);
-        if(indexOfGameInList == -1)
-        {
-            isAddMode = true;
-        }
-        else
-        {
-            isAddMode = false;
-        }
+        et_numPlayer = findViewById(R.id.et_numPlayer);
+        et_score = findViewById(R.id.et_score);
+        et_achievementForOneGame = findViewById(R.id.et_achievementForOneGame);
     }
 
     private void toolbar() {
         ActionBar supportActionBar = getSupportActionBar();
-        if(isAddMode)
-        {
-            supportActionBar.setTitle("Add Configuration");
-        }
-        else
-        {
-            supportActionBar.setTitle("Edit Configuration");
-        }
-
+        supportActionBar.setTitle("Add Configuration");
     }
 
-    public static Intent makeIntent(Context context, int index)
+    public static Intent makeIntent(Context context)
     {
         Intent intent = new Intent(context, GameActivity.class);
-        intent.putExtra("indexOfGameInList", index);
         return intent;
     }
 }

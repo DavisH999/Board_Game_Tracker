@@ -6,4 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
+    <EditText
+        android:id="@+id/et_achievementForOneGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_score"
+        app:layout_constraintVertical_bias="0.726" />
+
+    <TextView
+        android:id="@+id/tv_achievementForOneGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="264dp"
+        android:text="achievement"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/et_score"
+        app:layout_constraintStart_toStartOf="@+id/et_score"
+        app:layout_constraintTop_toBottomOf="@+id/et_numPlayer" />
+
+    <EditText
+        android:id="@+id/et_numPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_score"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/tv_score"
+        app:layout_constraintTop_toBottomOf="@+id/tv_numPlayer" />
+
+    <TextView
+        android:id="@+id/tv_numPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="number of players"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/et_numPlayer"
+        app:layout_constraintStart_toStartOf="@+id/et_numPlayer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="score"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/et_score"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/et_score"
+        app:layout_constraintTop_toBottomOf="@+id/et_numPlayer" />
+
+    <EditText
+        android:id="@+id/et_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_score"
+        app:layout_constraintVertical_bias="0.158" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
