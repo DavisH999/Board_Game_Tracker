@@ -148,7 +148,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         return Integer.parseInt(str);
     }
 
-    private void setButtonInvisible() {
+     private void setButtonInvisible() {
         if(isAddMode)
         {
             btn_goToGameList.setVisibility(View.INVISIBLE);
