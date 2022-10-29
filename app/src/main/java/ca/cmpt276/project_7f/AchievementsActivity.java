@@ -8,7 +8,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.List;
 
-//Activity that displays all the Achivement options from 1-10
+//Activity that displays all the Achievement options from 1-10
 public class AchievementsActivity extends AppCompatActivity {
 
     @Override
