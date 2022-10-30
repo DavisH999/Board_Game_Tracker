@@ -21,6 +21,10 @@ public class GameManager {
         return instance;
     }
 
+    public int getSizeOfGameList()
+    {
+        return gameList.size();
+    }
     public ArrayList<Game> getGameList()
     {
         return gameList;

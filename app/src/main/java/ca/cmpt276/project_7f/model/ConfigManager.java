@@ -52,18 +52,26 @@ public class ConfigManager {
         String newConfigName = newConfig.getName();
         configList.set(indexInConfigList,newConfig);
         // update games as well.
+        // if there are some games, then update. If no games, do nothing.
         GameManager instanceOfGameManager = GameManager.getInstance();
-        instanceOfGameManager.updateGames(oldConfigName,newConfigName);
+        if(instanceOfGameManager.getSizeOfGameList() > 0)
+        {
+            instanceOfGameManager.updateGames(oldConfigName,newConfigName);
+        }
     }
 
     public void removeConfig(int indexInConfigList)
     {
         configList.remove(indexInConfigList);
         // remove games as well.
+        // if there are some games, then remove. If no games, do nothing.
         GameManager instanceOfGameManager = GameManager.getInstance();
-        Config config = configList.get(indexInConfigList);
-        String configName = config.getName();
-        instanceOfGameManager.removeGames(configName);
+        if(instanceOfGameManager.getSizeOfGameList() > 0)
+        {
+            Config config = configList.get(indexInConfigList);
+            String configName = config.getName();
+            instanceOfGameManager.removeGames(configName);
+        }
     }
 
     public Config getConfigByName(String name)
