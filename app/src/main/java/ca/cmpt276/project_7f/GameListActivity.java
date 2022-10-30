@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
 
+// showing the list of game and providing an add button.
 public class GameListActivity extends AppCompatActivity {
 
     private ListView lv_game_list;

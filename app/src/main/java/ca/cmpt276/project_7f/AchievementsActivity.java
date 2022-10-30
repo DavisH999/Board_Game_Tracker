@@ -18,7 +18,7 @@ import ca.cmpt276.project_7f.model.Config;
 import ca.cmpt276.project_7f.model.ConfigManager;
 import ca.cmpt276.project_7f.model.Game;
 
-//Activity that displays all the Achivement options from 1-10
+//Activity that displays all the Achievement options from 1-10
 public class AchievementsActivity extends AppCompatActivity {
 
 
@@ -48,8 +48,10 @@ public class AchievementsActivity extends AppCompatActivity {
         extractDataFromIntent();
         initial();
         toolbar();
-        // populateList();
+        textWatcher();
+    }
 
+    private void textWatcher() {
         et.addTextChangedListener(numPlayersTextWatcher);
     }
 

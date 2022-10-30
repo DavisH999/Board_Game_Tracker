@@ -1,5 +1,6 @@
 package ca.cmpt276.project_7f.model;
 
+// configuration
 public class Config {
     private String configName;
     private int poorScore;

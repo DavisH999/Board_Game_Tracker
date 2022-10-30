@@ -2,6 +2,7 @@ package ca.cmpt276.project_7f.model;
 
 import java.util.ArrayList;
 
+// managing the list of configuration.
 public class ConfigManager {
     // does not allow same name !
 

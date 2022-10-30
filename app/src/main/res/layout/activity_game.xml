@@ -10,26 +10,26 @@
         android:id="@+id/et_achievementForOneGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:inputType="number"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_score"
-        app:layout_constraintVertical_bias="0.726" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_saveGame"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="@+id/btn_saveGame"
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievementForOneGame" />
 
     <TextView
         android:id="@+id/tv_achievementForOneGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="60dp"
         android:text="achievement"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_score"
-        app:layout_constraintStart_toStartOf="@+id/et_score"
-        app:layout_constraintTop_toBottomOf="@+id/et_numPlayer" />
+        app:layout_constraintEnd_toEndOf="@+id/et_achievementForOneGame"
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toStartOf="@+id/et_achievementForOneGame"
+        app:layout_constraintTop_toBottomOf="@+id/et_score" />
 
     <EditText
         android:id="@+id/et_numPlayer"
@@ -48,10 +48,11 @@
         android:id="@+id/tv_numPlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="60dp"
         android:text="number of players"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/et_numPlayer"
+        app:layout_constraintHorizontal_bias="0.581"
         app:layout_constraintStart_toStartOf="@+id/et_numPlayer"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,7 +64,6 @@
         android:text="score"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/et_score"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="@+id/et_score"
         app:layout_constraintTop_toBottomOf="@+id/et_numPlayer" />
 
@@ -71,14 +71,23 @@
         android:id="@+id/et_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:inputType="number"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintEnd_toEndOf="@+id/tv_achievementForOneGame"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="@+id/tv_achievementForOneGame"
+        app:layout_constraintTop_toBottomOf="@+id/tv_score" />
+
+    <Button
+        android:id="@+id/btn_saveGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="60dp"
+        android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_score"
-        app:layout_constraintVertical_bias="0.158" />
+        app:layout_constraintTop_toBottomOf="@+id/et_achievementForOneGame" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

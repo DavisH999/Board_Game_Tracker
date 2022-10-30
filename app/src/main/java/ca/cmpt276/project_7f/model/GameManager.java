@@ -2,6 +2,7 @@ package ca.cmpt276.project_7f.model;
 
 import java.util.ArrayList;
 
+// managing the list of game.
 public class GameManager {
     private ArrayList<Game> gameList;
     private static GameManager instance;
