@@ -63,6 +63,16 @@ public class AchievementsActivity extends AppCompatActivity {
             if(et.length() == 0)
             {
                 et.setText("0");
+                tv0.setText("-------");
+                tv1.setText("-------");
+                tv2.setText("-------");
+                tv3.setText("-------");
+                tv4.setText("-------");
+                tv5.setText("-------");
+                tv6.setText("-------");
+                tv7.setText("-------");
+                tv8.setText("-------");
+                tv9.setText("-------");
             }else {
                 populateList();
             }
@@ -104,7 +114,7 @@ public class AchievementsActivity extends AppCompatActivity {
     }
 
     private void initial() {
-        et = (EditText) findViewById(R.id.et_numPlayer);
+        et = findViewById(R.id.et_numPlayer);
 
         tv0 = findViewById(R.id.tv_range0);
         tv1 = findViewById(R.id.tv_range1);
