@@ -49,7 +49,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void toolbar() {
         ActionBar supportActionBar = getSupportActionBar();
-        supportActionBar.setTitle("Add Configuration");
+        supportActionBar.setTitle("Add Game");
     }
 
     public static Intent makeIntent(Context context)

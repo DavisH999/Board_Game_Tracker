@@ -89,7 +89,7 @@ public class GameListActivity extends AppCompatActivity {
 
     private void toolbar() {
         ActionBar supportActionBar = getSupportActionBar();
-        supportActionBar.setTitle("Configuration List");
+        supportActionBar.setTitle("Game List");
     }
 
     public static Intent makeIntent(Context context, int indexOfConfigInList)

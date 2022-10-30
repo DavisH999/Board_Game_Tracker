@@ -167,7 +167,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     private void initial() {
         btn_goToGameList = findViewById(R.id.btn_goToGameList);
         btn_goToAchievements = findViewById(R.id.btn_goToAchievements);
-        btn_save = findViewById(R.id.btn_save);
+        btn_save = findViewById(R.id.btn_saveConfig);
         btn_delete = findViewById(R.id.btn_delete);
         et_configName = findViewById(R.id.et_configName);
         et_configGreatScore = findViewById(R.id.et_configGreatScore);
