@@ -27,6 +27,11 @@ public class ConfigManager {
         return instance;
     }
 
+    public int getSizeOfConfigList()
+    {
+        return configList.size();
+    }
+
     public boolean isNameExisted(String configName)
     {
         for(int i = 0; i < configList.size(); i++)

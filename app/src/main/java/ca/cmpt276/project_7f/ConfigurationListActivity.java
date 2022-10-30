@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -19,8 +21,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class ConfigurationListActivity extends AppCompatActivity {
 
     FloatingActionButton fab_config_list;
-
     ListView listview_config_list;
+    TextView tv_noConfigHint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +35,20 @@ public class ConfigurationListActivity extends AppCompatActivity {
         super.onResume();
 
         toolbar();
+        showHint();
         initial();
         populateListView();
         registerClickCallBack();
         onClick();
+    }
+
+    private void showHint() {
+        ConfigManager instance = ConfigManager.getInstance();
+        int sizeOfConfigList = instance.getSizeOfConfigList();
+        if(sizeOfConfigList > 0)
+        {
+            tv_noConfigHint.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void toolbar() {
@@ -47,6 +59,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
     private void initial() {
         fab_config_list = findViewById(R.id.fab_config_list);
         listview_config_list = findViewById(R.id.listview_config_list);
+        tv_noConfigHint = findViewById(R.id.tv_noConfigHint);
     }
 
     private void populateListView() {

@@ -26,11 +26,11 @@ public class GameManager {
     {
         return gameList.size();
     }
+
     public ArrayList<Game> getGameList()
     {
         return gameList;
     }
-
 
     public void addGame(String configName, int numOfPlayer, int score)
     {

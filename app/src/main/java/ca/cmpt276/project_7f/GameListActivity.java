@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -22,6 +23,7 @@ public class GameListActivity extends AppCompatActivity {
 
     private ListView lv_game_list;
     private FloatingActionButton fab_game_list;
+    private TextView tv_noGameHint;
 
     private int indexOfConfigInList;
 
@@ -38,11 +40,18 @@ public class GameListActivity extends AppCompatActivity {
         extractDataFromIntent();
         initial();
         toolbar();
+        showHint();
         populateListView();
         onClickButton();
+    }
 
-
-
+    private void showHint() {
+        GameManager instance = GameManager.getInstance();
+        int sizeOfGameList = instance.getSizeOfGameList();
+        if(sizeOfGameList > 0)
+        {
+            tv_noGameHint.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void onClickButton() {
@@ -63,6 +72,7 @@ public class GameListActivity extends AppCompatActivity {
     private void populateListView() {
         // show num players, combined score, and the achievement we earned.
         // create list of items.
+        // TODO: BUG!
         ArrayList<String> stringList = new ArrayList<>();
         GameManager instance = GameManager.getInstance();
         ArrayList<Game> gameList = instance.getGameList();
@@ -85,6 +95,7 @@ public class GameListActivity extends AppCompatActivity {
     private void initial() {
         lv_game_list = findViewById(R.id.lv_game_list);
         fab_game_list = findViewById(R.id.fab_game_list);
+        tv_noGameHint = findViewById(R.id.tv_noGameHint);
     }
 
     private void toolbar() {
