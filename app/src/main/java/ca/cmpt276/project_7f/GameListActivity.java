@@ -9,11 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+import ca.cmpt276.project_7f.model.Config;
+import ca.cmpt276.project_7f.model.ConfigManager;
 import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
 
@@ -22,6 +25,7 @@ public class GameListActivity extends AppCompatActivity {
 
     private ListView lv_game_list;
     private FloatingActionButton fab_game_list;
+    private TextView tv_noGameHint;
 
     private int indexOfConfigInList;
 
@@ -38,11 +42,21 @@ public class GameListActivity extends AppCompatActivity {
         extractDataFromIntent();
         initial();
         toolbar();
+        showHint();
         populateListView();
         onClickButton();
+    }
 
-
-
+    private void showHint() {
+        ConfigManager instanceOfConfigM = ConfigManager.getInstance();
+        Config configByIndex = instanceOfConfigM.getConfigByIndex(indexOfConfigInList);
+        String configName = configByIndex.getName();
+        GameManager instanceOfGameM = GameManager.getInstance();
+        int sizeOfGameList = instanceOfGameM.getSizeOfGameListByName(configName);
+        if(sizeOfGameList > 0)
+        {
+            tv_noGameHint.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void onClickButton() {
@@ -62,22 +76,20 @@ public class GameListActivity extends AppCompatActivity {
 
     private void populateListView() {
         // show num players, combined score, and the achievement we earned.
-        // create list of items.
-        ArrayList<String> stringList = new ArrayList<>();
-        GameManager instance = GameManager.getInstance();
-        ArrayList<Game> gameList = instance.getGameList();
-        for(int i = 0; i < gameList.size(); i++) {
-            Game game = gameList.get(i);
-            String stringOfDisplayGame = game.getStringOfDisplayGame();
-            stringList.add(stringOfDisplayGame);
+        // TODO: BUG!
+        ConfigManager instanceOfConfigM = ConfigManager.getInstance();
+        Config configByIndex = instanceOfConfigM.getConfigByIndex(indexOfConfigInList);
+        String configName = configByIndex.getName();
+        GameManager instanceOfGameM = GameManager.getInstance();
+        ArrayList<String> displayedStringList = instanceOfGameM.getDisplayedStringListByName(configName);
+        if(displayedStringList == null) {
+            return;
         }
-
         // Build Adapter
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(
                 this,
                 R.layout.item,
-                stringList);
-
+                displayedStringList);
         // configure the list
         lv_game_list.setAdapter(stringArrayAdapter);
     }
@@ -85,6 +97,7 @@ public class GameListActivity extends AppCompatActivity {
     private void initial() {
         lv_game_list = findViewById(R.id.lv_game_list);
         fab_game_list = findViewById(R.id.fab_game_list);
+        tv_noGameHint = findViewById(R.id.tv_noGameHint);
     }
 
     private void toolbar() {

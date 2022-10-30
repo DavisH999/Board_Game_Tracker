@@ -30,4 +30,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.421" />
+
+    <TextView
+        android:id="@+id/tv_noGameHint"
+        android:layout_width="301dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="4dp"
+        android:text="This is no game under this configuration yet. It is free to click the add button to add a new game."
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
