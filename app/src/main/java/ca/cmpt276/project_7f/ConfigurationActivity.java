@@ -42,7 +42,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         initial();
         extractDataFromIntent();
         setButtonInvisible();
-        fillData();
+//        fillData();
         toolbar();
         onClickButtons();
     }
