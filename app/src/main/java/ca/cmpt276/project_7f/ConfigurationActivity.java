@@ -97,6 +97,12 @@ public class ConfigurationActivity extends AppCompatActivity {
         String configPoorScore = et_configPoorScore.getText().toString();
         int greatScore = stringToInt(configGreatScore);
         int poorScore = stringToInt(configPoorScore);
+        if(greatScore <= poorScore)
+        {
+            Toast.makeText(this,"Great score must be bigger than poor Score.",Toast.LENGTH_SHORT)
+                    .show();
+            return;
+        }
         Config config = new Config();
         config.setName(configName);
         config.setGreatScore(greatScore);
