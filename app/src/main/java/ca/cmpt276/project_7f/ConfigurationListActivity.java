@@ -67,6 +67,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
 
         // Configure the list view
         listview_config_list.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
     }
 

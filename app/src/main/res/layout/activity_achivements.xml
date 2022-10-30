@@ -137,7 +137,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"
         android:layout_marginTop="80dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
         app:layout_constraintTop_toBottomOf="@+id/textView_numPlayers" />
 
@@ -147,7 +146,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement2"
         app:layout_constraintTop_toBottomOf="@+id/tv_range0" />
 
@@ -157,7 +155,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement3"
         app:layout_constraintTop_toBottomOf="@+id/tv_range1" />
 
@@ -167,7 +164,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="152dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement4"
         app:layout_constraintTop_toBottomOf="@+id/tv_range2" />
 
@@ -177,7 +173,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement5"
         app:layout_constraintTop_toBottomOf="@+id/tv_range3" />
 
@@ -187,7 +182,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="172dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement6"
         app:layout_constraintTop_toBottomOf="@+id/tv_range4" />
 
@@ -197,7 +191,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement7"
         app:layout_constraintTop_toBottomOf="@+id/tv_range5" />
 
@@ -207,7 +200,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="196dp"
         android:layout_marginTop="20dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/tv_achievementu8"
         app:layout_constraintTop_toBottomOf="@+id/tv_range6" />
 
@@ -217,7 +209,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="172dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement9"
         app:layout_constraintTop_toBottomOf="@+id/tv_range7" />
 
@@ -227,7 +218,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="168dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement10"
         app:layout_constraintTop_toBottomOf="@+id/tv_range8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

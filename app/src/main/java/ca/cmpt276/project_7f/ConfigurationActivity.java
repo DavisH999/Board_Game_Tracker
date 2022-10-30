@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,7 +42,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         initial();
         extractDataFromIntent();
         setButtonInvisible();
-//        fillData();
+        fillData();
         toolbar();
         onClickButtons();
     }
@@ -54,8 +55,8 @@ public class ConfigurationActivity extends AppCompatActivity {
             int greatScore = configByIndex.getGreatScore();
             int poorScore = configByIndex.getPoorScore();
             et_configName.setText(name);
-            et_configGreatScore.setText(greatScore);
-            et_configPoorScore.setText(poorScore);
+            et_configGreatScore.setText(String.valueOf(greatScore));
+            et_configPoorScore.setText(String.valueOf(poorScore));
         }
     }
 
@@ -96,6 +97,12 @@ public class ConfigurationActivity extends AppCompatActivity {
         String configPoorScore = et_configPoorScore.getText().toString();
         int greatScore = stringToInt(configGreatScore);
         int poorScore = stringToInt(configPoorScore);
+        if(greatScore <= poorScore)
+        {
+            Toast.makeText(this,"Great score must be bigger than poor Score.",Toast.LENGTH_SHORT)
+                    .show();
+            return;
+        }
         Config config = new Config();
         config.setName(configName);
         config.setGreatScore(greatScore);
@@ -105,7 +112,7 @@ public class ConfigurationActivity extends AppCompatActivity {
             if(instanceOfCM.isNameExisted(configName))
             {
                 Toast.makeText(this,
-                        "The name of " + configName + " has been existed. please use another name.",
+                        "The name of " + configName + " already exists. please use another name.",
                         Toast.LENGTH_SHORT).show();
                 return;
             }

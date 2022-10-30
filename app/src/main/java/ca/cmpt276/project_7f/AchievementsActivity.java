@@ -63,8 +63,18 @@ public class AchievementsActivity extends AppCompatActivity {
             if(et.length() == 0)
             {
                 et.setText("0");
+                tv0.setText("-------");
+                tv1.setText("-------");
+                tv2.setText("-------");
+                tv3.setText("-------");
+                tv4.setText("-------");
+                tv5.setText("-------");
+                tv6.setText("-------");
+                tv7.setText("-------");
+                tv8.setText("-------");
+                tv9.setText("-------");
             }else {
-                populateList();
+                showData();
             }
         }
 
@@ -73,10 +83,16 @@ public class AchievementsActivity extends AppCompatActivity {
         }
     };
 
-    private void populateList() {
-        Game game = showData();
-        ArrayList<String> rangesArray = game.getStringOfRanges();
 
+    private void showData() {
+        ConfigManager instance = ConfigManager.getInstance();
+        Config configByIndex = instance.getConfigByIndex(indexOfConfigInList);
+        String name = configByIndex.getName();
+        String value = et.getText().toString();
+        int num = Integer.parseInt(value);
+
+        Game game = new Game(name,num, 100 );
+        ArrayList<String> rangesArray = game.getStringOfRanges();
         tv0.setText(rangesArray.get(0));
         tv1.setText(rangesArray.get(1));
         tv2.setText(rangesArray.get(2));
@@ -89,22 +105,13 @@ public class AchievementsActivity extends AppCompatActivity {
         tv9.setText(rangesArray.get(9));
     }
 
-    private Game showData() {
-        ConfigManager instance = ConfigManager.getInstance();
-        Config configByIndex = instance.getConfigByIndex(indexOfConfigInList);
-        String name = configByIndex.getName();
-        String value = et.getText().toString();
-        int num = Integer.parseInt(value);
-        return new Game(name,num, 11 );
-    }
-
     private void extractDataFromIntent() {
         Intent intent = getIntent();
         intent.getIntExtra("indexOfConfigInList",indexOfConfigInList);
     }
 
     private void initial() {
-        et = (EditText) findViewById(R.id.et_numPlayer);
+        et = findViewById(R.id.et_numPlayer);
 
         tv0 = findViewById(R.id.tv_range0);
         tv1 = findViewById(R.id.tv_range1);
