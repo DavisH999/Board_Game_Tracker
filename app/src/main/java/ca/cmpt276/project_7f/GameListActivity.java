@@ -15,6 +15,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+import ca.cmpt276.project_7f.model.Config;
+import ca.cmpt276.project_7f.model.ConfigManager;
 import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
 
@@ -46,8 +48,11 @@ public class GameListActivity extends AppCompatActivity {
     }
 
     private void showHint() {
-        GameManager instance = GameManager.getInstance();
-        int sizeOfGameList = instance.getSizeOfGameList();
+        ConfigManager instanceOfConfigM = ConfigManager.getInstance();
+        Config configByIndex = instanceOfConfigM.getConfigByIndex(indexOfConfigInList);
+        String configName = configByIndex.getName();
+        GameManager instanceOfGameM = GameManager.getInstance();
+        int sizeOfGameList = instanceOfGameM.getSizeOfGameListByName(configName);
         if(sizeOfGameList > 0)
         {
             tv_noGameHint.setVisibility(View.INVISIBLE);
@@ -71,23 +76,20 @@ public class GameListActivity extends AppCompatActivity {
 
     private void populateListView() {
         // show num players, combined score, and the achievement we earned.
-        // create list of items.
         // TODO: BUG!
-        ArrayList<String> stringList = new ArrayList<>();
-        GameManager instance = GameManager.getInstance();
-        ArrayList<Game> gameList = instance.getGameList();
-        for(int i = 0; i < gameList.size(); i++) {
-            Game game = gameList.get(i);
-            String stringOfDisplayGame = game.getStringOfDisplayGame();
-            stringList.add(stringOfDisplayGame);
+        ConfigManager instanceOfConfigM = ConfigManager.getInstance();
+        Config configByIndex = instanceOfConfigM.getConfigByIndex(indexOfConfigInList);
+        String configName = configByIndex.getName();
+        GameManager instanceOfGameM = GameManager.getInstance();
+        ArrayList<String> displayedStringList = instanceOfGameM.getDisplayedStringListByName(configName);
+        if(displayedStringList == null) {
+            return;
         }
-
         // Build Adapter
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(
                 this,
                 R.layout.item,
-                stringList);
-
+                displayedStringList);
         // configure the list
         lv_game_list.setAdapter(stringArrayAdapter);
     }

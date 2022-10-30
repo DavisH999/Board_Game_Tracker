@@ -22,14 +22,38 @@ public class GameManager {
         return instance;
     }
 
-    public int getSizeOfGameList()
+    public int getSizeOfGameListByName(String configName)
     {
-        return gameList.size();
+        int size = 0;
+        for(int i = 0; i < gameList.size(); i++)
+        {
+            Game game = gameList.get(i);
+            String configNameFromGame = game.getConfigName();
+            if(configName.equals(configNameFromGame))
+            {
+                size++;
+            }
+        }
+        return size;
     }
 
-    public ArrayList<Game> getGameList()
+    public ArrayList<String> getDisplayedStringListByName(String configName)
     {
-        return gameList;
+        ArrayList<String> stringList = new ArrayList<>();
+        for(int i = 0; i < gameList.size(); i++)
+        {
+            Game game = gameList.get(i);
+            String configNameFromGame = game.getConfigName();
+            if(configName.equals(configNameFromGame))
+            {
+                String stringOfDisplayGame = game.getStringOfDisplayGame();
+                stringList.add(stringOfDisplayGame);
+            }
+        }
+        if(stringList.size()==0)
+            return null;
+        else
+            return stringList;
     }
 
     public void addGame(String configName, int numOfPlayer, int score)
