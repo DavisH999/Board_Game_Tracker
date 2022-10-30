@@ -76,7 +76,6 @@ public class GameListActivity extends AppCompatActivity {
 
     private void populateListView() {
         // show num players, combined score, and the achievement we earned.
-        // TODO: BUG!
         ConfigManager instanceOfConfigM = ConfigManager.getInstance();
         Config configByIndex = instanceOfConfigM.getConfigByIndex(indexOfConfigInList);
         String configName = configByIndex.getName();
