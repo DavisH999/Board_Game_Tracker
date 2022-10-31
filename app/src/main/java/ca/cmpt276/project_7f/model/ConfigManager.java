@@ -31,11 +31,6 @@ public class ConfigManager {
         return instance;
     }
 
-    public void setInstance(ConfigManager configManager)
-    {
-        instance = configManager;
-    }
-
     public int getSizeOfConfigList()
     {
         return configList.size();

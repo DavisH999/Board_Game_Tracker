@@ -63,6 +63,10 @@ public class GameListActivity extends AppCompatActivity {
         {
             tv_noGameHint.setVisibility(View.INVISIBLE);
         }
+        else
+        {
+            tv_noGameHint.setVisibility(View.VISIBLE);
+        }
     }
 
     private void onClickButton() {
