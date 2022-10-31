@@ -12,6 +12,14 @@ public class GameManager {
         gameList = new ArrayList<>();
     }
 
+    public ArrayList<Game> getGameList() {
+        return gameList;
+    }
+
+    public void setGameList(ArrayList<Game> gameList) {
+        this.gameList = gameList;
+    }
+
     public static GameManager getInstance()
     {
         // use instance because we only have one game list.

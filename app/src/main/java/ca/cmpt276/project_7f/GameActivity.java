@@ -38,6 +38,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void OnSaveClick() {
         // TODO: save a new game.
+
     }
 
     private void initial() {

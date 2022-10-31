@@ -34,13 +34,18 @@ public class ConfigurationListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        SharedPreferencesUtils.loadDataOfConfigManager(getApplicationContext());
+        loadData();
         toolbar();
-//        showHint();
         initial();
+        showHint();
         populateListView();
         registerClickCallBack();
         onClick();
+    }
+
+    private void loadData()
+    {
+        SharedPreferencesUtils.loadDataOfConfigManager(getApplicationContext());
     }
 
     private void showHint() {
