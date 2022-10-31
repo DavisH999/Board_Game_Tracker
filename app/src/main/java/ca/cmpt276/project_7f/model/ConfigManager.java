@@ -9,6 +9,10 @@ public class ConfigManager {
     private ArrayList<Config> configList;
     private static ConfigManager instance;
 
+    public void setConfigList(ArrayList<Config> configList) {
+        this.configList = configList;
+    }
+
     public ArrayList<Config> getConfigList() {
         return configList;
     }
@@ -25,6 +29,11 @@ public class ConfigManager {
             instance = new ConfigManager();
         }
         return instance;
+    }
+
+    public void setInstance(ConfigManager configManager)
+    {
+        instance = configManager;
     }
 
     public int getSizeOfConfigList()
@@ -60,7 +69,7 @@ public class ConfigManager {
         // update games as well.
         // if there are some games, then update. If no games, do nothing.
         GameManager instanceOfGameManager = GameManager.getInstance();
-        if(instanceOfGameManager.getSizeOfGameList() > 0)
+        if(instanceOfGameManager.getSizeOfGameListByName(oldConfigName) > 0)
         {
             instanceOfGameManager.updateGames(oldConfigName,newConfigName);
         }
@@ -68,14 +77,14 @@ public class ConfigManager {
 
     public void removeConfig(int indexInConfigList)
     {
+        Config config = configList.get(indexInConfigList);
+        String configName = config.getName();
         configList.remove(indexInConfigList);
         // remove games as well.
         // if there are some games, then remove. If no games, do nothing.
         GameManager instanceOfGameManager = GameManager.getInstance();
-        if(instanceOfGameManager.getSizeOfGameList() > 0)
+        if(instanceOfGameManager.getSizeOfGameListByName(configName) > 0)
         {
-            Config config = configList.get(indexInConfigList);
-            String configName = config.getName();
             instanceOfGameManager.removeGames(configName);
         }
     }

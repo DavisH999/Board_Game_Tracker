@@ -83,6 +83,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     private void onDeleteClick() {
         instanceOfCM.removeConfig(indexOfConfigInList);
+        SharedPreferencesUtils.saveDataOfConfigManager(getApplicationContext());
         finish();
     }
 
@@ -147,6 +148,7 @@ public class ConfigurationActivity extends AppCompatActivity {
                 }
             }
         }
+        SharedPreferencesUtils.saveDataOfConfigManager(getApplicationContext());
         finish();
     }
 

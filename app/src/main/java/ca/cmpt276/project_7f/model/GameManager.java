@@ -88,19 +88,19 @@ public class GameManager {
         }
     }
 
-    private Game getGameByIndex(String configName,int index)
-    {
-        ArrayList<Game> tempGameList = new ArrayList<>();
-        for(int i = 0; i < gameList.size(); i++)
-        {
-            Game game = gameList.get(i);
-            if(configName.equals(game.getConfigName()))
-            {
-                tempGameList.add(game);
-            }
-        }
-        return tempGameList.get(index);
-    }
+//    private Game getGameByIndex(String configName,int index)
+//    {
+//        ArrayList<Game> tempGameList = new ArrayList<>();
+//        for(int i = 0; i < gameList.size(); i++)
+//        {
+//            Game game = gameList.get(i);
+//            if(configName.equals(game.getConfigName()))
+//            {
+//                tempGameList.add(game);
+//            }
+//        }
+//        return tempGameList.get(index);
+//    }
 
 
 

@@ -34,8 +34,9 @@ public class ConfigurationListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        SharedPreferencesUtils.loadDataOfConfigManager(getApplicationContext());
         toolbar();
-        showHint();
+//        showHint();
         initial();
         populateListView();
         registerClickCallBack();
@@ -43,8 +44,8 @@ public class ConfigurationListActivity extends AppCompatActivity {
     }
 
     private void showHint() {
-        ConfigManager instance = ConfigManager.getInstance();
-        int sizeOfConfigList = instance.getSizeOfConfigList();
+        ConfigManager instanceOfConfigM = ConfigManager.getInstance();
+        int sizeOfConfigList = instanceOfConfigM.getSizeOfConfigList();
         if(sizeOfConfigList > 0)
         {
             tv_noConfigHint.setVisibility(View.INVISIBLE);
@@ -63,8 +64,8 @@ public class ConfigurationListActivity extends AppCompatActivity {
     }
 
     private void populateListView() {
-        ConfigManager configManager = ConfigManager.getInstance();
-        ArrayList<Config> configList = configManager.getConfigList();
+        ConfigManager instanceOfConfigM = ConfigManager.getInstance();
+        ArrayList<Config> configList = instanceOfConfigM.getConfigList();
 
         // Create a list of items
         ArrayList<String> configsToDisplay = new ArrayList<>();
@@ -81,8 +82,6 @@ public class ConfigurationListActivity extends AppCompatActivity {
 
         // Configure the list view
         listview_config_list.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
     }
 
     private void registerClickCallBack() {
@@ -101,4 +100,5 @@ public class ConfigurationListActivity extends AppCompatActivity {
         Intent intent = ConfigurationActivity.makeIntent(this, -1);
         startActivity(intent);
     }
+
 }
