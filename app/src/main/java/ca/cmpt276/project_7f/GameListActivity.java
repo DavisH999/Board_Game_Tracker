@@ -63,13 +63,17 @@ public class GameListActivity extends AppCompatActivity {
         {
             tv_noGameHint.setVisibility(View.INVISIBLE);
         }
+        else
+        {
+            tv_noGameHint.setVisibility(View.VISIBLE);
+        }
     }
 
     private void onClickButton() {
         fab_game_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = GameActivity.makeIntent(GameListActivity.this);
+                Intent intent = GameActivity.makeIntent(GameListActivity.this, indexOfConfigInList);
                 startActivity(intent);
             }
         });

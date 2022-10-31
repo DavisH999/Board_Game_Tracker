@@ -55,6 +55,10 @@ public class ConfigurationListActivity extends AppCompatActivity {
         {
             tv_noConfigHint.setVisibility(View.INVISIBLE);
         }
+        else
+        {
+            tv_noConfigHint.setVisibility(View.VISIBLE);
+        }
     }
 
     private void toolbar() {

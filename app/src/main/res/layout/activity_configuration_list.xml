@@ -40,7 +40,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="12dp"
-        android:text="This is no game configuration yet. It is free to click the add button to add a new game configuration."
+        android:text="@string/this_is_no_game_configuration_yet_you_can_click_the_add_button_to_add_a_new_game_configuration"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
