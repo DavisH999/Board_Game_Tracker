@@ -104,13 +104,16 @@ public class GameManager {
 
     public void updateGames(String oldConfigName, Config newConfig)
     {
+        Log.e("!!!old!!!",oldConfigName);
         String updatedConfigName = newConfig.getName();
+        Log.e("!!!new!!!",updatedConfigName);
+
         for(int i = 0; i < gameList.size(); i++)
         {
             Game game = gameList.get(i);
             if(oldConfigName.equals(game.getConfigName()))
             {
-                Log.e("TAG","! "+i);
+                Log.e("TAG","! "+i + " " + game.getConfigName());
                 game.setConfigName(updatedConfigName);
                 game.computeAchievement();
                 Log.e("TAG_ACH",game.getAchievement());

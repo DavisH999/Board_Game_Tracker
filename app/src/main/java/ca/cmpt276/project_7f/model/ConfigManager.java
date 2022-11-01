@@ -62,6 +62,8 @@ public class ConfigManager {
         Config oldConfig = configList.get(indexInConfigList);
         String oldConfigName = oldConfig.getName();
         String newConfigName = newConfig.getName();
+        Log.e("oldNameTAG",oldConfigName);
+        Log.e("newNameTAG",newConfigName);
         configList.set(indexInConfigList,newConfig);
         // update games as well.
         // if there are some games, then update. If no games, do nothing.
@@ -69,8 +71,8 @@ public class ConfigManager {
         if(instanceOfGameManager.getSizeOfGameListByName(oldConfigName) > 0)
         {
             Log.e("TAGEDIT",instanceOfGameManager.getSizeOfGameListByName(oldConfigName)+"");
-            Log.e("oldNameTAG",oldConfigName);
-            Log.e("newNameTAG",newConfigName);
+//            Log.e("oldNameTAG",oldConfigName);
+//            Log.e("newNameTAG",newConfigName);
             // TODO: deBUG.
             Log.e("TAG_newConfig",newConfig.toString());
             instanceOfGameManager.updateGames(oldConfigName,newConfig);

@@ -39,18 +39,12 @@ public class GameListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        loadData();
         extractDataFromIntent();
         initial();
         toolbar();
         showHint();
         populateListView();
         onClickButton();
-    }
-
-    private void loadData()
-    {
-        SharedPreferencesUtils.loadDataOfGameManager(getApplicationContext());
     }
 
     private void showHint() {

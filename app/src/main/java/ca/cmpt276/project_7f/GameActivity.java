@@ -6,16 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import ca.cmpt276.project_7f.model.Config;
 import ca.cmpt276.project_7f.model.ConfigManager;
-import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
 
 // adding a new game.
@@ -37,14 +32,14 @@ public class GameActivity extends AppCompatActivity {
 
         initial();
         toolbar();
-        saveData();
+        onButtonsClick();
     }
 
-    private void saveData() {
-        btn_saveGame.setOnClickListener(v->OnSaveClick());
+    private void onButtonsClick() {
+        btn_saveGame.setOnClickListener(v->onSaveClick());
     }
 
-    private void OnSaveClick() {
+    private void onSaveClick() {
         addGame();
     }
 
@@ -64,8 +59,12 @@ public class GameActivity extends AppCompatActivity {
         // Get an instance of gameManager
         GameManager gameManager = GameManager.getInstance();
         gameManager.addGame(nameOfConfig, numOfPlayers, score);
-        SharedPreferencesUtils.saveDataOfGameManager(getApplicationContext());
+        saveData();
         finish();
+    }
+
+    private void saveData() {
+        SharedPreferencesUtils.saveDataOfGameManager(getApplicationContext());
     }
 
     private void initial() {

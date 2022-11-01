@@ -84,8 +84,13 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     private void onDeleteClick() {
         instanceOfCM.removeConfig(indexOfConfigInList);
-        SharedPreferencesUtils.saveDataOfConfigManager(getApplicationContext());
+        saveData();
         finish();
+    }
+
+    private void saveData() {
+        SharedPreferencesUtils.saveDataOfConfigManager(getApplicationContext());
+        SharedPreferencesUtils.saveDataOfGameManager(getApplicationContext());
     }
 
     private void onSaveCLick() {
@@ -129,6 +134,8 @@ public class ConfigurationActivity extends AppCompatActivity {
             // if name remains same then directly edit it
             if(configName.equals(oldName))
             {
+
+                // TODO: BUG!!!
                 Log.e("TAG1",config.toString());
                 Log.e("TAG1",indexOfConfigInList+"");
                 instanceOfCM.editConfig(indexOfConfigInList,config);
@@ -153,7 +160,7 @@ public class ConfigurationActivity extends AppCompatActivity {
                 }
             }
         }
-        SharedPreferencesUtils.saveDataOfConfigManager(getApplicationContext());
+        saveData();
         finish();
     }
 
