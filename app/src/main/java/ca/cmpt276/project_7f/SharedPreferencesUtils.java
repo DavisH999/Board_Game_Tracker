@@ -12,6 +12,7 @@ import ca.cmpt276.project_7f.model.ConfigManager;
 import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
 
+// save and read data from shared preference
 public class SharedPreferencesUtils {
     public static void saveDataOfConfigManager(Context context)
     {

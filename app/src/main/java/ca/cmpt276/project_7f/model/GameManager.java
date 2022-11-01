@@ -49,7 +49,6 @@ public class GameManager {
 
     public ArrayList<String> getDisplayedStringListByName(String configName)
     {
-        // TODO: BUG
         ArrayList<String> stringList = new ArrayList<>();
         for(int i = 0; i < gameList.size(); i++)
         {
@@ -58,9 +57,6 @@ public class GameManager {
             if(configName.equals(configNameFromGame))
             {
                 String stringOfDisplayGame = game.getStringOfDisplayGame();
-                Log.e("TAG_SHOWLIST",stringOfDisplayGame);
-                // CORRECT BELOW!!!!!
-                Log.e("TAG_SHOWLIST2",game.getAchievement());
                 stringList.add(stringOfDisplayGame);
             }
         }
@@ -89,51 +85,23 @@ public class GameManager {
         }
     }
 
-//    public void updateGames(String oldConfigName, String newConfigName)
-//    {
-//        for(int i = 0; i < gameList.size(); i++)
-//        {
-//            Game game = gameList.get(i);
-//            if(oldConfigName.equals(game.getConfigName()))
-//            {
-//                game.setConfigName(newConfigName);
-//                game.computeAchievement();
-//            }
-//        }
-//    }
-
     public void updateGames(String oldConfigName, Config newConfig)
     {
-        Log.e("!!!old!!!",oldConfigName);
         String updatedConfigName = newConfig.getName();
-        Log.e("!!!new!!!",updatedConfigName);
 
         for(int i = 0; i < gameList.size(); i++)
         {
             Game game = gameList.get(i);
             if(oldConfigName.equals(game.getConfigName()))
             {
-                Log.e("TAG","! "+i + " " + game.getConfigName());
+                // BUG FOUND AND FIXED!
+                // Log.e("TAG","! "+i + " " + game.getConfigName());
                 game.setConfigName(updatedConfigName);
                 game.computeAchievement();
-                Log.e("TAG_ACH",game.getAchievement());
             }
         }
     }
 
-//    private Game getGameByIndex(String configName,int index)
-//    {
-//        ArrayList<Game> tempGameList = new ArrayList<>();
-//        for(int i = 0; i < gameList.size(); i++)
-//        {
-//            Game game = gameList.get(i);
-//            if(configName.equals(game.getConfigName()))
-//            {
-//                tempGameList.add(game);
-//            }
-//        }
-//        return tempGameList.get(index);
-//    }
 
 
 

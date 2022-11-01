@@ -2,6 +2,7 @@ package ca.cmpt276.project_7f;
 
 import com.google.gson.Gson;
 
+// Gson to convert data between string and object.
 public class GsonUtils {
     public static String getJsonStringFromObject(Object object)
     {
