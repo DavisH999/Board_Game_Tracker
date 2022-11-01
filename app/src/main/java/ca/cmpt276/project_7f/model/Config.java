@@ -32,4 +32,13 @@ public class Config {
     public void setGreatScore(int greatScore) {
         this.greatScore = greatScore;
     }
+
+    @Override
+    public String toString() {
+        return "Config{" +
+                "configName='" + configName + '\'' +
+                ", poorScore=" + poorScore +
+                ", greatScore=" + greatScore +
+                '}';
+    }
 }

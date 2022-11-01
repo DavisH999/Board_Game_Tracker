@@ -45,6 +45,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
 
     private void loadData()
     {
+        SharedPreferencesUtils.loadDataOfGameManager(getApplicationContext());
         SharedPreferencesUtils.loadDataOfConfigManager(getApplicationContext());
     }
 

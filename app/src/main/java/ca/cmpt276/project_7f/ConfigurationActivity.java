@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -128,6 +129,8 @@ public class ConfigurationActivity extends AppCompatActivity {
             // if name remains same then directly edit it
             if(configName.equals(oldName))
             {
+                Log.e("TAG1",config.toString());
+                Log.e("TAG1",indexOfConfigInList+"");
                 instanceOfCM.editConfig(indexOfConfigInList,config);
             }
             // if name has been changed then check if new name existed.
@@ -144,6 +147,8 @@ public class ConfigurationActivity extends AppCompatActivity {
                 // if name not existed, then edit it.
                 else
                 {
+                    Log.e("TAG2",config.toString());
+                    Log.e("TAG2",indexOfConfigInList+"");
                     instanceOfCM.editConfig(indexOfConfigInList,config);
                 }
             }

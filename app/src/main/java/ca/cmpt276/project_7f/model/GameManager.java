@@ -1,5 +1,7 @@
 package ca.cmpt276.project_7f.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 // managing the list of game.
@@ -47,6 +49,7 @@ public class GameManager {
 
     public ArrayList<String> getDisplayedStringListByName(String configName)
     {
+        // TODO: BUG
         ArrayList<String> stringList = new ArrayList<>();
         for(int i = 0; i < gameList.size(); i++)
         {
@@ -55,6 +58,9 @@ public class GameManager {
             if(configName.equals(configNameFromGame))
             {
                 String stringOfDisplayGame = game.getStringOfDisplayGame();
+                Log.e("TAG_SHOWLIST",stringOfDisplayGame);
+                // CORRECT BELOW!!!!!
+                Log.e("TAG_SHOWLIST2",game.getAchievement());
                 stringList.add(stringOfDisplayGame);
             }
         }
@@ -83,15 +89,31 @@ public class GameManager {
         }
     }
 
-    public void updateGames(String oldConfigName, String newConfigName)
+//    public void updateGames(String oldConfigName, String newConfigName)
+//    {
+//        for(int i = 0; i < gameList.size(); i++)
+//        {
+//            Game game = gameList.get(i);
+//            if(oldConfigName.equals(game.getConfigName()))
+//            {
+//                game.setConfigName(newConfigName);
+//                game.computeAchievement();
+//            }
+//        }
+//    }
+
+    public void updateGames(String oldConfigName, Config newConfig)
     {
+        String updatedConfigName = newConfig.getName();
         for(int i = 0; i < gameList.size(); i++)
         {
             Game game = gameList.get(i);
             if(oldConfigName.equals(game.getConfigName()))
             {
-                game.setConfigName(newConfigName);
+                Log.e("TAG","! "+i);
+                game.setConfigName(updatedConfigName);
                 game.computeAchievement();
+                Log.e("TAG_ACH",game.getAchievement());
             }
         }
     }

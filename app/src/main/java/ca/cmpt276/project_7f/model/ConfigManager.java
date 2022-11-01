@@ -1,5 +1,7 @@
 package ca.cmpt276.project_7f.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 // managing the list of configuration.
@@ -66,7 +68,12 @@ public class ConfigManager {
         GameManager instanceOfGameManager = GameManager.getInstance();
         if(instanceOfGameManager.getSizeOfGameListByName(oldConfigName) > 0)
         {
-            instanceOfGameManager.updateGames(oldConfigName,newConfigName);
+            Log.e("TAGEDIT",instanceOfGameManager.getSizeOfGameListByName(oldConfigName)+"");
+            Log.e("oldNameTAG",oldConfigName);
+            Log.e("newNameTAG",newConfigName);
+            // TODO: deBUG.
+            Log.e("TAG_newConfig",newConfig.toString());
+            instanceOfGameManager.updateGames(oldConfigName,newConfig);
         }
     }
 
