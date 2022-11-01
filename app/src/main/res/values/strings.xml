@@ -10,6 +10,7 @@
     <string name="achievement_8">Fat Flies</string>
     <string name="achievement_9">Lazy Lizards</string>
     <string name="achievement_10">Slow Snakes</string>
+    <string name="toolbar_configuration_list">List of Configurations</string>
     <string name="achievementActivity_numPlayers">Number of Players:</string>
     <string name="this_is_no_game_under_this_configuration_yet_it_is_free_to_click_the_add_button_to_add_a_new_game">
         This is no game under this configuration yet. It is free to click the add button to add a new game.</string>

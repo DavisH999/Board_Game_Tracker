@@ -35,7 +35,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
         super.onResume();
 
         loadData();
-        toolbar();
+        //toolbar();
         initial();
         showHint();
         populateListView();

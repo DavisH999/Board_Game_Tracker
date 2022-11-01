@@ -31,7 +31,7 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
 
         initial();
-        toolbar();
+        //toolbar();
         onButtonsClick();
     }
 

@@ -41,7 +41,7 @@ public class GameListActivity extends AppCompatActivity {
 
         extractDataFromIntent();
         initial();
-        toolbar();
+        //toolbar();
         showHint();
         populateListView();
         onClickButton();
