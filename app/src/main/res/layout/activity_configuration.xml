@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ConfigurationActivity">
 
+    <include layout="@layout/toolbar_configuration"/>
+
     <TextView
         android:id="@+id/tv_configGreatScore"
         android:layout_width="162dp"
