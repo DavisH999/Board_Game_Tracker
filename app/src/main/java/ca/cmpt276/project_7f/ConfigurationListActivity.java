@@ -3,6 +3,7 @@ package ca.cmpt276.project_7f;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -111,4 +112,9 @@ public class ConfigurationListActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public static Intent makeIntent(Context context, int index) {
+        Intent intent = new Intent(context, ConfigurationListActivity.class);
+        intent.putExtra("indexOfConfigInList", index);
+        return intent;
+    }
 }

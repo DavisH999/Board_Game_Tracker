@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".ConfigurationActivity">
 
-    <include layout="@layout/toolbar_configuration"/>
+    <include
+        layout="@layout/toolbar_configuration"
+        tools:layout_editor_absoluteX="-124dp"
+        tools:layout_editor_absoluteY="-121dp" />
 
     <TextView
         android:id="@+id/tv_configGreatScore"
@@ -36,31 +39,31 @@
         android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="484dp"
-        android:layout_marginEnd="180dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="44dp"
         android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/et_configPoorScore" />
 
     <Button
         android:id="@+id/btn_goToGameList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
         android:text="@string/go_to_games_list"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_goToAchievements" />
 
     <Button
         android:id="@+id/btn_goToAchievements"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
         android:text="@string/go_to_achievements"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_configPoorScore" />
 
     <EditText
         android:id="@+id/et_configName"
@@ -106,16 +109,6 @@
         app:layout_constraintHorizontal_bias="0.59"
         app:layout_constraintStart_toEndOf="@+id/tv_configPoorScore"
         app:layout_constraintTop_toBottomOf="@+id/et_configGreatScore" />
-
-    <Button
-        android:id="@+id/btn_saveConfig"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="408dp"
-        android:layout_marginEnd="184dp"
-        android:text="@string/save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_configName"
