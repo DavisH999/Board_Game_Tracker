@@ -6,14 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".AchievementsActivity">
 
+    <include layout="@layout/toolbar_achievements"/>
+
     <EditText
         android:id="@+id/et_numPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="196dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="88dp"
         android:autofillHints="e.g. 6"
         android:ems="10"
         android:fontFamily="monospace"
+        android:hint="@string/achievements_hint_num_players"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/textView_numPlayers"
@@ -23,8 +27,8 @@
         android:id="@+id/textView_numPlayers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="104dp"
         android:fontFamily="monospace"
         android:text="@string/achievementActivity_numPlayers"
         android:textColor="@color/black"
@@ -36,10 +40,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="72dp"
         android:text="@string/achievement_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_numPlayers" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_numPlayers"
+        android:fontFamily="monospace"/>
 
     <TextView
         android:id="@+id/tv_achievement2"
@@ -49,7 +54,8 @@
         android:layout_marginTop="24dp"
         android:text="@string/achievement_2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_achievement1" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievement1"
+        android:fontFamily="monospace"/>
 
     <TextView
         android:id="@+id/tv_achievement3"
@@ -59,7 +65,8 @@
         android:layout_marginTop="24dp"
         android:text="@string/achievement_3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_achievement2" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievement2"
+        android:fontFamily="monospace"/>
 
     <TextView
         android:id="@+id/tv_achievement4"
@@ -69,7 +76,8 @@
         android:layout_marginTop="24dp"
         android:text="@string/achievement_4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_achievement3" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievement3"
+        android:fontFamily="monospace"/>
 
     <TextView
         android:id="@+id/tv_achievement5"
@@ -79,7 +87,8 @@
         android:layout_marginTop="24dp"
         android:text="@string/achievement_5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_achievement4" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievement4"
+        android:fontFamily="monospace"/>
 
     <TextView
         android:id="@+id/tv_achievement6"
@@ -89,14 +98,16 @@
         android:layout_marginTop="24dp"
         android:text="@string/achievement_6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_achievement5" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievement5"
+        android:fontFamily="monospace"/>
 
     <TextView
         android:id="@+id/tv_achievementu8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="monospace"
         android:text="@string/achievement_8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_achievement7" />
@@ -109,7 +120,8 @@
         android:layout_marginTop="24dp"
         android:text="@string/achievement_9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_achievementu8" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievementu8"
+        android:fontFamily="monospace"/>
 
     <TextView
         android:id="@+id/tv_achievement10"
@@ -119,7 +131,8 @@
         android:layout_marginTop="24dp"
         android:text="@string/achievement_10"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_achievement9" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievement9"
+        android:fontFamily="monospace"/>
 
     <TextView
         android:id="@+id/tv_achievement7"
@@ -129,95 +142,116 @@
         android:layout_marginTop="24dp"
         android:text="@string/achievement_7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_achievement6" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievement6"
+        android:fontFamily="monospace"/>
 
     <TextView
         android:id="@+id/tv_range0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="72dp"
+        android:fontFamily="monospace"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
-        app:layout_constraintTop_toBottomOf="@+id/textView_numPlayers" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_numPlayers"
+        android:textColor="@color/blue_custom"/>
 
     <TextView
         android:id="@+id/tv_range1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_range0" />
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_range0"
+        android:textColor="@color/blue_custom"/>
 
     <TextView
         android:id="@+id/tv_range2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement3"
-        app:layout_constraintTop_toBottomOf="@+id/tv_range1" />
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_range1"
+        android:textColor="@color/blue_custom"/>
 
     <TextView
         android:id="@+id/tv_range3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="152dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement4"
-        app:layout_constraintTop_toBottomOf="@+id/tv_range2" />
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_range2"
+        android:textColor="@color/blue_custom"/>
 
     <TextView
         android:id="@+id/tv_range4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement5"
-        app:layout_constraintTop_toBottomOf="@+id/tv_range3" />
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_range3"
+        android:textColor="@color/blue_custom"/>
 
     <TextView
         android:id="@+id/tv_range5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement6"
-        app:layout_constraintTop_toBottomOf="@+id/tv_range4" />
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_range4"
+        android:textColor="@color/blue_custom"/>
 
     <TextView
         android:id="@+id/tv_range6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement7"
-        app:layout_constraintTop_toBottomOf="@+id/tv_range5" />
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_range5"
+        android:textColor="@color/blue_custom"/>
 
     <TextView
         android:id="@+id/tv_range7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="196dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievementu8"
-        app:layout_constraintTop_toBottomOf="@+id/tv_range6" />
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_range6"
+        android:textColor="@color/blue_custom"/>
 
     <TextView
         android:id="@+id/tv_range8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement9"
-        app:layout_constraintTop_toBottomOf="@+id/tv_range7" />
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_range7"
+        android:textColor="@color/blue_custom"/>
 
     <TextView
         android:id="@+id/tv_range9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement10"
-        app:layout_constraintTop_toBottomOf="@+id/tv_range8" />
+        android:fontFamily="monospace"
+        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_range8"
+        android:textColor="@color/blue_custom"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
