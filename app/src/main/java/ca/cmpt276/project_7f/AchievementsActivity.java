@@ -47,7 +47,7 @@ public class AchievementsActivity extends AppCompatActivity {
 
         extractDataFromIntent();
         initial();
-        toolbar();
+        //toolbar();
         textWatcher();
     }
 
