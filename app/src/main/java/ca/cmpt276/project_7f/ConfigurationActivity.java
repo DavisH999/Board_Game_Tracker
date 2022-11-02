@@ -212,7 +212,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         return intent;
     }
 
-    //TODO: Not working
+    //TODO: Not working!!!
     private void toolbar() {
         TextView toolbar = findViewById(R.id.tv_config_toolbar_title); //Custom toolbar reference
         //ActionBar supportActionBar = getSupportActionBar(); //Old implementation, Unnecessary
