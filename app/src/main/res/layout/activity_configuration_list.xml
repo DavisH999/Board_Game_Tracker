@@ -26,7 +26,7 @@
     <ListView
         android:id="@+id/listview_config_list"
         android:layout_width="363dp"
-        android:layout_height="501dp"
+        android:layout_height="552dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="88dp"
         android:layout_marginEnd="8dp"

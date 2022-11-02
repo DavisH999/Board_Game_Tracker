@@ -36,7 +36,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
         super.onResume();
 
         loadData();
-        //toolbar();
+        //toolbar(); //TODO: Can we delete? Daniel
         initial();
         showHint();
         populateListView();
@@ -89,7 +89,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this,
                         R.layout.item,   // layout to use
-                        configsToDisplay);          // Items to be displayed
+                        configsToDisplay);// Items to be displayed
 
         // Configure the list view
         listview_config_list.setAdapter(adapter);

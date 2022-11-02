@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ca.cmpt276.project_7f.model.Config;
@@ -211,11 +212,17 @@ public class ConfigurationActivity extends AppCompatActivity {
         return intent;
     }
 
+    //TODO: Not working
     private void toolbar() {
-        ActionBar supportActionBar = getSupportActionBar();
-        if(isAddMode)
-            supportActionBar.setTitle("Add a Configuration");
-        else
-            supportActionBar.setTitle("Edit a configuration");
+        TextView toolbar = findViewById(R.id.tv_config_toolbar_title); //Custom toolbar reference
+        //ActionBar supportActionBar = getSupportActionBar(); //Old implementation, Unnecessary
+        if(isAddMode){
+            //supportActionBar.setTitle("Add a Configuration"); //Old implementation, Unnecessary
+            toolbar.setText("Add a Configuration"); //Doesn't work
+        }
+        else {
+            //supportActionBar.setTitle("Edit a configuration"); //Old implementation, Unnecessary
+            toolbar.setText("Edit a configuration"); //Doesn't work
+        }
     }
 }
