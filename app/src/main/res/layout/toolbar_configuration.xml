@@ -34,7 +34,7 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
             android:src="@drawable/save_icon"
-            android:id="@+id/config_save_button1" />
+            android:id="@+id/config_save_button_config" />
 
     </RelativeLayout>
 </RelativeLayout>

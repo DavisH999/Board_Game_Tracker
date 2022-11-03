@@ -85,7 +85,7 @@ public class GameActivity extends AppCompatActivity {
     private void initial() {
         et_numPlayer = findViewById(R.id.et_numPlayer);
         et_score = findViewById(R.id.et_score);
-        btn_saveGame = findViewById(R.id.game_save_button);
+        btn_saveGame = findViewById(R.id.game_save_button_game);
         btn_back = findViewById(R.id.game_back_button);
     }
 
