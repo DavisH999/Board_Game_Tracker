@@ -96,7 +96,6 @@ public class ConfigurationActivity extends AppCompatActivity {
     private void onBackClick() {
         Intent intent = ConfigurationListActivity.makeIntent(this, indexOfConfigInList);
         startActivity(intent);
-
     }
 
     private void saveData() {

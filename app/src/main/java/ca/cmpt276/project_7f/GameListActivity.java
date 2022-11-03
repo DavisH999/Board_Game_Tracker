@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class GameListActivity extends AppCompatActivity {
     private ListView lv_game_list;
     private FloatingActionButton fab_game_list;
     private TextView tv_noGameHint;
+    private ImageView btn_back;
     private int indexOfConfigInList;
 
     @Override
@@ -61,8 +63,9 @@ public class GameListActivity extends AppCompatActivity {
             tv_noGameHint.setVisibility(View.VISIBLE);
         }
     }
-
+    //TODO: Refactor for lambda function
     private void onClickButton() {
+        btn_back.setOnClickListener(v->onBackClick());
         fab_game_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +73,11 @@ public class GameListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void onBackClick() {
+        Intent intent = ConfigurationActivity.makeIntent(this, indexOfConfigInList);
+        startActivity(intent);
     }
 
     private void extractDataFromIntent() {
@@ -100,6 +108,7 @@ public class GameListActivity extends AppCompatActivity {
         lv_game_list = findViewById(R.id.lv_game_list);
         fab_game_list = findViewById(R.id.fab_game_list);
         tv_noGameHint = findViewById(R.id.tv_noGameHint);
+        btn_back = findViewById(R.id.game_list_back_button);
     }
 
     private void toolbar() {
