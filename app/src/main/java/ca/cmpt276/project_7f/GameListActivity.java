@@ -63,7 +63,7 @@ public class GameListActivity extends AppCompatActivity {
             tv_noGameHint.setVisibility(View.VISIBLE);
         }
     }
-    //TODO: Refactor for lambda function
+    //TODO: Refactor fab_game_list for lambda function
     private void onClickButton() {
         btn_back.setOnClickListener(v->onBackClick());
         fab_game_list.setOnClickListener(new View.OnClickListener() {

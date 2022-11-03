@@ -15,6 +15,7 @@
     <string name="toolbar_configuration">Configure a Game</string>
     <string name="toolbar_achievements">Achievements</string>
     <string name="toolbar_game_list">Played Games</string>
+    <string name="toolbar_game">Record a Game</string>
 
     <string name="configuration_hint_name">Poker</string>
     <string name="configuration_hint_max_socore">999</string>
@@ -31,8 +32,8 @@
     <string name="config_name">Name</string>
     <string name="this_is_no_game_configuration_yet_you_can_click_the_add_button_to_add_a_new_game_configuration">This is no game configuration yet. You can click the add button to add a new game configuration.</string>
     <string name="save_game">Save Game</string>
-    <string name="number_of_players">number of players</string>
-    <string name="score">score</string>
+    <string name="number_of_players">Number of Players</string>
+    <string name="score">Score</string>
     <string name="there_is_no_game_under_this_configuration_you_can_click_the_add_button_to_add_a_new_game">There is no game under this configuration. You can click the add button to add a new game.</string>
 
 </resources>
