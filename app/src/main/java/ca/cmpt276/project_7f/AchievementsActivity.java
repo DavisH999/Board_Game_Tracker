@@ -49,7 +49,6 @@ public class AchievementsActivity extends AppCompatActivity {
 
         extractDataFromIntent();
         initial();
-        //toolbar();
         textWatcher();
         onClickButtons();
     }
@@ -130,11 +129,6 @@ public class AchievementsActivity extends AppCompatActivity {
         tv9 = findViewById(R.id.tv_range9);
     }
 
-    private void toolbar() {
-        ActionBar supportActionBar = getSupportActionBar();
-        supportActionBar.setTitle("Achievements");
-    }
-
     public static Intent makeIntent(Context context, int indexOfConfigInList)
     {
         Intent intent = new Intent(context, AchievementsActivity.class);
@@ -147,7 +141,6 @@ public class AchievementsActivity extends AppCompatActivity {
     }
 
     private void onBackClick() {
-        Intent intent = ConfigurationActivity.makeIntent(this, indexOfConfigInList);
-        startActivity(intent);
+        finish();
     }
 }

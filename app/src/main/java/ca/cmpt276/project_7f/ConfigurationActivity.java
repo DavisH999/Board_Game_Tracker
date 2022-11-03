@@ -45,9 +45,9 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         initial();
         extractDataFromIntent();
+        toolbar();
         setButtonInvisible();
         fillData();
-        //toolbar(); //Consider removing, overloaded it with custom toolbars
         onClickButtons();
     }
 
@@ -94,8 +94,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     //Added by Daniel, consider refactoring
     private void onBackClick() {
-        Intent intent = ConfigurationListActivity.makeIntent(this, indexOfConfigInList);
-        startActivity(intent);
+        finish();
     }
 
     private void saveData() {
@@ -142,10 +141,6 @@ public class ConfigurationActivity extends AppCompatActivity {
             String oldName = configByIndex.getName();
             // if name remains same then directly edit it
             if(configName.equals(oldName)) {
-
-                // TODO: BUG!!!
-                Log.e("TAG1",config.toString());
-                Log.e("TAG1",indexOfConfigInList+"");
                 instanceOfCM.editConfig(indexOfConfigInList,config);
             }
             // if name has been changed then check if new name existed.
@@ -211,17 +206,13 @@ public class ConfigurationActivity extends AppCompatActivity {
         return intent;
     }
 
-    //TODO: Not working!!!
     private void toolbar() {
-        TextView toolbar = findViewById(R.id.tv_config_toolbar_title); //Custom toolbar reference
-        //ActionBar supportActionBar = getSupportActionBar(); //Old implementation, Unnecessary
+        TextView tv_title = findViewById(R.id.tv_config_toolbar_title);
         if(isAddMode){
-            //supportActionBar.setTitle("Add a Configuration"); //Old implementation, Unnecessary
-            toolbar.setText("Add a Configuration"); //Doesn't work
+            tv_title.setText("Add a configuration");
         }
         else {
-            //supportActionBar.setTitle("Edit a configuration"); //Old implementation, Unnecessary
-            toolbar.setText("Edit a configuration"); //Doesn't work
+            tv_title.setText("Edit a configuration");
         }
     }
 }

@@ -34,7 +34,6 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
 
         initial();
-        //toolbar();
         onButtonsClick();
         extractDataFromIntent();
     }
@@ -52,8 +51,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void onBackClick() {
-        Intent intent = GameListActivity.makeIntent(this, indexOfConfigInList);
-        startActivity(intent);
+        finish();
     }
 
     private void onSaveClick() {
@@ -91,10 +89,6 @@ public class GameActivity extends AppCompatActivity {
         btn_back = findViewById(R.id.game_back_button);
     }
 
-    private void toolbar() {
-        ActionBar supportActionBar = getSupportActionBar();
-        supportActionBar.setTitle("Add Game");
-    }
 
     public static Intent makeIntent(Context context, int indexOfConfigInList)
     {

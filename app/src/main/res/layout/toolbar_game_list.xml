@@ -18,6 +18,7 @@
             android:id="@+id/game_list_back_button"/>
 
         <TextView
+            android:id="@+id/tv_game_list_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/toolbar_game_list"

@@ -17,7 +17,6 @@
         android:autofillHints="e.g. 6"
         android:ems="10"
         android:fontFamily="monospace"
-        android:hint="@string/achievements_hint_num_players"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/textView_numPlayers"

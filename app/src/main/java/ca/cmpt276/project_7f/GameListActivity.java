@@ -42,7 +42,6 @@ public class GameListActivity extends AppCompatActivity {
 
         extractDataFromIntent();
         initial();
-        //toolbar();
         showHint();
         populateListView();
         onClickButton();
@@ -63,21 +62,17 @@ public class GameListActivity extends AppCompatActivity {
             tv_noGameHint.setVisibility(View.VISIBLE);
         }
     }
-    //TODO: Refactor fab_game_list for lambda function
+
     private void onClickButton() {
         btn_back.setOnClickListener(v->onBackClick());
-        fab_game_list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = GameActivity.makeIntent(GameListActivity.this, indexOfConfigInList);
-                startActivity(intent);
-            }
+        fab_game_list.setOnClickListener(v -> {
+            Intent intent = GameActivity.makeIntent(GameListActivity.this, indexOfConfigInList);
+            startActivity(intent);
         });
     }
 
     private void onBackClick() {
-        Intent intent = ConfigurationActivity.makeIntent(this, indexOfConfigInList);
-        startActivity(intent);
+        finish();
     }
 
     private void extractDataFromIntent() {
@@ -109,11 +104,6 @@ public class GameListActivity extends AppCompatActivity {
         fab_game_list = findViewById(R.id.fab_game_list);
         tv_noGameHint = findViewById(R.id.tv_noGameHint);
         btn_back = findViewById(R.id.game_list_back_button);
-    }
-
-    private void toolbar() {
-        ActionBar supportActionBar = getSupportActionBar();
-        supportActionBar.setTitle("Game List");
     }
 
     public static Intent makeIntent(Context context, int indexOfConfigInList)

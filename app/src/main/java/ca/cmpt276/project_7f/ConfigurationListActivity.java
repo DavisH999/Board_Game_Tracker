@@ -36,7 +36,6 @@ public class ConfigurationListActivity extends AppCompatActivity {
         super.onResume();
 
         loadData();
-        //toolbar(); //TODO: Can we delete? Daniel
         initial();
         showHint();
         populateListView();
@@ -61,11 +60,6 @@ public class ConfigurationListActivity extends AppCompatActivity {
         {
             tv_noConfigHint.setVisibility(View.VISIBLE);
         }
-    }
-
-    private void toolbar() {
-        ActionBar supportActionBar = getSupportActionBar();
-        supportActionBar.setTitle("Configuration List");
     }
 
     private void initial() {
@@ -110,11 +104,5 @@ public class ConfigurationListActivity extends AppCompatActivity {
     private void onClickFab() {
         Intent intent = ConfigurationActivity.makeIntent(this, -1);
         startActivity(intent);
-    }
-
-    public static Intent makeIntent(Context context, int index) {
-        Intent intent = new Intent(context, ConfigurationListActivity.class);
-        intent.putExtra("indexOfConfigInList", index);
-        return intent;
     }
 }
