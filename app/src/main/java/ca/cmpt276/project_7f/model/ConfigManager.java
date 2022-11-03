@@ -70,11 +70,6 @@ public class ConfigManager {
         GameManager instanceOfGameManager = GameManager.getInstance();
         if(instanceOfGameManager.getSizeOfGameListByName(oldConfigName) > 0)
         {
-            Log.e("TAGEDIT",instanceOfGameManager.getSizeOfGameListByName(oldConfigName)+"");
-//            Log.e("oldNameTAG",oldConfigName);
-//            Log.e("newNameTAG",newConfigName);
-            // TODO: deBUG.
-            Log.e("TAG_newConfig",newConfig.toString());
             instanceOfGameManager.updateGames(oldConfigName,newConfig);
         }
     }
