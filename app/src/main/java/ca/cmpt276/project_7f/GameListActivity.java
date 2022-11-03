@@ -26,7 +26,6 @@ public class GameListActivity extends AppCompatActivity {
     private ListView lv_game_list;
     private FloatingActionButton fab_game_list;
     private TextView tv_noGameHint;
-
     private int indexOfConfigInList;
 
     @Override
