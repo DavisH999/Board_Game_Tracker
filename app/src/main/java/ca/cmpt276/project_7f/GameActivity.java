@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import ca.cmpt276.project_7f.model.Config;
 import ca.cmpt276.project_7f.model.ConfigManager;
@@ -18,7 +19,9 @@ public class GameActivity extends AppCompatActivity {
 
     EditText et_numPlayer;
     EditText et_score;
-    Button btn_saveGame;
+    ImageView btn_saveGame;
+    ImageView btn_back;
+    private int indexOfConfigInList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +34,26 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
 
         initial();
-        toolbar();
+        //toolbar();
         onButtonsClick();
+        extractDataFromIntent();
+    }
+
+
+    ////DELETE
+    private void extractDataFromIntent() {
+        Intent intent = getIntent();
+        indexOfConfigInList = intent.getIntExtra("indexOfConfigInList",-1);
     }
 
     private void onButtonsClick() {
         btn_saveGame.setOnClickListener(v->onSaveClick());
+        btn_back.setOnClickListener(v->onBackClick());
+    }
+
+    private void onBackClick() {
+        Intent intent = GameListActivity.makeIntent(this, indexOfConfigInList);
+        startActivity(intent);
     }
 
     private void onSaveClick() {
@@ -70,7 +87,8 @@ public class GameActivity extends AppCompatActivity {
     private void initial() {
         et_numPlayer = findViewById(R.id.et_numPlayer);
         et_score = findViewById(R.id.et_score);
-        btn_saveGame = findViewById(R.id.btn_saveGame);
+        btn_saveGame = findViewById(R.id.game_save_button);
+        btn_back = findViewById(R.id.game_back_button);
     }
 
     private void toolbar() {

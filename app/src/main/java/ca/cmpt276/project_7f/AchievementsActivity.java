@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class AchievementsActivity extends AppCompatActivity {
 
 
     int indexOfConfigInList;
+    ImageView btn_back;
     EditText et;
     TextView tv0;
     TextView tv1;
@@ -47,8 +49,9 @@ public class AchievementsActivity extends AppCompatActivity {
 
         extractDataFromIntent();
         initial();
-        toolbar();
+        //toolbar();
         textWatcher();
+        onClickButtons();
     }
 
     private void textWatcher() {
@@ -114,7 +117,7 @@ public class AchievementsActivity extends AppCompatActivity {
 
     private void initial() {
         et = findViewById(R.id.et_numPlayer);
-
+        btn_back = findViewById(R.id.achievements_back_button);
         tv0 = findViewById(R.id.tv_range0);
         tv1 = findViewById(R.id.tv_range1);
         tv2 = findViewById(R.id.tv_range2);
@@ -137,5 +140,14 @@ public class AchievementsActivity extends AppCompatActivity {
         Intent intent = new Intent(context, AchievementsActivity.class);
         intent.putExtra("indexOfConfigInList", indexOfConfigInList);
         return intent;
+    }
+
+    private void onClickButtons() {
+        btn_back.setOnClickListener(v->onBackClick());
+    }
+
+    private void onBackClick() {
+        Intent intent = ConfigurationActivity.makeIntent(this, indexOfConfigInList);
+        startActivity(intent);
     }
 }

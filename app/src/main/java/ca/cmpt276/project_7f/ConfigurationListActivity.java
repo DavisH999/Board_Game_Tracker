@@ -3,6 +3,7 @@ package ca.cmpt276.project_7f;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +36,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
         super.onResume();
 
         loadData();
-        toolbar();
+        //toolbar(); //TODO: Can we delete? Daniel
         initial();
         showHint();
         populateListView();
@@ -88,7 +89,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this,
                         R.layout.item,   // layout to use
-                        configsToDisplay);          // Items to be displayed
+                        configsToDisplay);// Items to be displayed
 
         // Configure the list view
         listview_config_list.setAdapter(adapter);
@@ -111,4 +112,9 @@ public class ConfigurationListActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public static Intent makeIntent(Context context, int index) {
+        Intent intent = new Intent(context, ConfigurationListActivity.class);
+        intent.putExtra("indexOfConfigInList", index);
+        return intent;
+    }
 }
