@@ -14,7 +14,7 @@
         android:id="@+id/fab_config_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
         app:backgroundTint="@color/blue_custom"
