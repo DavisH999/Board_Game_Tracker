@@ -36,6 +36,14 @@ public class GameListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_list);
     }
 
+    // Restart the GameList Activity
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
