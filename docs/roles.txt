@@ -1,5 +1,6 @@
 Scrum Roles For Iteration 1
 
+
 1. Daniel Surina: Scrum Master
 2. Niall Shaidullin: Product Owner
 3. Dongwei Han: Team Member
