@@ -21,12 +21,11 @@
             android:id="@+id/tv_game_toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/toolbar_game"
-            android:textSize="25sp"
+            android:layout_centerInParent="true"
             android:fontFamily="monospace"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:text="Game"
+            android:textSize="25sp" />
 
         <ImageView
             android:layout_width="wrap_content"

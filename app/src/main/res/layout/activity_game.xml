@@ -12,6 +12,32 @@
         tools:layout_editor_absoluteX="-39dp"
         tools:layout_editor_absoluteY="0dp" />
 
+    <EditText
+        android:id="@+id/et_score2"
+        android:layout_width="154dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_difficultyInAchievements" />
+
+    <TextView
+        android:id="@+id/tv_difficultyInGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:fontFamily="monospace"
+        android:text="Difficulty:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_score" />
+
     <TextView
         android:id="@+id/tv_numPlayer"
         android:layout_width="wrap_content"
@@ -41,19 +67,19 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_numPlayer" />
 
     <EditText
-        android:id="@+id/et_score"
+        android:id="@+id/et_difficultyInGame"
         android:layout_width="154dp"
         android:layout_height="51dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="28dp"
         android:ems="10"
         android:inputType="number"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_numPlayer" />
+        app:layout_constraintTop_toBottomOf="@+id/et_score2" />
 
     <EditText
-        android:id="@+id/et_numPlayer"
+        android:id="@+id/et_difficultyInAchievements"
         android:layout_width="154dp"
         android:layout_height="51dp"
         android:layout_marginTop="104dp"

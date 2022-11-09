@@ -1,7 +1,5 @@
 package ca.cmpt276.project_7f.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 // managing the list of game.
@@ -66,9 +64,10 @@ public class GameManager {
             return stringList;
     }
 
-    public void addGame(String configName, int numOfPlayer, int score)
+    public void addGame(String configName, int numOfPlayer, int score, String difficulty)
     {
         Game game = new Game(configName,numOfPlayer,score);
+        game.setDifficult(difficulty);
         game.computeAchievement();
         gameList.add(game);
     }
@@ -85,7 +84,7 @@ public class GameManager {
         }
     }
 
-    public void updateGames(String oldConfigName, Config newConfig)
+    public void updateGamesWhenConfigChanges(String oldConfigName, Config newConfig)
     {
         String updatedConfigName = newConfig.getName();
 
@@ -102,7 +101,37 @@ public class GameManager {
         }
     }
 
+    public void updateOneGameWhenGameChanges(String configName, int indexInGameList, String difficulty, int score, int numberOfPlayers)
+    {
+        ArrayList<Game> tempGameList = new ArrayList<>();
+        for(int i = 0; i < gameList.size(); i++)
+        {
+            Game game = gameList.get(i);
+            if(configName.equals(game.getConfigName()))
+            {
+                tempGameList.add(game);
+            }
+        }
+        Game targetGame = tempGameList.get(indexInGameList);
+        targetGame.setDifficult(difficulty);
+        targetGame.setScore(score);
+        targetGame.setNumOfPlayers(numberOfPlayers);
+        targetGame.computeAchievement();
+    }
 
+    public Game getGame(String configName, int indexInGameList)
+    {
+        ArrayList<Game> tempGameList = new ArrayList<>();
+        for(int i = 0; i < gameList.size(); i++)
+        {
+            Game game = gameList.get(i);
+            if(configName.equals(game.getConfigName()))
+            {
+                tempGameList.add(game);
+            }
+        }
+        return tempGameList.get(indexInGameList);
+    }
 
 
 

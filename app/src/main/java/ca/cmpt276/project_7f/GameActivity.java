@@ -1,12 +1,10 @@
 package ca.cmpt276.project_7f;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -19,6 +17,7 @@ public class GameActivity extends AppCompatActivity {
 
     EditText et_numPlayer;
     EditText et_score;
+    EditText et_difficultyInGame;
     ImageView btn_saveGame;
     ImageView btn_back;
     private int indexOfConfigInList;
@@ -38,8 +37,6 @@ public class GameActivity extends AppCompatActivity {
         extractDataFromIntent();
     }
 
-
-    ////DELETE
     private void extractDataFromIntent() {
         Intent intent = getIntent();
         indexOfConfigInList = intent.getIntExtra("indexOfConfigInList",-1);
@@ -60,10 +57,12 @@ public class GameActivity extends AppCompatActivity {
 
     private void addGame() {
         // Get input data
-        String StrNumOfPlayers = et_numPlayer.getText().toString();
-        int numOfPlayers = Integer.parseInt(StrNumOfPlayers);
-        String StrScore = et_score.getText().toString();
-        int score = Integer.parseInt(StrScore);
+        String strNumOfPlayers = et_numPlayer.getText().toString();
+        int numOfPlayers = Integer.parseInt(strNumOfPlayers);
+        String strScore = et_score.getText().toString();
+        int score = Integer.parseInt(strScore);
+        // TODO:
+        String strDifficultyInGame = et_difficultyInGame.getText().toString();
 
         // Get the config name
         int indexOfConfigSelected = getIntent().getIntExtra("indexOfConfigInList", -1);
@@ -73,7 +72,7 @@ public class GameActivity extends AppCompatActivity {
 
         // Get an instance of gameManager
         GameManager gameManager = GameManager.getInstance();
-        gameManager.addGame(nameOfConfig, numOfPlayers, score);
+        gameManager.addGame(nameOfConfig, numOfPlayers, score, strDifficultyInGame);
         saveData();
         finish();
     }
@@ -83,10 +82,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void initial() {
-        et_numPlayer = findViewById(R.id.et_numPlayer);
-        et_score = findViewById(R.id.et_score);
+        et_numPlayer = findViewById(R.id.et_difficultyInAchievements);
+        et_score = findViewById(R.id.et_difficultyInGame);
         btn_saveGame = findViewById(R.id.game_save_button_game);
         btn_back = findViewById(R.id.game_back_button);
+        et_difficultyInGame = findViewById(R.id.et_difficultyInGame);
     }
 
 

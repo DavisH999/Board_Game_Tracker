@@ -1,6 +1,5 @@
 package ca.cmpt276.project_7f;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -13,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import ca.cmpt276.project_7f.model.Config;
 import ca.cmpt276.project_7f.model.ConfigManager;
@@ -115,7 +113,7 @@ public class AchievementsActivity extends AppCompatActivity {
     }
 
     private void initial() {
-        et = findViewById(R.id.et_numPlayer);
+        et = findViewById(R.id.et_difficultyInAchievements);
         btn_back = findViewById(R.id.achievements_back_button);
         tv0 = findViewById(R.id.tv_range0);
         tv1 = findViewById(R.id.tv_range1);

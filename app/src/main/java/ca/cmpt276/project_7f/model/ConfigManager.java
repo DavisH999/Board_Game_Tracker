@@ -70,7 +70,7 @@ public class ConfigManager {
         GameManager instanceOfGameManager = GameManager.getInstance();
         if(instanceOfGameManager.getSizeOfGameListByName(oldConfigName) > 0)
         {
-            instanceOfGameManager.updateGames(oldConfigName,newConfig);
+            instanceOfGameManager.updateGamesWhenConfigChanges(oldConfigName,newConfig);
         }
     }
 

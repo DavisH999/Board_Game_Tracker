@@ -13,6 +13,14 @@ public class Game {
     private String time;
     private String difficulty;
 
+    public void setNumOfPlayers(int numOfPlayers) {
+        this.numOfPlayers = numOfPlayers;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public void setDifficult(String difficulty) {
         this.difficulty = difficulty;
     }
