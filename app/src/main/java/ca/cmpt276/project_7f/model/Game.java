@@ -11,6 +11,12 @@ public class Game {
     private int score;
     private String achievement;
     private String time;
+    private String difficult;
+
+    public void setDifficult(String difficult) {
+        this.difficult = difficult;
+    }
+
 
     public Game(String _configName, int _numOfPlayer, int _score) {
         configName = _configName;
