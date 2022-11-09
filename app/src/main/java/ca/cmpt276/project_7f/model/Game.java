@@ -11,10 +11,10 @@ public class Game {
     private int score;
     private String achievement;
     private String time;
-    private String difficult;
+    private String difficulty;
 
-    public void setDifficult(String difficult) {
-        this.difficult = difficult;
+    public void setDifficult(String difficulty) {
+        this.difficulty = difficulty;
     }
 
 
