@@ -7,7 +7,6 @@
     tools:context=".AchievementsActivity">
 
     <include
-        android:id="@+id/include4"
         layout="@layout/toolbar_achievements" />
 
     <TextView

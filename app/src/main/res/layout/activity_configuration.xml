@@ -7,10 +7,7 @@
     tools:context=".ConfigurationActivity">
 
     <include
-        android:id="@+id/include3"
-        layout="@layout/toolbar_configuration"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        layout="@layout/toolbar_configuration"/>
 
     <TextView
         android:id="@+id/tv_configGreatScore"

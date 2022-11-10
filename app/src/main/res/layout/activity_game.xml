@@ -7,49 +7,18 @@
     tools:context=".GameActivity">
 
     <include
-        android:id="@+id/include2"
-        layout="@layout/toolbar_game"
-        tools:layout_editor_absoluteX="-39dp"
-        tools:layout_editor_absoluteY="0dp" />
+        layout="@layout/toolbar_game" />
 
     <EditText
         android:id="@+id/et_scoreInGame"
         android:layout_width="154dp"
         android:layout_height="51dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginEnd="28dp"
         android:ems="10"
         android:inputType="number"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_difficultyInAchievements" />
-
-    <TextView
-        android:id="@+id/tv_difficultyInGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
-        android:fontFamily="monospace"
-        android:text="Difficulty:"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_score" />
-
-    <TextView
-        android:id="@+id/tv_numPlayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="130dp"
-        android:fontFamily="monospace"
-        android:text="@string/number_of_players"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -57,14 +26,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="228dp"
         android:fontFamily="monospace"
         android:text="@string/score"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_numPlayer" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_numPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="164dp"
+        android:fontFamily="monospace"
+        android:text="@string/number_of_players"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_difficultyInGame"
@@ -76,14 +59,28 @@
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_scoreInGame" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_difficultyInGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="101dp"
+        android:fontFamily="monospace"
+        android:text="Difficulty:"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_difficultyInAchievements"
         android:layout_width="154dp"
         android:layout_height="51dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="28dp"
         android:ems="10"
         android:inputType="number"
         android:textSize="20sp"

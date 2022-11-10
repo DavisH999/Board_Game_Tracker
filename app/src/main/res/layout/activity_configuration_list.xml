@@ -7,7 +7,6 @@
     tools:context=".ConfigurationListActivity">
 
     <include
-        android:id="@+id/include"
         layout="@layout/toolbar_configuration_list" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
