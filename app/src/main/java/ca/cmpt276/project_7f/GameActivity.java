@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ca.cmpt276.project_7f.model.Config;
@@ -17,11 +19,12 @@ import ca.cmpt276.project_7f.model.GameManager;
 // adding a new game.
 public class GameActivity extends AppCompatActivity {
 
-    public static final String INDEX_OF_GAME_IN_LIST = "indexOfGameInList";
-    public static final String CONFIG_NAME = "configName";
+    private static final String INDEX_OF_GAME_IN_LIST = "indexOfGameInList";
+    private static final String CONFIG_NAME = "configName";
     private EditText et_numPlayer;
     private EditText et_score;
     private EditText et_difficultyInGame;
+    private TextView tv_game_toolbar_title;
     private ImageView btn_saveGame;
     private ImageView btn_back;
     private int indexOfGameInList;
@@ -44,8 +47,25 @@ public class GameActivity extends AppCompatActivity {
         setMode();
     }
 
+    private void initial() {
+        et_numPlayer = findViewById(R.id.et_difficultyInAchievements);
+        et_score = findViewById(R.id.et_scoreInGame);
+        btn_saveGame = findViewById(R.id.game_save_button_game);
+        btn_back = findViewById(R.id.game_back_button);
+        et_difficultyInGame = findViewById(R.id.et_difficultyInGame);
+        tv_game_toolbar_title = findViewById(R.id.tv_game_toolbar_title);
+    }
+
     private void setMode() {
         isAddMode = indexOfGameInList == -1;
+        if(isAddMode)
+        {
+            tv_game_toolbar_title.setText("Add Game");
+        }
+        else
+        {
+            tv_game_toolbar_title.setText("Edit Game");
+        }
     }
 
     private void extractDataFromIntent() {
@@ -103,15 +123,6 @@ public class GameActivity extends AppCompatActivity {
     private void saveDataToSP() {
         SharedPreferencesUtils.saveDataOfGameManager(getApplicationContext());
     }
-
-    private void initial() {
-        et_numPlayer = findViewById(R.id.et_difficultyInAchievements);
-        et_score = findViewById(R.id.et_scoreInGame);
-        btn_saveGame = findViewById(R.id.game_save_button_game);
-        btn_back = findViewById(R.id.game_back_button);
-        et_difficultyInGame = findViewById(R.id.et_difficultyInGame);
-    }
-
 
     public static Intent makeIntent(Context context, int indexOfConfigInList, String configName)
     {
