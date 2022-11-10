@@ -2,6 +2,7 @@ package ca.cmpt276.project_7f;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import ca.cmpt276.project_7f.model.Config;
 import ca.cmpt276.project_7f.model.ConfigManager;
+import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
 
 // adding a new game.
@@ -65,7 +67,21 @@ public class GameActivity extends AppCompatActivity {
         else
         {
             tv_game_toolbar_title.setText("Edit Game");
+            showData();
         }
+    }
+
+    private void showData()
+    {
+        GameManager instanceOfGameM = GameManager.getInstance();
+        Game game = instanceOfGameM.getGame(configName, indexOfGameInList);
+        int numOfPlayers = game.getNumOfPlayers();
+        int score = game.getScore();
+        String difficulty = game.getDifficulty();
+        // TODO: after using Linearlayout
+        et_numPlayer.setText(""+numOfPlayers);
+        et_score.setText(""+score);
+        et_difficultyInGame.setText(""+difficulty);
     }
 
     private void extractDataFromIntent() {

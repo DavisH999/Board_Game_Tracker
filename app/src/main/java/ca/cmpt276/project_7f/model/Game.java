@@ -25,6 +25,9 @@ public class Game {
         this.difficulty = difficulty;
     }
 
+    public String getDifficulty() {
+        return difficulty;
+    }
 
     public Game(String _configName, int _numOfPlayer, int _score) {
         configName = _configName;
