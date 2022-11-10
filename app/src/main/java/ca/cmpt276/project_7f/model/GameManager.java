@@ -1,5 +1,7 @@
 package ca.cmpt276.project_7f.model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 // managing the list of game.
@@ -103,16 +105,7 @@ public class GameManager {
 
     public void updateOneGameWhenGameChanges(String configName, int indexInGameList, String difficulty, int score, int numberOfPlayers)
     {
-        ArrayList<Game> tempGameList = new ArrayList<>();
-        for(int i = 0; i < gameList.size(); i++)
-        {
-            Game game = gameList.get(i);
-            if(configName.equals(game.getConfigName()))
-            {
-                tempGameList.add(game);
-            }
-        }
-        Game targetGame = tempGameList.get(indexInGameList);
+        Game targetGame = getGame(configName,indexInGameList);
         targetGame.setDifficult(difficulty);
         targetGame.setScore(score);
         targetGame.setNumOfPlayers(numberOfPlayers);

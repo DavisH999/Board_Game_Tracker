@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -36,13 +37,13 @@ public class GameListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_list);
     }
 
-    // Restart the GameList Activity
-    @Override
-    public void onRestart() {
-        super.onRestart();
-        finish();
-        startActivity(getIntent());
-    }
+//    // Restart the GameList Activity
+//    @Override
+//    public void onRestart() {
+//        super.onRestart();
+//        finish();
+//        startActivity(getIntent());
+//    }
 
     @Override
     protected void onResume() {
@@ -52,6 +53,7 @@ public class GameListActivity extends AppCompatActivity {
         initial();
         showHint();
         populateListView();
+        onItemsInTheListClick();
         onClickButton();
     }
 
@@ -74,7 +76,10 @@ public class GameListActivity extends AppCompatActivity {
     private void onClickButton() {
         btn_back.setOnClickListener(v->onBackClick());
         fab_game_list.setOnClickListener(v -> {
-            Intent intent = GameActivity.makeIntent(GameListActivity.this, indexOfConfigInList);
+            ConfigManager instanceOfConfigM = ConfigManager.getInstance();
+            Config configByIndex = instanceOfConfigM.getConfigByIndex(indexOfConfigInList);
+            String configName = configByIndex.getName();
+            Intent intent = GameActivity.makeIntent(getApplicationContext(), -1,configName);
             startActivity(intent);
         });
     }
@@ -105,6 +110,19 @@ public class GameListActivity extends AppCompatActivity {
                 displayedStringList);
         // configure the list
         lv_game_list.setAdapter(stringArrayAdapter);
+    }
+
+    private void onItemsInTheListClick() {
+        lv_game_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ConfigManager instanceOfConfigM = ConfigManager.getInstance();
+                Config configByIndex = instanceOfConfigM.getConfigByIndex(indexOfConfigInList);
+                String configName = configByIndex.getName();
+                Intent intent = GameActivity.makeIntent(getApplicationContext(), position,configName);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initial() {

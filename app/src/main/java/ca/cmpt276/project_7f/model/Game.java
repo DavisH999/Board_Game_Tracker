@@ -59,6 +59,18 @@ public class Game {
         return achievement;
     }
 
+    @Override
+    public String toString() {
+        return "Game{" +
+                "configName='" + configName + '\'' +
+                ", numOfPlayers=" + numOfPlayers +
+                ", score=" + score +
+                ", achievement='" + achievement + '\'' +
+                ", time='" + time + '\'' +
+                ", difficulty='" + difficulty + '\'' +
+                '}';
+    }
+
     public ArrayList<String> getStringOfRanges() {
         ConfigManager configManager = ConfigManager.getInstance();
         Config configByName = configManager.getConfigByName(configName);
@@ -129,6 +141,7 @@ public class Game {
     {
         return "Time created " + time + "\n"
                 + "Combined score: " + score + "\n"
-                + "Achievement: " + getAchievement();
+                + "Achievement: " + getAchievement() + "\n"
+                + "Difficulty: " + difficulty;
     }
 }

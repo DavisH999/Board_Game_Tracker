@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import ca.cmpt276.project_7f.model.Config;
 import ca.cmpt276.project_7f.model.ConfigManager;
@@ -15,12 +17,16 @@ import ca.cmpt276.project_7f.model.GameManager;
 // adding a new game.
 public class GameActivity extends AppCompatActivity {
 
-    EditText et_numPlayer;
-    EditText et_score;
-    EditText et_difficultyInGame;
-    ImageView btn_saveGame;
-    ImageView btn_back;
-    private int indexOfConfigInList;
+    public static final String INDEX_OF_GAME_IN_LIST = "indexOfGameInList";
+    public static final String CONFIG_NAME = "configName";
+    private EditText et_numPlayer;
+    private EditText et_score;
+    private EditText et_difficultyInGame;
+    private ImageView btn_saveGame;
+    private ImageView btn_back;
+    private int indexOfGameInList;
+    private String configName;
+    private boolean isAddMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +41,17 @@ public class GameActivity extends AppCompatActivity {
         initial();
         onButtonsClick();
         extractDataFromIntent();
+        setMode();
+    }
+
+    private void setMode() {
+        isAddMode = indexOfGameInList == -1;
     }
 
     private void extractDataFromIntent() {
         Intent intent = getIntent();
-        indexOfConfigInList = intent.getIntExtra("indexOfConfigInList",-1);
+        indexOfGameInList = intent.getIntExtra(INDEX_OF_GAME_IN_LIST,-1);
+        configName = intent.getStringExtra(CONFIG_NAME);
     }
 
     private void onButtonsClick() {
@@ -52,48 +64,60 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void onSaveClick() {
-        addGame();
+        // Check if null
+        if(et_numPlayer.length() == 0 || et_score.length() == 0 || et_difficultyInGame.length() == 0)
+        {
+            Toast.makeText(this,"All values must be not empty.",Toast.LENGTH_SHORT)
+                    .show();
+            return;
+        }
+
+        processGame();
     }
 
-    private void addGame() {
+    private void processGame() {
         // Get input data
         String strNumOfPlayers = et_numPlayer.getText().toString();
         int numOfPlayers = Integer.parseInt(strNumOfPlayers);
         String strScore = et_score.getText().toString();
         int score = Integer.parseInt(strScore);
-        // TODO:
         String strDifficultyInGame = et_difficultyInGame.getText().toString();
-
-        // Get the config name
-        int indexOfConfigSelected = getIntent().getIntExtra("indexOfConfigInList", -1);
-        ConfigManager configManager = ConfigManager.getInstance();
-        Config configSelected = configManager.getConfigByIndex(indexOfConfigSelected);
-        String nameOfConfig = configSelected.getName();
-
-        // Get an instance of gameManager
-        GameManager gameManager = GameManager.getInstance();
-        gameManager.addGame(nameOfConfig, numOfPlayers, score, strDifficultyInGame);
-        saveData();
+        // Do the logical part
+        GameManager instanceOfGameM = GameManager.getInstance();
+        if(isAddMode)
+        {
+            instanceOfGameM.addGame(configName,numOfPlayers,score,strDifficultyInGame);
+        }
+        else
+        {
+            instanceOfGameM.updateOneGameWhenGameChanges(configName,
+                    indexOfGameInList,
+                    strDifficultyInGame,
+                    score,
+                    numOfPlayers);
+        }
+        saveDataToSP();
         finish();
     }
 
-    private void saveData() {
+    private void saveDataToSP() {
         SharedPreferencesUtils.saveDataOfGameManager(getApplicationContext());
     }
 
     private void initial() {
         et_numPlayer = findViewById(R.id.et_difficultyInAchievements);
-        et_score = findViewById(R.id.et_difficultyInGame);
+        et_score = findViewById(R.id.et_scoreInGame);
         btn_saveGame = findViewById(R.id.game_save_button_game);
         btn_back = findViewById(R.id.game_back_button);
         et_difficultyInGame = findViewById(R.id.et_difficultyInGame);
     }
 
 
-    public static Intent makeIntent(Context context, int indexOfConfigInList)
+    public static Intent makeIntent(Context context, int indexOfConfigInList, String configName)
     {
         Intent intent = new Intent(context, GameActivity.class);
-        intent.putExtra("indexOfConfigInList",indexOfConfigInList);
+        intent.putExtra(INDEX_OF_GAME_IN_LIST,indexOfConfigInList);
+        intent.putExtra(CONFIG_NAME,configName);
         return intent;
     }
 }
