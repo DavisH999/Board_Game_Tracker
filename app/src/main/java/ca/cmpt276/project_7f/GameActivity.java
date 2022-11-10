@@ -2,19 +2,14 @@ package ca.cmpt276.project_7f;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ca.cmpt276.project_7f.model.Config;
-import ca.cmpt276.project_7f.model.ConfigManager;
 import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
 
@@ -50,7 +45,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void initial() {
-        et_numPlayer = findViewById(R.id.et_difficultyInAchievements);
+        et_numPlayer = findViewById(R.id.et_numPlayersInGame);
         et_score = findViewById(R.id.et_scoreInGame);
         btn_saveGame = findViewById(R.id.game_save_button_game);
         btn_back = findViewById(R.id.game_back_button);

@@ -113,7 +113,7 @@ public class AchievementsActivity extends AppCompatActivity {
     }
 
     private void initial() {
-        et = findViewById(R.id.et_difficultyInAchievements);
+        et = findViewById(R.id.et_numPlayersInGame);
         btn_back = findViewById(R.id.achievements_back_button);
         tv0 = findViewById(R.id.tv_range0);
         tv1 = findViewById(R.id.tv_range1);
