@@ -61,7 +61,6 @@ public class GameActivity extends AppCompatActivity {
         int numOfPlayers = Integer.parseInt(strNumOfPlayers);
         String strScore = et_score.getText().toString();
         int score = Integer.parseInt(strScore);
-        // TODO:
         String strDifficultyInGame = et_difficultyInGame.getText().toString();
 
         // Get the config name

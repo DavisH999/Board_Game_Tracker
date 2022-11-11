@@ -56,7 +56,7 @@ public class Game {
     }
 
     public String getAchievement() {
-        computeAchievement();
+        computeAchievement(1);
         return achievement;
     }
 
@@ -87,7 +87,7 @@ public class Game {
         return ranges;
     }
 
-    public void computeAchievement()
+    public void computeAchievement(double difficulty)
     {
         ConfigManager configManager = ConfigManager.getInstance();
         Config configByName = configManager.getConfigByName(configName);
@@ -99,9 +99,9 @@ public class Game {
         else {
             int greatScore = configByName.getGreatScore();
             int poorScore = configByName.getPoorScore();
-            int highestExpectedLevel = greatScore * numOfPlayers;
-            int lowestExpectedLevel = poorScore * numOfPlayers;
-            int unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
+            double highestExpectedLevel = greatScore * numOfPlayers * difficulty;
+            double lowestExpectedLevel = poorScore * numOfPlayers * difficulty;
+            double unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
 
             if (score >= highestExpectedLevel)
                 achievement = "Victorious Whales";

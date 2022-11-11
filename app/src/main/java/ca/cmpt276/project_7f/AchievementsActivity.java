@@ -87,7 +87,6 @@ public class AchievementsActivity extends AppCompatActivity {
         }
     };
 
-
     private void showData() {
         String difficulty = difficulty_level_tv.getText().toString();
         if (Objects.equals(difficulty, "Normal") || Objects.equals(difficulty, "Hard")

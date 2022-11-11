@@ -1,6 +1,7 @@
 package ca.cmpt276.project_7f.model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 // managing the list of game.
 public class GameManager {
@@ -68,7 +69,20 @@ public class GameManager {
     {
         Game game = new Game(configName,numOfPlayer,score);
         game.setDifficulty(difficulty);
-        game.computeAchievement();
+
+        // Determine the level of difficulty
+        if (Objects.equals(difficulty, "Normal")) {
+            game.computeAchievement(1);
+        }
+
+        else if (Objects.equals(difficulty, "Hard")) {
+            game.computeAchievement(1.25);
+        }
+
+        else if (Objects.equals(difficulty, "Easy")) {
+            game.computeAchievement(0.75);
+        }
+
         gameList.add(game);
     }
 
@@ -96,7 +110,7 @@ public class GameManager {
                 // BUG FOUND AND FIXED!
                 // Log.e("TAG","! "+i + " " + game.getConfigName());
                 game.setConfigName(updatedConfigName);
-                game.computeAchievement();
+                game.computeAchievement(1);
             }
         }
     }
@@ -116,7 +130,19 @@ public class GameManager {
         targetGame.setDifficulty(difficulty);
         targetGame.setScore(score);
         targetGame.setNumOfPlayers(numberOfPlayers);
-        targetGame.computeAchievement();
+
+        // Determine the level of difficulty
+        if (Objects.equals(difficulty, "Normal")) {
+            targetGame.computeAchievement(1);
+        }
+
+        else if (Objects.equals(difficulty, "Hard")) {
+            targetGame.computeAchievement(1.25);
+        }
+
+        else if (Objects.equals(difficulty, "Easy")) {
+            targetGame.computeAchievement(0.75);
+        }
     }
 
     public Game getGame(String configName, int indexInGameList)
