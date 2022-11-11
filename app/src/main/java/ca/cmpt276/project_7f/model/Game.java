@@ -69,15 +69,15 @@ public class Game {
 
         int greatScore = configByName.getGreatScore();
         int poorScore = configByName.getPoorScore();
-        int highestExpectedLevel = greatScore * numOfPlayers;
-        int lowestExpectedLevel = poorScore * numOfPlayers;
-        int unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
+        double highestExpectedLevel = greatScore * numOfPlayers * difficulty;
+        double lowestExpectedLevel = poorScore * numOfPlayers * difficulty;
+        double unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
 
         ranges.add(highestExpectedLevel + " and above");
 
         for (int i = 8; i > 0; --i) {
-            int lowerLimit = lowestExpectedLevel + unit * (i - 1);
-            int higherLevel = lowestExpectedLevel + unit * i;
+            double lowerLimit = lowestExpectedLevel + unit * (i - 1);
+            double higherLevel = lowestExpectedLevel + unit * i;
             String range = lowerLimit + " - " + higherLevel;
             ranges.add(range);
         }
