@@ -64,17 +64,6 @@ public class GameActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.difficulty_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_difficultyInGame.setAdapter(adapter);
-        /*
-        spinner_difficultyInGame.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String difficulty = parent.getItemAtPosition(position).toString();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-         */
     }
 
     private void generateDynamicEditTexts() {
@@ -140,8 +129,7 @@ public class GameActivity extends AppCompatActivity {
         String difficulty = game.getDifficulty();
         ArrayList<Integer> scoreList = game.getScoreList();
         et_numPlayer.setText(String.valueOf(numOfPlayers));
-        // TODO: show selected spinner.
-        Log.e("TAG",spinner_difficultyInGame.getCount()+"");
+        // set spinner selection
         for (int i = 0; i < spinner_difficultyInGame.getCount(); i++)
         {
             String str = spinner_difficultyInGame.getItemAtPosition(i).toString();
@@ -153,7 +141,6 @@ public class GameActivity extends AppCompatActivity {
         }
         //show score list
         addEditViews(numOfPlayers,scoreList);
-
     }
 
     private void extractDataFromIntent() {
