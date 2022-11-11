@@ -9,10 +9,14 @@ import android.text.Editable;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +32,7 @@ public class GameActivity extends AppCompatActivity {
     private static final String INDEX_OF_GAME_IN_LIST = "indexOfGameInList";
     private static final String CONFIG_NAME = "configName";
     private EditText et_numPlayer;
-    private EditText et_difficultyInGame;
+//    private EditText et_difficultyInGame;
     private TextView tv_game_toolbar_title;
     private LinearLayout linearlayoutForScores;
     private Button btn_generateEditTexts;
@@ -37,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
     private int indexOfGameInList;
     private String configName;
     private boolean isAddMode;
+    private Spinner spinner_difficultyInGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +56,26 @@ public class GameActivity extends AppCompatActivity {
         initial();
         onButtonsClick();
         extractDataFromIntent();
+        fillSpinner();
         setMode();
     }
 
+    private void fillSpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.difficulty_list, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_difficultyInGame.setAdapter(adapter);
+        /*
+        spinner_difficultyInGame.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String difficulty = parent.getItemAtPosition(position).toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+         */
+    }
 
     private void generateDynamicEditTexts() {
         if(et_numPlayer.length() == 0)
@@ -92,10 +114,10 @@ public class GameActivity extends AppCompatActivity {
         et_numPlayer = findViewById(R.id.et_numPlayersInGame);
         btn_saveGame = findViewById(R.id.game_save_button_game);
         btn_back = findViewById(R.id.game_back_button);
-        et_difficultyInGame = findViewById(R.id.et_difficultyInGame);
         tv_game_toolbar_title = findViewById(R.id.tv_game_toolbar_title);
         btn_generateEditTexts = findViewById(R.id.btn_generateEditTexts);
         linearlayoutForScores = findViewById(R.id.linearlayoutForScores);
+        spinner_difficultyInGame = findViewById(R.id.spinner_difficultyInGame);
     }
 
     private void setMode() {
@@ -111,15 +133,24 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    private void showData()
-    {
+    private void showData() {
         GameManager instanceOfGameM = GameManager.getInstance();
         Game game = instanceOfGameM.getGame(configName, indexOfGameInList);
         int numOfPlayers = game.getNumOfPlayers();
         String difficulty = game.getDifficulty();
         ArrayList<Integer> scoreList = game.getScoreList();
         et_numPlayer.setText(String.valueOf(numOfPlayers));
-        et_difficultyInGame.setText(difficulty);
+        // TODO: show selected spinner.
+        Log.e("TAG",spinner_difficultyInGame.getCount()+"");
+        for (int i = 0; i < spinner_difficultyInGame.getCount(); i++)
+        {
+            String str = spinner_difficultyInGame.getItemAtPosition(i).toString();
+            if(difficulty.equals(str))
+            {
+                spinner_difficultyInGame.setSelection(i);
+                break;
+            }
+        }
         //show score list
         addEditViews(numOfPlayers,scoreList);
 
@@ -143,7 +174,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void onSaveClick() {
         // Check if null
-        if(et_numPlayer.length() == 0 || et_difficultyInGame.length() == 0)
+        if(et_numPlayer.length() == 0)
         {
             Toast.makeText(this,"All values must be not empty.",Toast.LENGTH_SHORT)
                     .show();
@@ -162,7 +193,7 @@ public class GameActivity extends AppCompatActivity {
         // Get input data
         String strNumOfPlayers = et_numPlayer.getText().toString();
         int numOfPlayers = Integer.parseInt(strNumOfPlayers);
-        String strDifficultyInGame = et_difficultyInGame.getText().toString();
+        String strDifficultyInGame = spinner_difficultyInGame.getSelectedItem().toString();
 
         // read score list
         if(linearlayoutForScores.getChildCount() != numOfPlayers)

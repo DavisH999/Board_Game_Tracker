@@ -37,18 +37,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_difficultyInGame"
-        android:layout_width="154dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="532dp"
-        android:layout_marginEnd="48dp"
-        android:ems="10"
-        android:inputType="text"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tv_difficultyInGame"
         android:layout_width="wrap_content"
@@ -65,8 +53,8 @@
 
     <EditText
         android:id="@+id/et_numPlayersInGame"
-        android:layout_width="154dp"
-        android:layout_height="51dp"
+        android:layout_width="155dp"
+        android:layout_height="50dp"
         android:layout_marginTop="148dp"
         android:layout_marginEnd="28dp"
         android:ems="10"
@@ -99,9 +87,11 @@
 
     <Spinner
         android:id="@+id/spinner_difficultyInGame"
-        android:layout_width="152dp"
-        android:layout_height="36dp"
-        tools:layout_editor_absoluteX="229dp"
-        tools:layout_editor_absoluteY="101dp" />
+        android:layout_width="155dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
