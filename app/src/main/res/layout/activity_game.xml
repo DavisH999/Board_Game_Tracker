@@ -9,18 +9,6 @@
     <include
         layout="@layout/toolbar_game" />
 
-    <EditText
-        android:id="@+id/et_scoreInGame"
-        android:layout_width="154dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="584dp"
-        android:layout_marginEnd="76dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tv_score"
         android:layout_width="wrap_content"

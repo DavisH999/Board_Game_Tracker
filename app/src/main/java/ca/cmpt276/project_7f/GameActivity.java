@@ -28,7 +28,6 @@ public class GameActivity extends AppCompatActivity {
     private static final String INDEX_OF_GAME_IN_LIST = "indexOfGameInList";
     private static final String CONFIG_NAME = "configName";
     private EditText et_numPlayer;
-    private EditText et_score;
     private EditText et_difficultyInGame;
     private TextView tv_game_toolbar_title;
     private LinearLayout linearlayoutForScores;
@@ -48,8 +47,6 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        Log.e("TAGGG", ConfigManager.getInstance().getConfigList().size()+"");
 
         initial();
         onButtonsClick();
@@ -93,7 +90,6 @@ public class GameActivity extends AppCompatActivity {
 
     private void initial() {
         et_numPlayer = findViewById(R.id.et_numPlayersInGame);
-        et_score = findViewById(R.id.et_scoreInGame);
         btn_saveGame = findViewById(R.id.game_save_button_game);
         btn_back = findViewById(R.id.game_back_button);
         et_difficultyInGame = findViewById(R.id.et_difficultyInGame);
@@ -120,15 +116,11 @@ public class GameActivity extends AppCompatActivity {
         GameManager instanceOfGameM = GameManager.getInstance();
         Game game = instanceOfGameM.getGame(configName, indexOfGameInList);
         int numOfPlayers = game.getNumOfPlayers();
-        int score = game.getScore();
         String difficulty = game.getDifficulty();
         ArrayList<Integer> scoreList = game.getScoreList();
-
-        // TODO: after using Linearlayout
-        et_numPlayer.setText(""+numOfPlayers);
-        et_score.setText(""+score);
-        et_difficultyInGame.setText(""+difficulty);
-
+        et_numPlayer.setText(String.valueOf(numOfPlayers));
+        et_difficultyInGame.setText(difficulty);
+        //show score list
         addEditViews(numOfPlayers,scoreList);
 
     }
@@ -170,10 +162,15 @@ public class GameActivity extends AppCompatActivity {
         // Get input data
         String strNumOfPlayers = et_numPlayer.getText().toString();
         int numOfPlayers = Integer.parseInt(strNumOfPlayers);
-        String strScore = et_score.getText().toString();
-        int score = Integer.parseInt(strScore);
         String strDifficultyInGame = et_difficultyInGame.getText().toString();
+
         // read score list
+        if(linearlayoutForScores.getChildCount() != numOfPlayers)
+        {
+            Toast.makeText(this,"num scores must equal to num players",Toast.LENGTH_SHORT)
+                    .show();
+            return;
+        }
         ArrayList<Integer> scoreList = new ArrayList<>();
         for(int i = 0; i < linearlayoutForScores.getChildCount(); i++)
         {

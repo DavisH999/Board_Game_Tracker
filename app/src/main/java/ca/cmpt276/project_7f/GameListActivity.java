@@ -38,26 +38,15 @@ public class GameListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_list);
     }
 
-//    // Restart the GameList Activity
-//    @Override
-//    public void onRestart() {
-//        super.onRestart();
-//        finish();
-//        startActivity(getIntent());
-//    }
 
     @Override
     protected void onResume() {
         super.onResume();
-// TODO:BUG!!!!!
-        // TODO:
-        Log.e("TAG101",ConfigManager.getInstance().getConfigList().size()+"");
-        Log.e("TAG202",indexOfConfigInList+"");
 
 
         extractDataFromIntent();
         initial();
-//        showHint();
+        showHint();
         populateListView();
         onItemsInTheListClick();
         onClickButton();
