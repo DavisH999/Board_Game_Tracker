@@ -12,13 +12,29 @@ public class Game {
     private String achievement;
     private String time;
     private String difficulty;
+    private ArrayList<Integer> scoreList;
+
+    public ArrayList<Integer> getScoreList() {
+        return scoreList;
+    }
+
+    public void setScoreList(ArrayList<Integer> scoreList) {
+        this.scoreList = scoreList;
+        computeTotalScore();
+    }
+
+    private void computeTotalScore()
+    {
+        int sum = 0;
+        for (int i = 0; i < scoreList.size(); i++)
+        {
+            sum = sum + scoreList.get(i);
+        }
+        score = sum;
+    }
 
     public void setNumOfPlayers(int numOfPlayers) {
         this.numOfPlayers = numOfPlayers;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
     }
 
     public void setDifficult(String difficulty) {
@@ -29,10 +45,11 @@ public class Game {
         return difficulty;
     }
 
-    public Game(String _configName, int _numOfPlayer, int _score) {
+    public Game(String _configName, int _numOfPlayer, ArrayList<Integer> _scoreList) {
         configName = _configName;
         numOfPlayers = _numOfPlayer;
-        score = _score;
+        scoreList = _scoreList;
+        computeTotalScore();
         time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd @ HH:mm a"));
     }
 
@@ -142,7 +159,7 @@ public class Game {
 
     public String getStringOfDisplayGame()
     {
-        return "Time created " + time + "\n"
+        return "Time created: " + time + "\n"
                 + "Combined score: " + score + "\n"
                 + "Achievement: " + getAchievement() + "\n"
                 + "Difficulty: " + difficulty;

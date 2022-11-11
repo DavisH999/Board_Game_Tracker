@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -48,10 +49,15 @@ public class GameListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+// TODO:BUG!!!!!
+        // TODO:
+        Log.e("TAG101",ConfigManager.getInstance().getConfigList().size()+"");
+        Log.e("TAG202",indexOfConfigInList+"");
+
 
         extractDataFromIntent();
         initial();
-        showHint();
+//        showHint();
         populateListView();
         onItemsInTheListClick();
         onClickButton();
@@ -96,6 +102,7 @@ public class GameListActivity extends AppCompatActivity {
     private void populateListView() {
         // show num players, combined score, and the achievement we earned.
         ConfigManager instanceOfConfigM = ConfigManager.getInstance();
+
         Config configByIndex = instanceOfConfigM.getConfigByIndex(indexOfConfigInList);
         String configName = configByIndex.getName();
         GameManager instanceOfGameM = GameManager.getInstance();

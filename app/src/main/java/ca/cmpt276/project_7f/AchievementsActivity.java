@@ -93,7 +93,7 @@ public class AchievementsActivity extends AppCompatActivity {
         String value = et.getText().toString();
         int num = Integer.parseInt(value);
 
-        Game game = new Game(name,num, 100 );
+        Game game = new Game(name,num, null );
         ArrayList<String> rangesArray = game.getStringOfRanges();
         tv0.setText(rangesArray.get(0));
         tv1.setText(rangesArray.get(1));

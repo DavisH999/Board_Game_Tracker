@@ -66,9 +66,9 @@ public class GameManager {
             return stringList;
     }
 
-    public void addGame(String configName, int numOfPlayer, int score, String difficulty)
+    public void addGame(String configName, int numOfPlayer, ArrayList<Integer> scoreList, String difficulty)
     {
-        Game game = new Game(configName,numOfPlayer,score);
+        Game game = new Game(configName,numOfPlayer,scoreList);
         game.setDifficult(difficulty);
         game.computeAchievement();
         gameList.add(game);
@@ -103,11 +103,11 @@ public class GameManager {
         }
     }
 
-    public void updateOneGameWhenGameChanges(String configName, int indexInGameList, String difficulty, int score, int numberOfPlayers)
+    public void updateOneGameWhenGameChanges(String configName, int indexInGameList, String difficulty, ArrayList<Integer> scoreList, int numberOfPlayers)
     {
         Game targetGame = getGame(configName,indexInGameList);
         targetGame.setDifficult(difficulty);
-        targetGame.setScore(score);
+        targetGame.setScoreList(scoreList);
         targetGame.setNumOfPlayers(numberOfPlayers);
         targetGame.computeAchievement();
     }
