@@ -32,7 +32,6 @@ public class GameActivity extends AppCompatActivity {
     private static final String INDEX_OF_GAME_IN_LIST = "indexOfGameInList";
     private static final String CONFIG_NAME = "configName";
     private EditText et_numPlayer;
-//    private EditText et_difficultyInGame;
     private TextView tv_game_toolbar_title;
     private LinearLayout linearlayoutForScores;
     private Button btn_generateEditTexts;

@@ -61,7 +61,7 @@ public class Game {
         this.configName = configName;
     }
 
-    String getTime()
+    public String getTime()
     {
         return time;
     }
