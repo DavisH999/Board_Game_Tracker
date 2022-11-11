@@ -67,7 +67,7 @@ public class GameManager {
     public void addGame(String configName, int numOfPlayer, int score, String difficulty)
     {
         Game game = new Game(configName,numOfPlayer,score);
-        game.setDifficult(difficulty);
+        game.setDifficulty(difficulty);
         game.computeAchievement();
         gameList.add(game);
     }
@@ -113,7 +113,7 @@ public class GameManager {
             }
         }
         Game targetGame = tempGameList.get(indexInGameList);
-        targetGame.setDifficult(difficulty);
+        targetGame.setDifficulty(difficulty);
         targetGame.setScore(score);
         targetGame.setNumOfPlayers(numberOfPlayers);
         targetGame.computeAchievement();

@@ -21,9 +21,10 @@ public class Game {
         this.score = score;
     }
 
-    public void setDifficult(String difficulty) {
+    public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
+
 
 
     public Game(String _configName, int _numOfPlayer, int _score) {
@@ -59,7 +60,7 @@ public class Game {
         return achievement;
     }
 
-    public ArrayList<String> getStringOfRanges() {
+    public ArrayList<String> getStringOfRanges(double difficulty) {
         ConfigManager configManager = ConfigManager.getInstance();
         Config configByName = configManager.getConfigByName(configName);
 
