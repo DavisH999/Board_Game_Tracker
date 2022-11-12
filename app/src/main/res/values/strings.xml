@@ -16,6 +16,7 @@
     <string name="toolbar_achievements">Achievements</string>
     <string name="toolbar_game_list">Played Games</string>
     <string name="toolbar_game">Record a Game</string>
+    <string name="toolbar_theme">Theme</string>
 
     <string name="configuration_hint_name">Poker</string>
     <string name="configuration_hint_max_socore">999</string>
@@ -35,6 +36,7 @@
     <string name="number_of_players">Number of Players</string>
     <string name="score">Score</string>
     <string name="there_is_no_game_under_this_configuration_you_can_click_the_add_button_to_add_a_new_game">There is no game under this configuration. You can click the add button to add a new game.</string>
+    <string name="theme_select">Select a Theme</string>
 
     <string-array name="difficulty_list">
         <item>Easy</item>
