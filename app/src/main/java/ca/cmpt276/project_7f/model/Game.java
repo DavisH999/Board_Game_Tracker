@@ -138,6 +138,7 @@ public class Game {
         return ranges;
     }
 
+    // TODO: ADD a new params String theme
     public void computeAchievement(double difficulty)
     {
         ConfigManager configManager = ConfigManager.getInstance();
