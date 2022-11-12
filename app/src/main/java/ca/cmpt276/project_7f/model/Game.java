@@ -37,7 +37,7 @@ public class Game {
         this.numOfPlayers = numOfPlayers;
     }
 
-    public void setDifficult(String difficulty) {
+    public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
 
@@ -45,12 +45,31 @@ public class Game {
         return difficulty;
     }
 
-    public Game(String _configName, int _numOfPlayer, ArrayList<Integer> _scoreList) {
+    public Game(String _configName, int _numOfPlayer, ArrayList<Integer> _scoreList, String difficulty) {
         configName = _configName;
         numOfPlayers = _numOfPlayer;
         scoreList = _scoreList;
+        computeAchievement(convertStrDifficultyToDouble(difficulty));
         computeTotalScore();
         time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd @ HH:mm a"));
+    }
+
+    private double convertStrDifficultyToDouble(String difficultyStr) {
+        double difficulty = 1.0;
+        switch(difficultyStr) {
+            case "Normal":
+                difficulty =  1.0;
+                break;
+
+            case "Hard":
+                difficulty =  1.25;
+                break;
+
+            case "Easy":
+                difficulty =  0.75;
+                break;
+        }
+        return difficulty;
     }
 
     public String getConfigName() {
@@ -75,7 +94,6 @@ public class Game {
     }
 
     public String getAchievement() {
-        computeAchievement();
         return achievement;
     }
 
@@ -91,7 +109,6 @@ public class Game {
                 '}';
     }
 
-    public ArrayList<String> getStringOfRanges() {
     public ArrayList<String> getStringOfRanges(double difficulty) {
         ConfigManager configManager = ConfigManager.getInstance();
         Config configByName = configManager.getConfigByName(configName);

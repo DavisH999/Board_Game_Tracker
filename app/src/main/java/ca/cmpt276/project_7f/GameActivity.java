@@ -5,24 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputType;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import ca.cmpt276.project_7f.model.ConfigManager;
 import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
 
@@ -99,7 +93,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void initial() {
-        et_numPlayer = findViewById(R.id.et_numPlayersInGame);
+        et_numPlayer = findViewById(R.id.et_difficultyInAchievements);
         btn_saveGame = findViewById(R.id.game_save_button_game);
         btn_back = findViewById(R.id.game_back_button);
         tv_game_toolbar_title = findViewById(R.id.tv_game_toolbar_title);

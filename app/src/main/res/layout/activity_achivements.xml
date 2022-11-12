@@ -23,7 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_numPlayersInAchievements" />
 
     <EditText
-        android:id="@+id/et_numPlayersInGame"
+        android:id="@+id/et_difficultyInAchievements"
         android:layout_width="196dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_numPlayer2"
+        android:id="@+id/et_numPlayer_achive"
         android:layout_width="196dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"

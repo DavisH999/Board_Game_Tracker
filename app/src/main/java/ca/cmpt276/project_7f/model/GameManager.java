@@ -1,7 +1,5 @@
 package ca.cmpt276.project_7f.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -69,8 +67,7 @@ public class GameManager {
 
     public void addGame(String configName, int numOfPlayer, ArrayList<Integer> scoreList, String difficulty)
     {
-        Game game = new Game(configName,numOfPlayer,score);
-        game.setDifficulty(difficulty);
+        Game game = new Game(configName,numOfPlayer,scoreList,difficulty);
 
         // Determine the level of difficulty
         if (Objects.equals(difficulty, "Normal")) {
@@ -85,9 +82,6 @@ public class GameManager {
             game.computeAchievement(0.75);
         }
 
-        Game game = new Game(configName,numOfPlayer,scoreList);
-        game.setDifficult(difficulty);
-        game.computeAchievement();
         gameList.add(game);
     }
 
@@ -110,12 +104,27 @@ public class GameManager {
         for(int i = 0; i < gameList.size(); i++)
         {
             Game game = gameList.get(i);
+            String difficulty = game.getDifficulty();
+            if(difficulty == null)
+            {
+                difficulty = "Normal";
+            }
             if(oldConfigName.equals(game.getConfigName()))
             {
                 // BUG FOUND AND FIXED!
                 // Log.e("TAG","! "+i + " " + game.getConfigName());
                 game.setConfigName(updatedConfigName);
-                game.computeAchievement();
+                switch (difficulty) {
+                    case "Normal":
+                        game.computeAchievement(1);
+                        break;
+                    case "Easy":
+                        game.computeAchievement(0.75);
+                        break;
+                    case "Hard":
+                        game.computeAchievement(1.25);
+                        break;
+                }
             }
         }
     }
@@ -123,7 +132,7 @@ public class GameManager {
     public void updateOneGameWhenGameChanges(String configName, int indexInGameList, String difficulty, ArrayList<Integer> scoreList, int numberOfPlayers)
     {
         Game targetGame = getGame(configName,indexInGameList);
-        targetGame.setDifficult(difficulty);
+        targetGame.setDifficulty(difficulty);
         targetGame.setScoreList(scoreList);
         targetGame.setNumOfPlayers(numberOfPlayers);
 
@@ -131,11 +140,9 @@ public class GameManager {
         if (Objects.equals(difficulty, "Normal")) {
             targetGame.computeAchievement(1);
         }
-
         else if (Objects.equals(difficulty, "Hard")) {
             targetGame.computeAchievement(1.25);
         }
-
         else if (Objects.equals(difficulty, "Easy")) {
             targetGame.computeAchievement(0.75);
         }
