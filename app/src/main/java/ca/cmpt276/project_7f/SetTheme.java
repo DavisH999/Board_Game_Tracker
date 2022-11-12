@@ -19,6 +19,7 @@ public class SetTheme extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_theme);
 
+        //Find id
         Spinner spinner_theme = findViewById(R.id.spinner_theme);
         ImageView btn_back = findViewById(R.id.set_theme_back_button);
 
@@ -26,10 +27,19 @@ public class SetTheme extends AppCompatActivity{
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.achievement_levels, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_theme.setAdapter(adapter);
-        String theme = spinner_theme.getSelectedItem().toString();
 
-        btn_back.setOnClickListener(v->onBackClick());
-        //spinner_theme.setOnClickListener(v->spinnerCLick());
+        spinner_theme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String s = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getApplicationContext(),"You selected: " + s,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public static Intent makeIntent(Context context, int index) {
@@ -38,12 +48,5 @@ public class SetTheme extends AppCompatActivity{
         return intent;
     }
 
-    public void onBackClick() {
-        finish();
-    }
-
-    public void spinnerCLick() {
-        //Toast.makeText(SetTheme.this, "I chose you pikachu!", Toast.LENGTH_LONG).show();
-    }
-
+    public void onBackClick() {finish();}
 }
