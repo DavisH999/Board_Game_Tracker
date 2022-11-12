@@ -1,6 +1,7 @@
 package ca.cmpt276.project_7f.model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 // managing the list of game.
 public class GameManager {
@@ -67,8 +68,21 @@ public class GameManager {
     public void addGame(String configName, int numOfPlayer, int score, String difficulty)
     {
         Game game = new Game(configName,numOfPlayer,score);
-        game.setDifficult(difficulty);
-        game.computeAchievement();
+        game.setDifficulty(difficulty);
+
+        // Determine the level of difficulty
+        if (Objects.equals(difficulty, "Normal")) {
+            game.computeAchievement(1);
+        }
+
+        else if (Objects.equals(difficulty, "Hard")) {
+            game.computeAchievement(1.25);
+        }
+
+        else if (Objects.equals(difficulty, "Easy")) {
+            game.computeAchievement(0.75);
+        }
+
         gameList.add(game);
     }
 
@@ -96,7 +110,7 @@ public class GameManager {
                 // BUG FOUND AND FIXED!
                 // Log.e("TAG","! "+i + " " + game.getConfigName());
                 game.setConfigName(updatedConfigName);
-                game.computeAchievement();
+                game.computeAchievement(1);
             }
         }
     }
@@ -113,10 +127,22 @@ public class GameManager {
             }
         }
         Game targetGame = tempGameList.get(indexInGameList);
-        targetGame.setDifficult(difficulty);
+        targetGame.setDifficulty(difficulty);
         targetGame.setScore(score);
         targetGame.setNumOfPlayers(numberOfPlayers);
-        targetGame.computeAchievement();
+
+        // Determine the level of difficulty
+        if (Objects.equals(difficulty, "Normal")) {
+            targetGame.computeAchievement(1);
+        }
+
+        else if (Objects.equals(difficulty, "Hard")) {
+            targetGame.computeAchievement(1.25);
+        }
+
+        else if (Objects.equals(difficulty, "Easy")) {
+            targetGame.computeAchievement(0.75);
+        }
     }
 
     public Game getGame(String configName, int indexInGameList)

@@ -21,9 +21,10 @@ public class Game {
         this.score = score;
     }
 
-    public void setDifficult(String difficulty) {
+    public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
+
 
 
     public Game(String _configName, int _numOfPlayer, int _score) {
@@ -55,11 +56,11 @@ public class Game {
     }
 
     public String getAchievement() {
-        computeAchievement();
+        computeAchievement(1);
         return achievement;
     }
 
-    public ArrayList<String> getStringOfRanges() {
+    public ArrayList<String> getStringOfRanges(double difficulty) {
         ConfigManager configManager = ConfigManager.getInstance();
         Config configByName = configManager.getConfigByName(configName);
 
@@ -68,15 +69,15 @@ public class Game {
 
         int greatScore = configByName.getGreatScore();
         int poorScore = configByName.getPoorScore();
-        int highestExpectedLevel = greatScore * numOfPlayers;
-        int lowestExpectedLevel = poorScore * numOfPlayers;
-        int unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
+        double highestExpectedLevel = greatScore * numOfPlayers * difficulty;
+        double lowestExpectedLevel = poorScore * numOfPlayers * difficulty;
+        double unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
 
         ranges.add(highestExpectedLevel + " and above");
 
         for (int i = 8; i > 0; --i) {
-            int lowerLimit = lowestExpectedLevel + unit * (i - 1);
-            int higherLevel = lowestExpectedLevel + unit * i;
+            double lowerLimit = lowestExpectedLevel + unit * (i - 1);
+            double higherLevel = lowestExpectedLevel + unit * i;
             String range = lowerLimit + " - " + higherLevel;
             ranges.add(range);
         }
@@ -86,7 +87,7 @@ public class Game {
         return ranges;
     }
 
-    public void computeAchievement()
+    public void computeAchievement(double difficulty)
     {
         ConfigManager configManager = ConfigManager.getInstance();
         Config configByName = configManager.getConfigByName(configName);
@@ -98,9 +99,9 @@ public class Game {
         else {
             int greatScore = configByName.getGreatScore();
             int poorScore = configByName.getPoorScore();
-            int highestExpectedLevel = greatScore * numOfPlayers;
-            int lowestExpectedLevel = poorScore * numOfPlayers;
-            int unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
+            double highestExpectedLevel = greatScore * numOfPlayers * difficulty;
+            double lowestExpectedLevel = poorScore * numOfPlayers * difficulty;
+            double unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
 
             if (score >= highestExpectedLevel)
                 achievement = "Victorious Whales";
