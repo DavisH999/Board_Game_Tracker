@@ -292,4 +292,14 @@
         android:textColor="@color/blue_custom"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
         app:layout_constraintTop_toBottomOf="@+id/tv_range8" />
+
+    <Button
+        android:id="@+id/button_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="36dp"
+        android:text="Set Theme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

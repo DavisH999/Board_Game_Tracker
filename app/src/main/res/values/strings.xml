@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">Project_7F</string>
-    <string name="achievement_A1">Victorious Whales</string>
-    <string name="achievement_A2">Glorious Giraffes</string>
-    <string name="achievement_A3">Brave Bears</string>
-    <string name="achievement_A4">Pretty Penguins</string>
-    <string name="achievement_A5">Reckless Racoons</string>
-    <string name="achievement_A6">Crazy Crows</string>
-    <string name="achievement_A7">Rowdy Rats</string>
-    <string name="achievement_A8">Fat Flies</string>
-    <string name="achievement_A9">Lazy Lizards</string>
-    <string name="achievement_A10">Slow Snakes</string>
+    <string name="achievement_1">Victorious Whales</string>
+    <string name="achievement_2">Glorious Giraffes</string>
+    <string name="achievement_3">Brave Bears</string>
+    <string name="achievement_4">Pretty Penguins</string>
+    <string name="achievement_5">Reckless Racoons</string>
+    <string name="achievement_6">Crazy Crows</string>
+    <string name="achievement_7">Rowdy Rats</string>
+    <string name="achievement_8">Fat Flies</string>
+    <string name="achievement_9">Lazy Lizards</string>
+    <string name="achievement_10">Slow Snakes</string>
 
     <string name="toolbar_configuration_list">List of Configurations</string>
     <string name="toolbar_configuration">Configure a Game</string>
@@ -36,13 +36,13 @@
     <string name="score">Score</string>
     <string name="there_is_no_game_under_this_configuration_you_can_click_the_add_button_to_add_a_new_game">There is no game under this configuration. You can click the add button to add a new game.</string>
 
-    <string-array name="difficulty_list" >
+    <string-array name="difficulty_list">
         <item>Easy</item>
         <item>Normal</item>
         <item>Hard</item>
     </string-array>
 
-    <string-array name="achievement_level_animals" >
+    <string-array name="achievement_level_animals">
         <item>Victorious Whales</item>
         <item>Glorious Giraffes</item>
         <item>Brave Bears</item>
@@ -55,7 +55,7 @@
         <item>Slow Snakes</item>
     </string-array>
 
-    <string-array name="achievement_level_cartoons" >
+    <string-array name="achievement_level_disney">
         <item>Cookie Monsters</item>
         <item>Kim Possibles</item>
         <item>Aladdins</item>
@@ -68,7 +68,7 @@
         <item>Shreks</item>
     </string-array>
 
-    <string-array name="achievement_level_marvel" >
+    <string-array name="achievement_level_marvel">
         <item>Spider-Mans</item>
         <item>Iron Mans</item>
         <item>Captain America</item>
@@ -79,6 +79,12 @@
         <item>Hulks</item>
         <item>Black Widows</item>
         <item>Thanos</item>
+    </string-array>
+
+    <string-array name="achievement_levels">
+        <item>Crazy Animals</item>
+        <item>Disney Characters</item>
+        <item>Marvel Heroes</item>
     </string-array>
 
 </resources>
