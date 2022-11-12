@@ -109,7 +109,7 @@ public class AchievementsActivity extends AppCompatActivity {
         }
     }
 
-    private ArrayList<String> getTheRangesBasedOnTheDifficultyLevel(String Difficulty) {
+    private ArrayList<String> getTheRangesBasedOnTheDifficultyLevel(String difficulty) {
         ConfigManager instance = ConfigManager.getInstance();
         Config configByIndex = instance.getConfigByIndex(indexOfConfigInList);
         String name = configByIndex.getName();
@@ -117,10 +117,10 @@ public class AchievementsActivity extends AppCompatActivity {
         int numOfPlayers = Integer.parseInt(value);
 
         ArrayList<String> rangesArray = new ArrayList<>();
-        Game game = new Game(name, numOfPlayers, 100);
+        Game game = new Game(name, numOfPlayers, null, difficulty);
 
 
-        switch(Difficulty) {
+        switch(difficulty) {
             case "Normal":
                 rangesArray = game.getStringOfRanges(1);
                 break;
@@ -144,7 +144,7 @@ public class AchievementsActivity extends AppCompatActivity {
 
     private void initial() {
         difficulty_level_tv = findViewById(R.id.et_difficultyInAchievements);
-        numberOfPlayer_tv = findViewById(R.id.et_numPlayer2);
+        numberOfPlayer_tv = findViewById(R.id.et_numPlayer_achive);
         btn_back = findViewById(R.id.achievements_back_button);
         tv0 = findViewById(R.id.tv_range0);
         tv1 = findViewById(R.id.tv_range1);

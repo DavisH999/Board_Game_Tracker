@@ -36,4 +36,10 @@
     <string name="score">Score</string>
     <string name="there_is_no_game_under_this_configuration_you_can_click_the_add_button_to_add_a_new_game">There is no game under this configuration. You can click the add button to add a new game.</string>
 
+    <string-array name="difficulty_list" >
+        <item>Easy</item>
+        <item>Normal</item>
+        <item>Hard</item>
+    </string-array>
+
 </resources>

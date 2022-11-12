@@ -7,7 +7,6 @@
     tools:context=".AchievementsActivity">
 
     <include
-        android:id="@+id/include4"
         layout="@layout/toolbar_achievements" />
 
     <TextView
@@ -38,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_numPlayer2"
+        android:id="@+id/et_numPlayer_achive"
         android:layout_width="196dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"

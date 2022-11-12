@@ -12,26 +12,64 @@ public class Game {
     private String achievement;
     private String time;
     private String difficulty;
+    private ArrayList<Integer> scoreList;
+
+    public ArrayList<Integer> getScoreList() {
+        return scoreList;
+    }
+
+    public void setScoreList(ArrayList<Integer> scoreList) {
+        this.scoreList = scoreList;
+        computeTotalScore();
+    }
+
+    private void computeTotalScore()
+    {
+        int sum = 0;
+        for (int i = 0; i < scoreList.size(); i++)
+        {
+            sum = sum + scoreList.get(i);
+        }
+        score = sum;
+    }
 
     public void setNumOfPlayers(int numOfPlayers) {
         this.numOfPlayers = numOfPlayers;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
     }
 
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
 
+    public String getDifficulty() {
+        return difficulty;
+    }
 
-
-    public Game(String _configName, int _numOfPlayer, int _score) {
+    public Game(String _configName, int _numOfPlayer, ArrayList<Integer> _scoreList, String difficulty) {
         configName = _configName;
         numOfPlayers = _numOfPlayer;
-        score = _score;
+        scoreList = _scoreList;
+        computeAchievement(convertStrDifficultyToDouble(difficulty));
+        computeTotalScore();
         time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd @ HH:mm a"));
+    }
+
+    private double convertStrDifficultyToDouble(String difficultyStr) {
+        double difficulty = 1.0;
+        switch(difficultyStr) {
+            case "Normal":
+                difficulty =  1.0;
+                break;
+
+            case "Hard":
+                difficulty =  1.25;
+                break;
+
+            case "Easy":
+                difficulty =  0.75;
+                break;
+        }
+        return difficulty;
     }
 
     public String getConfigName() {
@@ -42,7 +80,7 @@ public class Game {
         this.configName = configName;
     }
 
-    String getTime()
+    public String getTime()
     {
         return time;
     }
@@ -56,8 +94,19 @@ public class Game {
     }
 
     public String getAchievement() {
-        computeAchievement(1);
         return achievement;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "configName='" + configName + '\'' +
+                ", numOfPlayers=" + numOfPlayers +
+                ", score=" + score +
+                ", achievement='" + achievement + '\'' +
+                ", time='" + time + '\'' +
+                ", difficulty='" + difficulty + '\'' +
+                '}';
     }
 
     public ArrayList<String> getStringOfRanges(double difficulty) {
@@ -128,8 +177,9 @@ public class Game {
 
     public String getStringOfDisplayGame()
     {
-        return "Time created " + time + "\n"
+        return "Time created: " + time + "\n"
                 + "Combined score: " + score + "\n"
-                + "Achievement: " + getAchievement();
+                + "Achievement: " + getAchievement() + "\n"
+                + "Difficulty: " + difficulty;
     }
 }
