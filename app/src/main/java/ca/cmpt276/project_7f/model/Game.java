@@ -49,6 +49,7 @@ public class Game {
         configName = _configName;
         numOfPlayers = _numOfPlayer;
         scoreList = _scoreList;
+        this.difficulty = difficulty;
         computeAchievement(convertStrDifficultyToDouble(difficulty));
         computeTotalScore();
         time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd @ HH:mm a"));
@@ -94,6 +95,7 @@ public class Game {
     }
 
     public String getAchievement() {
+        computeAchievement(convertStrDifficultyToDouble(difficulty));
         return achievement;
     }
 
@@ -136,6 +138,7 @@ public class Game {
         return ranges;
     }
 
+    // TODO: ADD a new params String theme
     public void computeAchievement(double difficulty)
     {
         ConfigManager configManager = ConfigManager.getInstance();
