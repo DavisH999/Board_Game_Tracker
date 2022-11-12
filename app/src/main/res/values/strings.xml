@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">Project_7F</string>
-    <string name="achievement_1">Victorious Whales</string>
-    <string name="achievement_2">Glorious Giraffes</string>
-    <string name="achievement_3">Brave Bears</string>
-    <string name="achievement_4">Pretty Penguins</string>
-    <string name="achievement_5">Reckless Racoons</string>
-    <string name="achievement_6">Crazy Crows</string>
-    <string name="achievement_7">Rowdy Rats</string>
-    <string name="achievement_8">Fat Flies</string>
-    <string name="achievement_9">Lazy Lizards</string>
-    <string name="achievement_10">Slow Snakes</string>
+    <string name="achievement_A1">Victorious Whales</string>
+    <string name="achievement_A2">Glorious Giraffes</string>
+    <string name="achievement_A3">Brave Bears</string>
+    <string name="achievement_A4">Pretty Penguins</string>
+    <string name="achievement_A5">Reckless Racoons</string>
+    <string name="achievement_A6">Crazy Crows</string>
+    <string name="achievement_A7">Rowdy Rats</string>
+    <string name="achievement_A8">Fat Flies</string>
+    <string name="achievement_A9">Lazy Lizards</string>
+    <string name="achievement_A10">Slow Snakes</string>
 
     <string name="toolbar_configuration_list">List of Configurations</string>
     <string name="toolbar_configuration">Configure a Game</string>
@@ -40,6 +40,45 @@
         <item>Easy</item>
         <item>Normal</item>
         <item>Hard</item>
+    </string-array>
+
+    <string-array name="achievement_level_animals" >
+        <item>Victorious Whales</item>
+        <item>Glorious Giraffes</item>
+        <item>Brave Bears</item>
+        <item>Pretty Penguins</item>
+        <item>Reckless Racoons</item>
+        <item>Crazy Crows</item>
+        <item>Rowdy Rats</item>
+        <item>Fat Flies</item>
+        <item>Lazy Lizards</item>
+        <item>Slow Snakes</item>
+    </string-array>
+
+    <string-array name="achievement_level_cartoons" >
+        <item>Cookie Monsters</item>
+        <item>Kim Possibles</item>
+        <item>Aladdins</item>
+        <item>Peter Pans</item>
+        <item>Tarzans</item>
+        <item>Pinocchios</item>
+        <item>Bambis</item>
+        <item>Elmos</item>
+        <item>Olafs</item>
+        <item>Shreks</item>
+    </string-array>
+
+    <string-array name="achievement_level_marvel" >
+        <item>Spider-Mans</item>
+        <item>Iron Mans</item>
+        <item>Captain America</item>
+        <item>Thors</item>
+        <item>Black Panthers</item>
+        <item>Ant-Mans</item>
+        <item>Wolverines</item>
+        <item>Hulks</item>
+        <item>Black Widows</item>
+        <item>Thanos</item>
     </string-array>
 
 </resources>
