@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-// game
+// Arvin's comment
 public class Game {
     private String configName;
     private int numOfPlayers;
