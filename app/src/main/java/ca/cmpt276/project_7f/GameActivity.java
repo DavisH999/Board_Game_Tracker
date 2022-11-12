@@ -1,11 +1,13 @@
 package ca.cmpt276.project_7f;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 
 import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
+import ca.cmpt276.project_7f.model.MessageFragment;
 
 // adding a new game.
 public class GameActivity extends AppCompatActivity {
@@ -209,8 +212,19 @@ public class GameActivity extends AppCompatActivity {
                     scoreList,
                     numOfPlayers);
         }
+
         saveDataToSP();
-        finish();
+        setPopUpMessage();
+      //  finish();
+
+    }
+
+    private void setPopUpMessage() {
+        FragmentManager manager = getSupportFragmentManager();
+        MessageFragment dialog = new MessageFragment();
+        dialog.show(manager, "MessageDialog");
+        TextView tv = findViewById(R.id.popup_range_name);
+        Log.i("TAG", "Just show the dialog");
     }
 
     private void saveDataToSP() {
