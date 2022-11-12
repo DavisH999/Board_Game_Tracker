@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ public class AchievementsActivity extends AppCompatActivity {
 
 
     int indexOfConfigInList;
+    Button btn_setTheme;
     ImageView btn_back;
     EditText difficulty_level_tv;
     EditText numberOfPlayer_tv;
@@ -143,6 +145,7 @@ public class AchievementsActivity extends AppCompatActivity {
     }
 
     private void initial() {
+        btn_setTheme = findViewById(R.id.button_theme);
         difficulty_level_tv = findViewById(R.id.et_difficultyInAchievements);
         numberOfPlayer_tv = findViewById(R.id.et_numPlayer_achive);
         btn_back = findViewById(R.id.achievements_back_button);
@@ -167,7 +170,14 @@ public class AchievementsActivity extends AppCompatActivity {
 
     private void onClickButtons() {
         btn_back.setOnClickListener(v->onBackClick());
+        btn_setTheme.setOnClickListener(v->onThemeClick());
     }
+
+    private void onThemeClick() {
+        Intent intent = SetTheme.makeIntent(this, indexOfConfigInList);
+        startActivity(intent);
+    }
+
 
     private void onBackClick() {
         finish();
