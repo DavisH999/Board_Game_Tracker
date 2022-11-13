@@ -24,7 +24,7 @@ public class SetTheme extends AppCompatActivity{
         ImageView btn_back = findViewById(R.id.set_theme_back_button);
 
         //Spinner
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.achievement_levels, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.theme_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_theme.setAdapter(adapter);
 

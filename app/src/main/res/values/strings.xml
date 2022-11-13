@@ -83,7 +83,7 @@
         <item>Thanos</item>
     </string-array>
 
-    <string-array name="achievement_levels">
+    <string-array name="theme_list">
         <item>Crazy Animals</item>
         <item>Disney Characters</item>
         <item>Marvel Heroes</item>
