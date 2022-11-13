@@ -1,15 +1,12 @@
 package ca.cmpt276.project_7f;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +20,6 @@ import java.util.ArrayList;
 
 import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
-import ca.cmpt276.project_7f.model.MessageFragment;
 
 // adding a new game.
 public class GameActivity extends AppCompatActivity {

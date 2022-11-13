@@ -1,4 +1,4 @@
-package ca.cmpt276.project_7f.model;
+package ca.cmpt276.project_7f;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import java.util.ArrayList;
 
 import ca.cmpt276.project_7f.R;
+import ca.cmpt276.project_7f.model.Game;
+import ca.cmpt276.project_7f.model.GameManager;
 
 public class MessageFragment extends AppCompatDialogFragment {
 
@@ -49,8 +51,8 @@ public class MessageFragment extends AppCompatDialogFragment {
         };
 
         AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
-                .setTitle("Congrats!")
-                .setMessage(achievement)
+                .setTitle("Congratulations!")
+                .setMessage("You have got the achievement:\n " + "< " + achievement + " >")
                 .setView(v)
                 .setPositiveButton(android.R.string.ok, listener)
                 .create();
