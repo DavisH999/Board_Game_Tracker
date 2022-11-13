@@ -44,6 +44,12 @@
         <item>Hard</item>
     </string-array>
 
+    <string-array name="theme_list">
+        <item>Crazy Animals</item>
+        <item>Disney Characters</item>
+        <item>Marvel Heroes</item>
+    </string-array>
+
     <string-array name="achievement_level_animals">
         <item>Victorious Whales</item>
         <item>Glorious Giraffes</item>
@@ -81,12 +87,6 @@
         <item>Hulks</item>
         <item>Black Widows</item>
         <item>Thanos</item>
-    </string-array>
-
-    <string-array name="theme_list">
-        <item>Crazy Animals</item>
-        <item>Disney Characters</item>
-        <item>Marvel Heroes</item>
     </string-array>
 
 </resources>
