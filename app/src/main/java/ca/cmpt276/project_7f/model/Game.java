@@ -50,7 +50,7 @@ public class Game {
         numOfPlayers = _numOfPlayer;
         scoreList = _scoreList;
         this.difficulty = difficulty;
-        if(_scoreList != null) {
+        if (_scoreList != null) {
             computeAchievement(convertStrDifficultyToDouble(difficulty));
             computeTotalScore();
         }

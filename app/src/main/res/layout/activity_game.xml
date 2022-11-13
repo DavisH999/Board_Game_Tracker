@@ -52,7 +52,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_difficultyInAchievements"
+        android:id="@+id/spinner_difficulty_achievment"
         android:layout_width="155dp"
         android:layout_height="50dp"
         android:layout_marginTop="148dp"

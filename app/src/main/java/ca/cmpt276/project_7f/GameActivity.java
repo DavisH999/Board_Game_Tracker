@@ -98,7 +98,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void initial() {
-        et_numPlayer = findViewById(R.id.et_difficultyInAchievements);
+        et_numPlayer = findViewById(R.id.spinner_difficulty_achievment);
         btn_saveGame = findViewById(R.id.game_save_button_game);
         btn_back = findViewById(R.id.game_back_button);
         tv_game_toolbar_title = findViewById(R.id.tv_game_toolbar_title);
