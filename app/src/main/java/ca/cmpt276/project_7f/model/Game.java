@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-// game
+// Arvin's comment
 public class Game {
     private String configName;
     private int numOfPlayers;
@@ -50,8 +50,10 @@ public class Game {
         numOfPlayers = _numOfPlayer;
         scoreList = _scoreList;
         this.difficulty = difficulty;
-        computeAchievement(convertStrDifficultyToDouble(difficulty));
-        computeTotalScore();
+        if (_scoreList != null) {
+            computeAchievement(convertStrDifficultyToDouble(difficulty));
+            computeTotalScore();
+        }
         time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd @ HH:mm a"));
     }
 

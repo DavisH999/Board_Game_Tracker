@@ -8,8 +8,13 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,14 +26,13 @@ import ca.cmpt276.project_7f.model.ConfigManager;
 import ca.cmpt276.project_7f.model.Game;
 
 //Activity that displays all the Achievement options from 1-10
-public class AchievementsActivity extends AppCompatActivity {
-
+public class AchievementsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     int indexOfConfigInList;
     Button btn_setTheme;
     ImageView btn_back;
-    EditText difficulty_level_tv;
     EditText numberOfPlayer_tv;
+    Spinner spinner_difficulty_achievement;
     TextView tv0;
     TextView tv1;
     TextView tv2;
@@ -39,6 +43,7 @@ public class AchievementsActivity extends AppCompatActivity {
     TextView tv7;
     TextView tv8;
     TextView tv9;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +58,33 @@ public class AchievementsActivity extends AppCompatActivity {
         extractDataFromIntent();
         initial();
         textWatcher();
+        populateDifficultySpinner();
         onClickButtons();
     }
 
+    private void populateDifficultySpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
+                (this, R.array.difficulty_list, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_difficulty_achievement.setAdapter(adapter);
+        spinner_difficulty_achievement.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        if (numberOfPlayer_tv.length() != 0) {
+            showData();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+
     private void textWatcher() {
         numberOfPlayer_tv.addTextChangedListener(textWatcher);
-        difficulty_level_tv.addTextChangedListener(textWatcher);
     }
 
     private final TextWatcher textWatcher = new TextWatcher() {
@@ -78,19 +104,16 @@ public class AchievementsActivity extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-
         }
 
         @Override
         public void afterTextChanged(Editable s) {
-            if (numberOfPlayer_tv.length() != 0 && difficulty_level_tv.length() != 0) {
                 showData();
-            }
         }
     };
 
     private void showData() {
-        String difficulty = difficulty_level_tv.getText().toString();
+        String difficulty = spinner_difficulty_achievement.getSelectedItem().toString();
         if (Objects.equals(difficulty, "Normal") || Objects.equals(difficulty, "Hard")
         || Objects.equals(difficulty, "Easy")) {
             ArrayList<String> rangesArray = getTheRangesBasedOnTheDifficultyLevel(difficulty);
@@ -146,9 +169,9 @@ public class AchievementsActivity extends AppCompatActivity {
 
     private void initial() {
         btn_setTheme = findViewById(R.id.button_theme);
-        difficulty_level_tv = findViewById(R.id.et_difficultyInAchievements);
-        numberOfPlayer_tv = findViewById(R.id.et_numPlayer_achive);
+        numberOfPlayer_tv = findViewById(R.id.et_numPlayer_achievement);
         btn_back = findViewById(R.id.achievements_back_button);
+        spinner_difficulty_achievement = findViewById(R.id.spinner_difficulty_achievment);
         tv0 = findViewById(R.id.tv_range0);
         tv1 = findViewById(R.id.tv_range1);
         tv2 = findViewById(R.id.tv_range2);

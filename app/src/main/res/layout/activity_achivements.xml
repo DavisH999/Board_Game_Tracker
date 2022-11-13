@@ -22,8 +22,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_numPlayersInAchievements" />
 
-    <EditText
-        android:id="@+id/et_difficultyInAchievements"
+    <Spinner
+        android:id="@+id/spinner_difficulty_achievment"
         android:layout_width="196dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_numPlayer_achive"
+        android:id="@+id/et_numPlayer_achievement"
         android:layout_width="196dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
