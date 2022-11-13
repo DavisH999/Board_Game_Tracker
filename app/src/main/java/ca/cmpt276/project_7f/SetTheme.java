@@ -50,4 +50,5 @@ public class SetTheme extends AppCompatActivity{
     }
 
     public void onBackClick() {finish();}
+
 }
