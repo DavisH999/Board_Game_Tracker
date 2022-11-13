@@ -28,6 +28,7 @@ public class SetTheme extends AppCompatActivity{
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_theme.setAdapter(adapter);
 
+        btn_back.setOnClickListener(v->onBackClick());
         spinner_theme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
