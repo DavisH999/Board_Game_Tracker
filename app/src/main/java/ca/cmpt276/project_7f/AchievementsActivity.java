@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Button;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,6 +29,7 @@ import ca.cmpt276.project_7f.model.Game;
 public class AchievementsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     int indexOfConfigInList;
+    Button btn_setTheme;
     ImageView btn_back;
     EditText numberOfPlayer_tv;
     Spinner spinner_difficulty_achievement;
@@ -133,13 +135,11 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
     }
 
     private ArrayList<String> getTheRangesBasedOnTheDifficultyLevel(String difficulty) {
-        Log.i("YOO", "WE GOT HERE");
         ConfigManager instance = ConfigManager.getInstance();
         Config configByIndex = instance.getConfigByIndex(indexOfConfigInList);
         String name = configByIndex.getName();
         String value = numberOfPlayer_tv.getText().toString();
         int numOfPlayers = Integer.parseInt(value);
-        Log.i("YOO", "WE GOT HERE");
 
         ArrayList<String> rangesArray = new ArrayList<>();
         Game game = new Game(name, numOfPlayers, null, difficulty);
@@ -192,7 +192,14 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
 
     private void onClickButtons() {
         btn_back.setOnClickListener(v->onBackClick());
+        btn_setTheme.setOnClickListener(v->onThemeClick());
     }
+
+    private void onThemeClick() {
+        Intent intent = SetTheme.makeIntent(this, indexOfConfigInList);
+        startActivity(intent);
+    }
+
 
     private void onBackClick() {
         finish();
