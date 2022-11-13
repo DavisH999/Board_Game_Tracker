@@ -168,6 +168,7 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
     }
 
     private void initial() {
+        btn_setTheme = findViewById(R.id.button_theme);
         numberOfPlayer_tv = findViewById(R.id.et_numPlayer_achievement);
         btn_back = findViewById(R.id.achievements_back_button);
         spinner_difficulty_achievement = findViewById(R.id.spinner_difficulty_achievment);
