@@ -1,9 +1,11 @@
 package ca.cmpt276.project_7f;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -214,18 +216,40 @@ public class GameActivity extends AppCompatActivity {
         }
 
         saveDataToSP();
-        setPopUpMessage();
-      //  finish();
+        setDialog();
+//        finish();
 
     }
 
-    private void setPopUpMessage() {
-        FragmentManager manager = getSupportFragmentManager();
-        MessageFragment dialog = new MessageFragment();
-        dialog.show(manager, "MessageDialog");
-        TextView tv = findViewById(R.id.popup_range_name);
-        Log.i("TAG", "Just show the dialog");
+    private void setDialog() {
+        String achievement;
+        if(!isAddMode) {
+            GameManager instanceOfGM = GameManager.getInstance();
+            Game game = instanceOfGM.getGame(configName, indexOfGameInList);
+            achievement = game.getAchievement();
+        }
+        else
+        {
+            GameManager instanceOfGM = GameManager.getInstance();
+            ArrayList<Game> gameList = instanceOfGM.getGameList();
+            Game game = gameList.get(gameList.size() - 1);
+            achievement = game.getAchievement();
+        }
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle("C")
+                .setMessage(achievement)
+                .setIcon(R.mipmap.ic_launcher)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .create();
+        alertDialog.show();
     }
+
 
     private void saveDataToSP() {
         SharedPreferencesUtils.saveDataOfGameManager(getApplicationContext());

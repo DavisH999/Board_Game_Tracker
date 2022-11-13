@@ -15,6 +15,21 @@ import ca.cmpt276.project_7f.R;
 
 public class MessageFragment extends AppCompatDialogFragment {
 
+    private String configName;
+    private int indexOfGameInList;
+    private String achievement;
+
+    public void setter(String _configName, int _indexOfGameInLis)
+    {
+        configName = _configName;
+        indexOfGameInList = _indexOfGameInLis;
+
+        GameManager instanceOfGM = GameManager.getInstance();
+        Game game = instanceOfGM.getGame(configName, indexOfGameInList);
+        achievement = game.getAchievement();
+    }
+
+
 
 
     @Override
@@ -38,6 +53,7 @@ public class MessageFragment extends AppCompatDialogFragment {
 
         return new AlertDialog.Builder(getActivity())
                 .setTitle("Congrats")
+                .setMessage(achievement)
                 .setView(v)
                 .setPositiveButton(android.R.string.ok, listener)
                 .create();
