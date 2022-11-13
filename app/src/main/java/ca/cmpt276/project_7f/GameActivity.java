@@ -217,8 +217,6 @@ public class GameActivity extends AppCompatActivity {
 
         saveDataToSP();
         setDialog();
-//        finish();
-
     }
 
     private void setDialog() {
@@ -237,7 +235,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         AlertDialog alertDialog = new AlertDialog.Builder(this)
-                .setTitle("C")
+                .setTitle("Congratulations!")
                 .setMessage(achievement)
                 .setIcon(R.mipmap.ic_launcher)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
