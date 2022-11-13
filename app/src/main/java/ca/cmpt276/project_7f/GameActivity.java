@@ -210,12 +210,42 @@ public class GameActivity extends AppCompatActivity {
                     numOfPlayers);
         }
         saveDataToSP();
-        finish();
+        setDialog();
     }
 
     private void saveDataToSP() {
         SharedPreferencesUtils.saveDataOfGameManager(getApplicationContext());
     }
+
+    private void setDialog() {
+        String achievement;
+        if(!isAddMode) {
+            GameManager instanceOfGM = GameManager.getInstance();
+            Game game = instanceOfGM.getGame(configName, indexOfGameInList);
+            achievement = game.getAchievement();
+        }
+        else
+        {
+            GameManager instanceOfGM = GameManager.getInstance();
+            ArrayList<Game> gameList = instanceOfGM.getGameList();
+            Game game = gameList.get(gameList.size() - 1);
+            achievement = game.getAchievement();
+        }
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle("C")
+                .setMessage(achievement)
+                .setIcon(R.mipmap.ic_launcher)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .create();
+        alertDialog.show();
+    }
+
 
     public static Intent makeIntent(Context context, int indexOfConfigInList, String configName)
     {
