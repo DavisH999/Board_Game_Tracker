@@ -172,6 +172,7 @@ public class GameActivity extends AppCompatActivity {
             return;
         }
         processGame();
+        popOutDialog();
     }
 
     private void processGame() {
@@ -216,38 +217,15 @@ public class GameActivity extends AppCompatActivity {
         }
 
         saveDataToSP();
-        setDialog();
     }
 
-    private void setDialog() {
-        String achievement;
-        if(!isAddMode) {
-            GameManager instanceOfGM = GameManager.getInstance();
-            Game game = instanceOfGM.getGame(configName, indexOfGameInList);
-            achievement = game.getAchievement();
-        }
-        else
-        {
-            GameManager instanceOfGM = GameManager.getInstance();
-            ArrayList<Game> gameList = instanceOfGM.getGameList();
-            Game game = gameList.get(gameList.size() - 1);
-            achievement = game.getAchievement();
-        }
-
-        AlertDialog alertDialog = new AlertDialog.Builder(this)
-                .setTitle("Congratulations!")
-                .setMessage(achievement)
-                .setIcon(R.mipmap.ic_launcher)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        finish();
-                    }
-                })
-                .create();
-        alertDialog.show();
+    private void popOutDialog()
+    {
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
+        MessageFragment messageFragment = new MessageFragment();
+        messageFragment.setter(configName,indexOfGameInList,isAddMode);
+        messageFragment.show(supportFragmentManager,"MessageFragment");
     }
-
 
     private void saveDataToSP() {
         SharedPreferencesUtils.saveDataOfGameManager(getApplicationContext());

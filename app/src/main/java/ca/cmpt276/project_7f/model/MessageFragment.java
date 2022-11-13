@@ -7,30 +7,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+
+import java.util.ArrayList;
 
 import ca.cmpt276.project_7f.R;
 
 public class MessageFragment extends AppCompatDialogFragment {
 
-    private String configName;
-    private int indexOfGameInList;
     private String achievement;
 
-    public void setter(String _configName, int _indexOfGameInLis)
+    public void setter(String configName, int indexOfGameInList,boolean isAddMode)
     {
-        configName = _configName;
-        indexOfGameInList = _indexOfGameInLis;
-
         GameManager instanceOfGM = GameManager.getInstance();
-        Game game = instanceOfGM.getGame(configName, indexOfGameInList);
-        achievement = game.getAchievement();
+        if(!isAddMode)
+        {
+            Game game = instanceOfGM.getGame(configName, indexOfGameInList);
+            achievement = game.getAchievement();
+        }
+        else
+        {
+            ArrayList<Game> gameList = instanceOfGM.getGameList();
+            Game game = gameList.get(gameList.size() - 1);
+            achievement = game.getAchievement();
+        }
     }
-
-
-
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -41,23 +42,19 @@ public class MessageFragment extends AppCompatDialogFragment {
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                switch (which){
-                    case DialogInterface.BUTTON_POSITIVE:
-                        break;
-
+                if (which == DialogInterface.BUTTON_POSITIVE) {
+                    getActivity().finish();
                 }
-
-
             }
         };
 
-        return new AlertDialog.Builder(getActivity())
-                .setTitle("Congrats")
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+                .setTitle("Congrats!")
                 .setMessage(achievement)
                 .setView(v)
                 .setPositiveButton(android.R.string.ok, listener)
                 .create();
-
-
+        alertDialog.setCanceledOnTouchOutside(false);
+        return alertDialog;
     }
 }
