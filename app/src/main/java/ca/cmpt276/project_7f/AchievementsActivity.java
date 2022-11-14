@@ -70,6 +70,18 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         spinner_difficulty_achievement.setOnItemSelectedListener(this);
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        if (numberOfPlayer_tv.length() != 0) {
+            showData();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
     private void populateThemeSpinner() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
                 (this, R.array.theme_list, android.R.layout.simple_spinner_item);
@@ -88,19 +100,6 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
             }
         });
     }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if (numberOfPlayer_tv.length() != 0) {
-            showData();
-        }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
-
 
     private void textWatcher() {
         numberOfPlayer_tv.addTextChangedListener(textWatcher);
