@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +38,7 @@ public class GameActivity extends AppCompatActivity {
     private String configName;
     private boolean isAddMode;
     private Spinner spinner_difficultyInGame;
+    private Spinner spinner_theme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +55,32 @@ public class GameActivity extends AppCompatActivity {
         extractDataFromIntent();
         fillSpinner();
         setMode();
+        populateThemeSpinner();
     }
 
     private void fillSpinner() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.difficulty_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_difficultyInGame.setAdapter(adapter);
+    }
+
+    private void populateThemeSpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
+                (this, R.array.theme_list, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_theme.setAdapter(adapter);
+        spinner_theme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String theme = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getApplicationContext(),"You selected: " + theme,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void generateDynamicEditTexts() {
@@ -101,6 +124,7 @@ public class GameActivity extends AppCompatActivity {
         btn_generateEditTexts = findViewById(R.id.btn_generateEditTexts);
         linearlayoutForScores = findViewById(R.id.linearlayoutForScores);
         spinner_difficultyInGame = findViewById(R.id.spinner_difficultyInGame);
+        spinner_theme = findViewById(R.id.spinner_theme_game);
     }
 
     private void setMode() {
