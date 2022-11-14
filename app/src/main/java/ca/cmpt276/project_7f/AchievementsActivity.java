@@ -29,10 +29,10 @@ import ca.cmpt276.project_7f.model.Game;
 public class AchievementsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     int indexOfConfigInList;
-    Button btn_setTheme;
     ImageView btn_back;
     EditText numberOfPlayer_tv;
     Spinner spinner_difficulty_achievement;
+    Spinner spinner_theme;
     TextView tv0;
     TextView tv1;
     TextView tv2;
@@ -43,7 +43,6 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
     TextView tv7;
     TextView tv8;
     TextView tv9;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +58,7 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         initial();
         textWatcher();
         populateDifficultySpinner();
+        populateThemeSpinner();
         onClickButtons();
     }
 
@@ -68,6 +68,25 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_difficulty_achievement.setAdapter(adapter);
         spinner_difficulty_achievement.setOnItemSelectedListener(this);
+    }
+
+    private void populateThemeSpinner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
+                (this, R.array.theme_list, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_theme.setAdapter(adapter);
+        spinner_theme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String theme = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getApplicationContext(),"You selected: " + theme,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -168,10 +187,10 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
     }
 
     private void initial() {
-        btn_setTheme = findViewById(R.id.button_theme);
         numberOfPlayer_tv = findViewById(R.id.et_numPlayer_achievement);
         btn_back = findViewById(R.id.achievements_back_button);
         spinner_difficulty_achievement = findViewById(R.id.spinner_difficulty_achievment);
+        spinner_theme = findViewById(R.id.spinner_theme_achievement);
         tv0 = findViewById(R.id.tv_range0);
         tv1 = findViewById(R.id.tv_range1);
         tv2 = findViewById(R.id.tv_range2);
@@ -184,6 +203,19 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         tv9 = findViewById(R.id.tv_range9);
     }
 
+    private void setTheme(String theme) {
+        if (theme == "Disney Characters") {
+
+        }
+        else if (theme == "Marvel Heroes") {
+
+        }
+        else {
+
+        }
+
+    }
+
     public static Intent makeIntent(Context context, int indexOfConfigInList)
     {
         Intent intent = new Intent(context, AchievementsActivity.class);
@@ -193,14 +225,7 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
 
     private void onClickButtons() {
         btn_back.setOnClickListener(v->onBackClick());
-        btn_setTheme.setOnClickListener(v->onThemeClick());
     }
-
-    private void onThemeClick() {
-        Intent intent = SetTheme.makeIntent(this, indexOfConfigInList);
-        startActivity(intent);
-    }
-
 
     private void onBackClick() {
         finish();

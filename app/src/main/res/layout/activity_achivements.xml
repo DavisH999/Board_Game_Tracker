@@ -36,6 +36,16 @@
         app:layout_constraintStart_toEndOf="@+id/tv_numPlayersInAchievements"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Spinner
+        android:id="@+id/spinner_theme_achievement"
+        android:layout_width="191dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="204dp"
+        android:layout_marginBottom="492dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <EditText
         android:id="@+id/et_numPlayer_achievement"
         android:layout_width="196dp"
@@ -68,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="124dp"
         android:fontFamily="monospace"
         android:text="@string/achievement_1"
         android:textStyle="bold"
@@ -188,7 +198,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="124dp"
         android:fontFamily="monospace"
         android:textColor="@color/blue_custom"
         app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
@@ -293,14 +303,17 @@
         app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
         app:layout_constraintTop_toBottomOf="@+id/tv_range8" />
 
-    <Button
-        android:id="@+id/button_theme"
+    <TextView
+        android:id="@+id/tv_theme_achievements"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="36dp"
-        android:text="Set Theme"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="monospace"
+        android:text="@string/theme"
+        android:textColor="@color/black"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:theme="@style/Theme.AppCompat"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_difficultInAchievements" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
