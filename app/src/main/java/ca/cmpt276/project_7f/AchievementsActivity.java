@@ -184,6 +184,19 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         tv9 = findViewById(R.id.tv_range9);
     }
 
+    private void setTheme(String theme) {
+        if (theme == "Disney Characters") {
+
+        }
+        else if (theme == "Marvel Heroes") {
+
+        }
+        else {
+
+        }
+
+    }
+
     public static Intent makeIntent(Context context, int indexOfConfigInList)
     {
         Intent intent = new Intent(context, AchievementsActivity.class);

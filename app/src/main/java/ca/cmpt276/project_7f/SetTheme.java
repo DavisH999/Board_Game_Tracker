@@ -32,8 +32,8 @@ public class SetTheme extends AppCompatActivity{
         spinner_theme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String s = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getApplicationContext(),"You selected: " + s,Toast.LENGTH_SHORT).show();
+                String theme = parent.getItemAtPosition(position).toString();
+                Toast.makeText(getApplicationContext(),"You selected: " + theme,Toast.LENGTH_SHORT).show();
             }
 
             @Override
