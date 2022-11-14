@@ -213,7 +213,6 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         else {
 
         }
-
     }
 
     public static Intent makeIntent(Context context, int indexOfConfigInList)
