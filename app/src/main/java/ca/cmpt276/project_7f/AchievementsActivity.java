@@ -44,7 +44,6 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
     TextView tv8;
     TextView tv9;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
