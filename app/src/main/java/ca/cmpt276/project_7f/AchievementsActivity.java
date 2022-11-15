@@ -171,7 +171,9 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         int numOfPlayers = Integer.parseInt(value);
 
         ArrayList<String> rangesArray = new ArrayList<>();
-        Game game = new Game(name, numOfPlayers, null, difficulty);
+        // We pass an empty string for the theme in Achievement activity because
+        // theme is not important in this activity for the game object
+        Game game = new Game(name, numOfPlayers, null, difficulty, "");
 
 
         switch(difficulty) {

@@ -1,8 +1,13 @@
 package ca.cmpt276.project_7f.model;
 
+import android.content.res.Resources;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
+
+import ca.cmpt276.project_7f.R;
 
 // game
 public class Game {
@@ -12,6 +17,7 @@ public class Game {
     private String achievement;
     private String time;
     private String difficulty;
+    private String theme;
     private ArrayList<Integer> scoreList;
 
     public ArrayList<Integer> getScoreList() {
@@ -45,17 +51,29 @@ public class Game {
         return difficulty;
     }
 
-    public Game(String _configName, int _numOfPlayer, ArrayList<Integer> _scoreList, String difficulty) {
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public Game(
+            String _configName, int _numOfPlayer, ArrayList<Integer> _scoreList, String difficulty, String theme) {
         configName = _configName;
         numOfPlayers = _numOfPlayer;
         scoreList = _scoreList;
         this.difficulty = difficulty;
+        this.theme = theme;
         if (_scoreList != null) {
-            computeAchievement(convertStrDifficultyToDouble(difficulty));
+            double difficultyLevel = convertStrDifficultyToDouble(difficulty);
+            computeAchievement(difficultyLevel);
             computeTotalScore();
         }
         time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MMM dd @ HH:mm a"));
     }
+
 
     private double convertStrDifficultyToDouble(String difficultyStr) {
         double difficulty = 1.0;
@@ -150,6 +168,7 @@ public class Game {
         {
             throw new IllegalArgumentException("No such name found.");
         }
+
         else {
             int greatScore = configByName.getGreatScore();
             int poorScore = configByName.getPoorScore();
@@ -157,28 +176,87 @@ public class Game {
             double lowestExpectedLevel = poorScore * numOfPlayers * difficulty;
             double unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
 
+            ArrayList<String> AchievementBasedOnTheme = populateAchievementBasedOnTheme();
+
             if (score >= highestExpectedLevel)
-                achievement = "Victorious Whales";
+                achievement = AchievementBasedOnTheme.get(0);
+
             else if (score >= lowestExpectedLevel + unit * 7 && score < lowestExpectedLevel + unit * 8)
-                achievement = "Glorious Giraffes";
+                achievement = AchievementBasedOnTheme.get(1);
+
             else if (score >= lowestExpectedLevel + unit * 6 && score < lowestExpectedLevel + unit * 7)
-                achievement = "Brave Bears";
+                achievement = AchievementBasedOnTheme.get(2);
+
             else if (score >= lowestExpectedLevel + unit * 5 && score < lowestExpectedLevel + unit * 6)
-                achievement = "Pretty Penguins";
+                achievement = AchievementBasedOnTheme.get(3);
+
             else if (score >= lowestExpectedLevel + unit * 4 && score < lowestExpectedLevel + unit * 5)
-                achievement = "Reckless Racoons";
+                achievement = AchievementBasedOnTheme.get(4);
+
             else if (score >= lowestExpectedLevel + unit * 3 && score < lowestExpectedLevel + unit * 4)
-                achievement = "Crazy Crows";
+                achievement = AchievementBasedOnTheme.get(5);
+
             else if (score >= lowestExpectedLevel + unit * 2 && score < lowestExpectedLevel + unit * 3)
-                achievement = "Rowdy Rats";
+                achievement = AchievementBasedOnTheme.get(6);
+
             else if (score >= lowestExpectedLevel + unit && score < lowestExpectedLevel + unit * 2)
-                achievement = "Fat Flies";
+                achievement = AchievementBasedOnTheme.get(7);
+
             else if (score >= lowestExpectedLevel && score < lowestExpectedLevel + unit)
-                achievement = "Lazy Lizard";
+                achievement = AchievementBasedOnTheme.get(8);
+
             else if (score < lowestExpectedLevel)
-                achievement = "Slow Snakes";
+                achievement = AchievementBasedOnTheme.get(9);
         }
     }
+
+    private ArrayList<String> populateAchievementBasedOnTheme() {
+        ArrayList<String>  AchievementBasedOnTheme = new ArrayList<>();
+
+        switch (theme) {
+            case "Crazy Animals":
+                AchievementBasedOnTheme.add("Victorious Whales");
+                AchievementBasedOnTheme.add("Glorious Giraffes");
+                AchievementBasedOnTheme.add("Brave Bears");
+                AchievementBasedOnTheme.add("Pretty Penguins");
+                AchievementBasedOnTheme.add("Reckless Racoons");
+                AchievementBasedOnTheme.add("Crazy Crows");
+                AchievementBasedOnTheme.add("Rowdy Rats");
+                AchievementBasedOnTheme.add("Fat Flies");
+                AchievementBasedOnTheme.add("Lazy Lizards");
+                AchievementBasedOnTheme.add("Slow Snakes");
+                break;
+
+            case "Marvel Heroes":
+                AchievementBasedOnTheme.add("Spider-Mans");
+                AchievementBasedOnTheme.add("Iron Mans");
+                AchievementBasedOnTheme.add("Captain Americas");
+                AchievementBasedOnTheme.add("Thors");
+                AchievementBasedOnTheme.add("Black Panthers");
+                AchievementBasedOnTheme.add("Ant-Mans");
+                AchievementBasedOnTheme.add("Wolverines");
+                AchievementBasedOnTheme.add("Hulks");
+                AchievementBasedOnTheme.add("Black Windows");
+                AchievementBasedOnTheme.add("Thanos");
+                break;
+
+            case "Disney Characters":
+                AchievementBasedOnTheme.add("Cookie Monsters");
+                AchievementBasedOnTheme.add("Kim Possibles");
+                AchievementBasedOnTheme.add("Aladdins");
+                AchievementBasedOnTheme.add("Peter Pans");
+                AchievementBasedOnTheme.add("Tarzans");
+                AchievementBasedOnTheme.add("Pinocchios");
+                AchievementBasedOnTheme.add("Bambis");
+                AchievementBasedOnTheme.add("Elmos");
+                AchievementBasedOnTheme.add("Olafs");
+                AchievementBasedOnTheme.add("Shreks");
+                break;
+        }
+
+        return AchievementBasedOnTheme;
+    }
+
 
     public String getStringOfDisplayGame()
     {

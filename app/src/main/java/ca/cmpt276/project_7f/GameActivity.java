@@ -59,7 +59,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void fillSpinner() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.difficulty_list, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
+                (this, R.array.difficulty_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_difficultyInGame.setAdapter(adapter);
     }
@@ -200,6 +201,7 @@ public class GameActivity extends AppCompatActivity {
         String strNumOfPlayers = et_numPlayer.getText().toString();
         int numOfPlayers = Integer.parseInt(strNumOfPlayers);
         String strDifficultyInGame = spinner_difficultyInGame.getSelectedItem().toString();
+        String strTheme = spinner_theme.getSelectedItem().toString();
 
         // read score list
         if(linearlayoutForScores.getChildCount() != numOfPlayers)
@@ -225,7 +227,7 @@ public class GameActivity extends AppCompatActivity {
         GameManager instanceOfGameM = GameManager.getInstance();
         if(isAddMode)
         {
-            instanceOfGameM.addGame(configName,numOfPlayers,scoreList,strDifficultyInGame);
+            instanceOfGameM.addGame(configName,numOfPlayers,scoreList,strDifficultyInGame, strTheme);
         }
         else
         {
@@ -233,7 +235,8 @@ public class GameActivity extends AppCompatActivity {
                     indexOfGameInList,
                     strDifficultyInGame,
                     scoreList,
-                    numOfPlayers);
+                    numOfPlayers,
+                    strTheme);
         }
 
         saveDataToSP();
