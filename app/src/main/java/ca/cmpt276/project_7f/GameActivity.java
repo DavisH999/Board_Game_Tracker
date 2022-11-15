@@ -5,6 +5,8 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioAttributes;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -39,6 +41,8 @@ public class GameActivity extends AppCompatActivity {
     private boolean isAddMode;
     private Spinner spinner_difficultyInGame;
     private Spinner spinner_theme;
+    private SoundPool soundPool;
+    private int soundGameId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class GameActivity extends AppCompatActivity {
         super.onResume();
 
         initial();
+        initialSoundPool();
         onButtonsClick();
         extractDataFromIntent();
         fillSpinner();
@@ -128,6 +133,22 @@ public class GameActivity extends AppCompatActivity {
         spinner_theme = findViewById(R.id.spinner_theme_game);
     }
 
+    private void initialSoundPool()
+    {
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .build();
+
+        soundPool = new SoundPool.Builder()
+                .setMaxStreams(1)
+                .setAudioAttributes(audioAttributes)
+                .build();
+
+        soundGameId = soundPool.load(this, R.raw.game_win ,1);
+    }
+
+
     private void setMode() {
         isAddMode = indexOfGameInList == -1;
         if(isAddMode)
@@ -193,7 +214,7 @@ public class GameActivity extends AppCompatActivity {
             return;
         }
         processGame();
-        popOutDialog();
+        popUpDialog();
     }
 
     private void processGame() {
@@ -242,12 +263,19 @@ public class GameActivity extends AppCompatActivity {
         saveDataToSP();
     }
 
-    private void popOutDialog()
+    private void popUpDialog()
     {
+        // play sound
+        playSounds();
+        // pop up dialog
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         MessageFragment messageFragment = new MessageFragment();
         messageFragment.setter(configName,indexOfGameInList,isAddMode);
         messageFragment.show(supportFragmentManager,"MessageFragment");
+    }
+
+    private void playSounds() {
+        soundPool.play(soundGameId,1,1,1,0,1);
     }
 
     private void saveDataToSP() {
