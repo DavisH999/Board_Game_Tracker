@@ -19,6 +19,7 @@ import ca.cmpt276.project_7f.model.ConfigManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 // showing the list of configuration and providing an add button.
+
 public class ConfigurationListActivity extends AppCompatActivity {
 
     FloatingActionButton fab_config_list;
