@@ -82,7 +82,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="124dp"
         android:fontFamily="monospace"
-        android:text="@string/achievement_1"
+        android:text="---"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_numPlayersInAchievements" />
@@ -94,7 +94,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
-        android:text="@string/achievement_2"
+        android:text="---"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_achievement1" />
@@ -106,7 +106,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
-        android:text="@string/achievement_3"
+        android:text="---"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_achievement2" />
@@ -118,7 +118,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
-        android:text="@string/achievement_4"
+        android:text="---"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_achievement3" />
@@ -130,7 +130,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
-        android:text="@string/achievement_5"
+        android:text="---"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_achievement4" />
@@ -142,19 +142,19 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
-        android:text="@string/achievement_6"
+        android:text="---"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_achievement5" />
 
     <TextView
-        android:id="@+id/tv_achievementu8"
+        android:id="@+id/tv_achievement8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
-        android:text="@string/achievement_8"
+        android:text="---"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_achievement7" />
@@ -166,10 +166,10 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
-        android:text="@string/achievement_9"
+        android:text="---"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_achievementu8" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_achievement8" />
 
     <TextView
         android:id="@+id/tv_achievement10"
@@ -178,7 +178,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
-        android:text="@string/achievement_10"
+        android:text="---"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_achievement9" />
@@ -190,7 +190,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
-        android:text="@string/achievement_7"
+        android:text="---"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_achievement6" />

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -43,6 +44,16 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
     TextView tv7;
     TextView tv8;
     TextView tv9;
+    TextView achievement0;
+    TextView achievement1;
+    TextView achievement2;
+    TextView achievement3;
+    TextView achievement4;
+    TextView achievement5;
+    TextView achievement6;
+    TextView achievement7;
+    TextView achievement8;
+    TextView achievement9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +102,7 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String theme = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getApplicationContext(),"You selected: " + theme,Toast.LENGTH_SHORT).show();
+                setTheme(theme);
             }
 
             @Override
@@ -160,7 +171,9 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         int numOfPlayers = Integer.parseInt(value);
 
         ArrayList<String> rangesArray = new ArrayList<>();
-        Game game = new Game(name, numOfPlayers, null, difficulty);
+        // We pass an empty string for the theme in Achievement activity because
+        // theme is not important in this activity for the game object
+        Game game = new Game(name, numOfPlayers, null, difficulty, "");
 
 
         switch(difficulty) {
@@ -200,17 +213,62 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         tv7 = findViewById(R.id.tv_range7);
         tv8 = findViewById(R.id.tv_range8);
         tv9 = findViewById(R.id.tv_range9);
+        achievement0 = findViewById(R.id.tv_achievement1);
+        achievement1 = findViewById(R.id.tv_achievement2);
+        achievement2 = findViewById(R.id.tv_achievement3);
+        achievement3 = findViewById(R.id.tv_achievement4);
+        achievement4 = findViewById(R.id.tv_achievement5);
+        achievement5 = findViewById(R.id.tv_achievement6);
+        achievement6 = findViewById(R.id.tv_achievement7);
+        achievement7 = findViewById(R.id.tv_achievement8);
+        achievement8 = findViewById(R.id.tv_achievement9);
+        achievement9 = findViewById(R.id.tv_achievement10);
     }
 
     private void setTheme(String theme) {
-        if (theme == "Disney Characters") {
+        if (Objects.equals(theme, "Disney Characters")) {
+            Resources res = getResources();
+            String[] disneyCharacters = res.getStringArray(R.array.achievement_level_disney);
+            achievement0.setText(disneyCharacters[0]);
+            achievement1.setText(disneyCharacters[1]);
+            achievement2.setText(disneyCharacters[2]);
+            achievement3.setText(disneyCharacters[3]);
+            achievement4.setText(disneyCharacters[4]);
+            achievement5.setText(disneyCharacters[5]);
+            achievement6.setText(disneyCharacters[6]);
+            achievement7.setText(disneyCharacters[7]);
+            achievement8.setText(disneyCharacters[8]);
+            achievement9.setText(disneyCharacters[9]);
 
         }
-        else if (theme == "Marvel Heroes") {
+        else if (Objects.equals(theme, "Marvel Heroes")) {
+            Resources res = getResources();
+            String[] marvelCharacters = res.getStringArray(R.array.achievement_level_marvel);
+            achievement0.setText(marvelCharacters[0]);
+            achievement1.setText(marvelCharacters[1]);
+            achievement2.setText(marvelCharacters[2]);
+            achievement3.setText(marvelCharacters[3]);
+            achievement4.setText(marvelCharacters[4]);
+            achievement5.setText(marvelCharacters[5]);
+            achievement6.setText(marvelCharacters[6]);
+            achievement7.setText(marvelCharacters[7]);
+            achievement8.setText(marvelCharacters[8]);
+            achievement9.setText(marvelCharacters[9]);
 
         }
         else {
-
+            Resources res = getResources();
+            String[] crazyAnimals = res.getStringArray(R.array.achievement_level_animals);
+            achievement0.setText(crazyAnimals[0]);
+            achievement1.setText(crazyAnimals[1]);
+            achievement2.setText(crazyAnimals[2]);
+            achievement3.setText(crazyAnimals[3]);
+            achievement4.setText(crazyAnimals[4]);
+            achievement5.setText(crazyAnimals[5]);
+            achievement6.setText(crazyAnimals[6]);
+            achievement7.setText(crazyAnimals[7]);
+            achievement8.setText(crazyAnimals[8]);
+            achievement9.setText(crazyAnimals[9]);
         }
     }
 

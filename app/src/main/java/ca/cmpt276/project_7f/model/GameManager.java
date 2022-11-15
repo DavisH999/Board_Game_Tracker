@@ -65,23 +65,9 @@ public class GameManager {
             return stringList;
     }
 
-    public void addGame(String configName, int numOfPlayer, ArrayList<Integer> scoreList, String difficulty)
+    public void addGame(String configName, int numOfPlayer, ArrayList<Integer> scoreList, String difficulty, String theme)
     {
-        Game game = new Game(configName,numOfPlayer,scoreList,difficulty);
-
-        // Determine the level of difficulty
-        if (Objects.equals(difficulty, "Normal")) {
-            game.computeAchievement(1);
-        }
-
-        else if (Objects.equals(difficulty, "Hard")) {
-            game.computeAchievement(1.25);
-        }
-
-        else if (Objects.equals(difficulty, "Easy")) {
-            game.computeAchievement(0.75);
-        }
-
+        Game game = new Game(configName,numOfPlayer,scoreList,difficulty,theme);
         gameList.add(game);
     }
 
@@ -129,12 +115,15 @@ public class GameManager {
         }
     }
 
-    public void updateOneGameWhenGameChanges(String configName, int indexInGameList, String difficulty, ArrayList<Integer> scoreList, int numberOfPlayers)
+    public void updateOneGameWhenGameChanges(
+            String configName, int indexInGameList, String difficulty, ArrayList<Integer> scoreList,
+            int numberOfPlayers, String strTheme)
     {
         Game targetGame = getGame(configName,indexInGameList);
         targetGame.setDifficulty(difficulty);
         targetGame.setScoreList(scoreList);
         targetGame.setNumOfPlayers(numberOfPlayers);
+        targetGame.setTheme(strTheme);
 
         // Determine the level of difficulty
         if (Objects.equals(difficulty, "Normal")) {
