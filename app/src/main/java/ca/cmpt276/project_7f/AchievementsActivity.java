@@ -86,6 +86,19 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         if (numberOfPlayer_tv.length() != 0) {
             showData();
         }
+
+        else {
+            tv0.setText("-------");
+            tv1.setText("-------");
+            tv2.setText("-------");
+            tv3.setText("-------");
+            tv4.setText("-------");
+            tv5.setText("-------");
+            tv6.setText("-------");
+            tv7.setText("-------");
+            tv8.setText("-------");
+            tv9.setText("-------");
+        }
     }
 
     @Override
@@ -119,25 +132,42 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
     private final TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            tv0.setText("-------");
-            tv1.setText("-------");
-            tv2.setText("-------");
-            tv3.setText("-------");
-            tv4.setText("-------");
-            tv5.setText("-------");
-            tv6.setText("-------");
-            tv7.setText("-------");
-            tv8.setText("-------");
-            tv9.setText("-------");
+
         }
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+            if (numberOfPlayer_tv.length() == 0) {
+                tv0.setText("-------");
+                tv1.setText("-------");
+                tv2.setText("-------");
+                tv3.setText("-------");
+                tv4.setText("-------");
+                tv5.setText("-------");
+                tv6.setText("-------");
+                tv7.setText("-------");
+                tv8.setText("-------");
+                tv9.setText("-------");
+            }
         }
 
         @Override
         public void afterTextChanged(Editable s) {
+            if (numberOfPlayer_tv.length() == 0) {
+                tv0.setText("-------");
+                tv1.setText("-------");
+                tv2.setText("-------");
+                tv3.setText("-------");
+                tv4.setText("-------");
+                tv5.setText("-------");
+                tv6.setText("-------");
+                tv7.setText("-------");
+                tv8.setText("-------");
+                tv9.setText("-------");
+            }
+            else {
                 showData();
+            }
         }
     };
 
