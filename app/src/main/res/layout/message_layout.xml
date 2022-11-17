@@ -8,6 +8,6 @@
         android:id="@+id/imageView_celebrate"
         android:layout_width="453dp"
         android:layout_height="180dp"
-        app:srcCompat="@drawable/celebrate" />
+        app:srcCompat="@drawable/pixel" />
 
 </RelativeLayout>
