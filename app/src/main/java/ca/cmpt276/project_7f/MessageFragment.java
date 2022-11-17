@@ -3,9 +3,14 @@ package ca.cmpt276.project_7f;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
@@ -18,7 +23,6 @@ import ca.cmpt276.project_7f.model.GameManager;
 public class MessageFragment extends AppCompatDialogFragment {
 
     private String achievement;
-
     public void setter(String configName, int indexOfGameInList,boolean isAddMode)
     {
         GameManager instanceOfGM = GameManager.getInstance();
@@ -40,6 +44,10 @@ public class MessageFragment extends AppCompatDialogFragment {
 
         View v = LayoutInflater.from(getActivity())
         .inflate(R.layout.message_layout, null);
+       v.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.fade_out));
+
+
+
 
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
