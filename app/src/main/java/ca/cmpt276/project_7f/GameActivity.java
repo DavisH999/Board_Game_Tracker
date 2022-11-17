@@ -5,11 +5,14 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -272,11 +275,14 @@ public class GameActivity extends AppCompatActivity {
         MessageFragment messageFragment = new MessageFragment();
         messageFragment.setter(configName,indexOfGameInList,isAddMode);
         messageFragment.show(supportFragmentManager,"MessageFragment");
+
+
     }
 
     private void playSounds() {
         soundPool.play(soundGameId,1,1,1,0,1);
     }
+
 
     private void saveDataToSP() {
         SharedPreferencesUtils.saveDataOfGameManager(getApplicationContext());
