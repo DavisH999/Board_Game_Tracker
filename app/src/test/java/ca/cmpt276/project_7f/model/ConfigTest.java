@@ -7,11 +7,16 @@ class ConfigTest {
 
     @Test
     void getName() {
-        assertEquals(1,1);
+        Config config = new Config();
+        config.setName("TEST");
+        assertEquals("TEST",config.getName());
     }
 
     @Test
     void setName() {
+        Config config = new Config();
+        config.setName("TEST");
+        assertEquals("TEST",config.getName());
     }
 
     @Test
