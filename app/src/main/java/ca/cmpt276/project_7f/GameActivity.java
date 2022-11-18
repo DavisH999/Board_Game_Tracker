@@ -217,7 +217,6 @@ public class GameActivity extends AppCompatActivity {
             return;
         }
         processGame();
-        popUpDialog();
     }
 
     private void processGame() {
@@ -264,6 +263,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         saveDataToSP();
+        popUpDialog();
     }
 
     private void popUpDialog()
