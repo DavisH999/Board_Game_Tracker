@@ -7,9 +7,10 @@
     tools:context=".AchievementsActivity">
 
     <include
+        android:id="@+id/include"
         layout="@layout/toolbar_achievements"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="104dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/tv_difficultInAchievements"
@@ -199,110 +200,110 @@
         android:id="@+id/tv_range0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="monospace"
         android:textColor="@color/blue_custom"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
-        app:layout_constraintTop_toBottomOf="@+id/tv_numPlayersInAchievements" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_theme_achievements" />
 
     <TextView
         android:id="@+id/tv_range1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
         android:textColor="@color/blue_custom"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_range0" />
 
     <TextView
         android:id="@+id/tv_range2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
         android:textColor="@color/blue_custom"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_range1" />
 
     <TextView
         android:id="@+id/tv_range3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
         android:textColor="@color/blue_custom"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_range2" />
 
     <TextView
         android:id="@+id/tv_range4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
         android:textColor="@color/blue_custom"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_range3" />
 
     <TextView
         android:id="@+id/tv_range5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
         android:textColor="@color/blue_custom"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_range4" />
 
     <TextView
         android:id="@+id/tv_range6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
         android:textColor="@color/blue_custom"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_range5" />
 
     <TextView
         android:id="@+id/tv_range7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
         android:textColor="@color/blue_custom"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_range6" />
 
     <TextView
         android:id="@+id/tv_range8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
         android:textColor="@color/blue_custom"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_range7" />
 
     <TextView
         android:id="@+id/tv_range9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="200dp"
         android:layout_marginTop="24dp"
         android:fontFamily="monospace"
         android:textColor="@color/blue_custom"
-        app:layout_constraintStart_toEndOf="@+id/tv_achievement1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_range8" />
 
     <TextView
