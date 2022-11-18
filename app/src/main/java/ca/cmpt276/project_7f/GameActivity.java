@@ -275,8 +275,6 @@ public class GameActivity extends AppCompatActivity {
         MessageFragment messageFragment = new MessageFragment();
         messageFragment.setter(configName,indexOfGameInList,isAddMode);
         messageFragment.show(supportFragmentManager,"MessageFragment");
-
-
     }
 
     private void playSounds() {
