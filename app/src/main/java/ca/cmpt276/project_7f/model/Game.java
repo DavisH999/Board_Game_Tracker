@@ -1,13 +1,9 @@
 package ca.cmpt276.project_7f.model;
 
-import android.content.res.Resources;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Objects;
-
-import ca.cmpt276.project_7f.R;
 
 // game
 public class Game {
@@ -158,7 +154,6 @@ public class Game {
         return ranges;
     }
 
-    // TODO: ADD a new params String theme
     public void computeAchievement(double difficulty)
     {
         ConfigManager configManager = ConfigManager.getInstance();

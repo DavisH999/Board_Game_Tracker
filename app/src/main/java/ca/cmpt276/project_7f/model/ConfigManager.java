@@ -1,7 +1,5 @@
 package ca.cmpt276.project_7f.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 // managing the list of configuration.
@@ -61,9 +59,6 @@ public class ConfigManager {
     {
         Config oldConfig = configList.get(indexInConfigList);
         String oldConfigName = oldConfig.getName();
-        String newConfigName = newConfig.getName();
-        Log.e("oldNameTAG",oldConfigName);
-        Log.e("newNameTAG",newConfigName);
         configList.set(indexInConfigList,newConfig);
         // update games as well.
         // if there are some games, then update. If no games, do nothing.

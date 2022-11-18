@@ -97,8 +97,6 @@ public class GameManager {
             }
             if(oldConfigName.equals(game.getConfigName()))
             {
-                // BUG FOUND AND FIXED!
-                // Log.e("TAG","! "+i + " " + game.getConfigName());
                 game.setConfigName(updatedConfigName);
                 switch (difficulty) {
                     case "Normal":
