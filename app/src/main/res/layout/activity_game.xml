@@ -13,8 +13,8 @@
 
     <Spinner
         android:id="@+id/spinner_theme_game"
-        android:layout_width="157dp"
-        android:layout_height="47dp"
+        android:layout_width="155dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="28dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
