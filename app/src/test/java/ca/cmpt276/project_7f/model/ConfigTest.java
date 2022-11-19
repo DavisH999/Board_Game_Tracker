@@ -28,25 +28,39 @@ class ConfigTest {
     }
 
     @Test
-    void setName() {
+    void getNameLarge() {
         Config config = new Config();
-        config.setName("NAME");
-        assertEquals("NAME",config.getName());
+        config.setName("ARVINBAYATMAESHSFUSTUDENT");
+        assertEquals("ARVINBAYATMAESHSFUSTUDENT",config.getName());
     }
 
     @Test
     void getPoorScore() {
+        Config config = new Config();
+        config.setPoorScore(10);
+        assertEquals(10, config.getPoorScore());
     }
 
     @Test
-    void setPoorScore() {
+    void getPoorScoreLarge() {
+        Config config = new Config();
+        config.setPoorScore(999999999);
+        assertEquals(999999999, config.getPoorScore());
+
     }
 
     @Test
     void getGreatScore() {
+        Config config = new Config();
+        config.setGreatScore(100);
+        assertEquals(100, config.getGreatScore());
+
     }
 
     @Test
-    void setGreatScore() {
+    void setGreatScoreLarge() {
+        Config config = new Config();
+        config.setGreatScore(999999999);
+        assertEquals(999999999, config.getGreatScore());
     }
 }
