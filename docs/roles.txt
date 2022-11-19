@@ -1,7 +1,6 @@
-Scrum Roles For Iteration 1
+Scrum Roles For Iteration 2
 
-
-1. Daniel Surina: Scrum Master
-2. Niall Shaidullin: Product Owner
-3. Dongwei Han: Team Member
-4. Arvin Bayat Manesh: Repo Manager
+1. Daniel Surina: Product Owner
+2. Niall Shaidullin:  Scrum Master
+3. Dongwei Han: Repo Manager
+4. Arvin Bayat Manesh: Team Member

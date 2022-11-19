@@ -43,7 +43,6 @@ public class GameListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-
         extractDataFromIntent();
         initial();
         showHint();
