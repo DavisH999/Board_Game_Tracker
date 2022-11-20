@@ -15,21 +15,22 @@ import android.widget.Toast;
 
 import ca.cmpt276.project_7f.model.Config;
 import ca.cmpt276.project_7f.model.ConfigManager;
+import ca.cmpt276.project_7f.utils.SharedPreferencesUtils;
 
 // showing the configuration.
 public class ConfigurationActivity extends AppCompatActivity {
 
-    ConfigManager instanceOfCM;
+    private ConfigManager instanceOfCM;
     private boolean isAddMode;
-    int indexOfConfigInList;
-    Button btn_goToGameList;
-    Button btn_goToAchievements;
-    ImageView btn_save;
-    ImageView btn_back;
-    Button btn_delete;
-    EditText et_configName;
-    EditText et_configGreatScore;
-    EditText et_configPoorScore;
+    private int indexOfConfigInList;
+    private Button btn_goToGameList;
+    private Button btn_goToAchievements;
+    private ImageView btn_save;
+    private ImageView btn_back;
+    private Button btn_delete;
+    private EditText et_configName;
+    private EditText et_configGreatScore;
+    private EditText et_configPoorScore;
 
 
     @Override

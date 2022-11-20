@@ -20,6 +20,7 @@ import ca.cmpt276.project_7f.R;
 import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
 
+// customized dialog.
 public class MessageFragment extends AppCompatDialogFragment {
 
     private String achievement;

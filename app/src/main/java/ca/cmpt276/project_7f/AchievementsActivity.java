@@ -29,31 +29,31 @@ import ca.cmpt276.project_7f.model.Game;
 //Activity that displays all the Achievement options from 1-10
 public class AchievementsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    int indexOfConfigInList;
-    ImageView btn_back;
-    EditText numberOfPlayer_tv;
-    Spinner spinner_difficulty_achievement;
-    Spinner spinner_theme;
-    TextView tv0;
-    TextView tv1;
-    TextView tv2;
-    TextView tv3;
-    TextView tv4;
-    TextView tv5;
-    TextView tv6;
-    TextView tv7;
-    TextView tv8;
-    TextView tv9;
-    TextView achievement0;
-    TextView achievement1;
-    TextView achievement2;
-    TextView achievement3;
-    TextView achievement4;
-    TextView achievement5;
-    TextView achievement6;
-    TextView achievement7;
-    TextView achievement8;
-    TextView achievement9;
+    private int indexOfConfigInList;
+    private ImageView btn_back;
+    private EditText numberOfPlayer_tv;
+    private Spinner spinner_difficulty_achievement;
+    private Spinner spinner_theme;
+    private TextView tv0;
+    private TextView tv1;
+    private TextView tv2;
+    private TextView tv3;
+    private TextView tv4;
+    private TextView tv5;
+    private TextView tv6;
+    private TextView tv7;
+    private TextView tv8;
+    private TextView tv9;
+    private TextView achievement0;
+    private TextView achievement1;
+    private TextView achievement2;
+    private TextView achievement3;
+    private TextView achievement4;
+    private TextView achievement5;
+    private TextView achievement6;
+    private TextView achievement7;
+    private TextView achievement8;
+    private TextView achievement9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

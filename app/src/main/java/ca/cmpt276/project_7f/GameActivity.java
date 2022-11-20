@@ -9,9 +9,6 @@ import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +22,7 @@ import java.util.ArrayList;
 
 import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
+import ca.cmpt276.project_7f.utils.SharedPreferencesUtils;
 
 // adding a new game.
 public class GameActivity extends AppCompatActivity {

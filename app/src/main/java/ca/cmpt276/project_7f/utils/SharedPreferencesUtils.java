@@ -1,4 +1,4 @@
-package ca.cmpt276.project_7f;
+package ca.cmpt276.project_7f.utils;
 
 import static android.content.Context.MODE_PRIVATE;
 

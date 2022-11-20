@@ -1,9 +1,7 @@
 package ca.cmpt276.project_7f;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +13,7 @@ import java.util.ArrayList;
 
 import ca.cmpt276.project_7f.model.Config;
 import ca.cmpt276.project_7f.model.ConfigManager;
+import ca.cmpt276.project_7f.utils.SharedPreferencesUtils;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -22,9 +21,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ConfigurationListActivity extends AppCompatActivity {
 
-    FloatingActionButton fab_config_list;
-    ListView listview_config_list;
-    TextView tv_noConfigHint;
+    private FloatingActionButton fab_config_list;
+    private ListView listview_config_list;
+    private TextView tv_noConfigHint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
