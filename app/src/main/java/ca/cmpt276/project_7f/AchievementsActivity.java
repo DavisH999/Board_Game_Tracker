@@ -205,7 +205,6 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         // theme is not important in this activity for the game object
         Game game = new Game(name, numOfPlayers, null, difficulty, "");
 
-
         switch(difficulty) {
             case "Normal":
                 rangesArray = game.getStringOfRanges(1);

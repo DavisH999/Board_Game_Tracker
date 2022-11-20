@@ -92,7 +92,6 @@ public class ConfigurationActivity extends AppCompatActivity {
         finish();
     }
 
-    //Added by Daniel, consider refactoring
     private void onBackClick() {
         finish();
     }

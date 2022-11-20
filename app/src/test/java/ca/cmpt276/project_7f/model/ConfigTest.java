@@ -46,7 +46,6 @@ class ConfigTest {
         Config config = new Config();
         config.setPoorScore(999999999);
         assertEquals(999999999, config.getPoorScore());
-
     }
 
     @Test
@@ -54,7 +53,6 @@ class ConfigTest {
         Config config = new Config();
         config.setGreatScore(100);
         assertEquals(100, config.getGreatScore());
-
     }
 
     @Test
