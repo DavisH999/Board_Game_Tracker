@@ -18,7 +18,7 @@
         android:layout_marginEnd="28dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_difficultyInGame" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_difficulty_game" />
 
     <TextView
         android:id="@+id/tv_score"
@@ -97,7 +97,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner_difficultyInGame"
+        android:id="@+id/spinner_difficulty_game"
         android:layout_width="155dp"
         android:layout_height="50dp"
         android:layout_marginTop="84dp"

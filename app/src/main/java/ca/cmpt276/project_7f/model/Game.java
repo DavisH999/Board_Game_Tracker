@@ -55,8 +55,7 @@ public class Game {
         return theme;
     }
 
-    public Game(
-            String _configName, int _numOfPlayer, ArrayList<Integer> _scoreList, String difficulty, String theme) {
+    public Game(String _configName, int _numOfPlayer, ArrayList<Integer> _scoreList, String difficulty, String theme) {
         configName = _configName;
         numOfPlayers = _numOfPlayer;
         scoreList = _scoreList;
@@ -258,6 +257,7 @@ public class Game {
         return "Time created: " + time + "\n"
                 + "Combined score: " + score + "\n"
                 + "Achievement: " + getAchievement() + "\n"
-                + "Difficulty: " + difficulty;
+                + "Difficulty: " + difficulty + "\n"
+                + "Theme: " + theme;
     }
 }

@@ -5,14 +5,12 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -42,8 +40,8 @@ public class GameActivity extends AppCompatActivity {
     private int indexOfGameInList;
     private String configName;
     private boolean isAddMode;
-    private Spinner spinner_difficultyInGame;
-    private Spinner spinner_theme;
+    private Spinner spinner_difficulty_game;
+    private Spinner spinner_theme_game;
     private SoundPool soundPool;
     private int soundGameId;
 
@@ -61,38 +59,27 @@ public class GameActivity extends AppCompatActivity {
         initialSoundPool();
         onButtonsClick();
         extractDataFromIntent();
-        fillSpinner();
-        setMode();
+        populateDifficultySpinner();
         populateThemeSpinner();
+        setMode();
     }
 
-    private void fillSpinner() {
+    private void populateDifficultySpinner() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
                 (this, R.array.difficulty_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_difficultyInGame.setAdapter(adapter);
+        spinner_difficulty_game.setAdapter(adapter);
     }
 
     private void populateThemeSpinner() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
                 (this, R.array.theme_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_theme.setAdapter(adapter);
-        spinner_theme.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String theme = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getApplicationContext(),"You selected: " + theme,Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        spinner_theme_game.setAdapter(adapter);
     }
 
-    private void generateDynamicEditTexts() {
+    private void onGenerateEditTextButtonClick() {
+        // check validity for number of players.
         if(et_numPlayer.length() == 0)
         {
             Toast.makeText(this,"number player must not be empty.",Toast.LENGTH_SHORT)
@@ -107,11 +94,13 @@ public class GameActivity extends AppCompatActivity {
                     .show();
             return;
         }
+        // remove old views
         linearlayoutForScores.removeAllViews();
-        addEditViews(numPlayer,null);
+        // add new view
+        addEditTextToLinerLayout(numPlayer,null);
     }
 
-    private void addEditViews(int numOfPlayers, ArrayList<Integer> scoreList) {
+    private void addEditTextToLinerLayout(int numOfPlayers, ArrayList<Integer> scoreList) {
         for(int i = 0; i < numOfPlayers; i++)
         {
             EditText editText = new EditText(this);
@@ -132,8 +121,8 @@ public class GameActivity extends AppCompatActivity {
         tv_game_toolbar_title = findViewById(R.id.tv_game_toolbar_title);
         btn_generateEditTexts = findViewById(R.id.btn_generateEditTexts);
         linearlayoutForScores = findViewById(R.id.linearlayoutForScores);
-        spinner_difficultyInGame = findViewById(R.id.spinner_difficultyInGame);
-        spinner_theme = findViewById(R.id.spinner_theme_game);
+        spinner_difficulty_game = findViewById(R.id.spinner_difficulty_game);
+        spinner_theme_game = findViewById(R.id.spinner_theme_game);
     }
 
     private void initialSoundPool()
@@ -170,20 +159,31 @@ public class GameActivity extends AppCompatActivity {
         Game game = instanceOfGameM.getGame(configName, indexOfGameInList);
         int numOfPlayers = game.getNumOfPlayers();
         String difficulty = game.getDifficulty();
+        String theme = game.getTheme();
         ArrayList<Integer> scoreList = game.getScoreList();
         et_numPlayer.setText(String.valueOf(numOfPlayers));
-        // set spinner selection
-        for (int i = 0; i < spinner_difficultyInGame.getCount(); i++)
+        // set difficulty spinner selection
+        for (int i = 0; i < spinner_difficulty_game.getCount(); i++)
         {
-            String str = spinner_difficultyInGame.getItemAtPosition(i).toString();
+            String str = spinner_difficulty_game.getItemAtPosition(i).toString();
             if(difficulty.equals(str))
             {
-                spinner_difficultyInGame.setSelection(i);
+                spinner_difficulty_game.setSelection(i);
+                break;
+            }
+        }
+        // set theme spinner selection
+        for(int i = 0; i < spinner_theme_game.getCount(); i++)
+        {
+            String str = spinner_theme_game.getItemAtPosition(i).toString();
+            if(theme.equals(str))
+            {
+                spinner_theme_game.setSelection(i);
                 break;
             }
         }
         //show score list
-        addEditViews(numOfPlayers,scoreList);
+        addEditTextToLinerLayout(numOfPlayers,scoreList);
     }
 
     private void extractDataFromIntent() {
@@ -195,7 +195,7 @@ public class GameActivity extends AppCompatActivity {
     private void onButtonsClick() {
         btn_saveGame.setOnClickListener(v->onSaveClick());
         btn_back.setOnClickListener(v->onBackClick());
-        btn_generateEditTexts.setOnClickListener(v->generateDynamicEditTexts());
+        btn_generateEditTexts.setOnClickListener(v-> onGenerateEditTextButtonClick());
     }
 
     private void onBackClick() {
@@ -223,8 +223,8 @@ public class GameActivity extends AppCompatActivity {
         // Get input data
         String strNumOfPlayers = et_numPlayer.getText().toString();
         int numOfPlayers = Integer.parseInt(strNumOfPlayers);
-        String strDifficultyInGame = spinner_difficultyInGame.getSelectedItem().toString();
-        String strTheme = spinner_theme.getSelectedItem().toString();
+        String strDifficultyInGame = spinner_difficulty_game.getSelectedItem().toString();
+        String strTheme = spinner_theme_game.getSelectedItem().toString();
 
         // read score list
         if(linearlayoutForScores.getChildCount() != numOfPlayers)
@@ -250,7 +250,7 @@ public class GameActivity extends AppCompatActivity {
         GameManager instanceOfGameM = GameManager.getInstance();
         if(isAddMode)
         {
-            instanceOfGameM.addGame(configName,numOfPlayers,scoreList,strDifficultyInGame, strTheme);
+            instanceOfGameM.addGame(configName,numOfPlayers,scoreList,strDifficultyInGame,strTheme);
         }
         else
         {
