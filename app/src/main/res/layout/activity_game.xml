@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity">
+    tools:context=".GameActivity"
+    android:background="@drawable/wallpaper">
 
     <include
         layout="@layout/toolbar_game"
@@ -93,6 +94,7 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="252dp"
         android:text="generate input score list "
+        android:theme="@style/Theme.AppCompat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
