@@ -57,35 +57,12 @@ public class GameActivity extends AppCompatActivity {
 
         initial();
         initialSoundPool();
-        textWatcher();
         onButtonsClick();
         extractDataFromIntent();
         populateDifficultySpinner();
         populateThemeSpinner();
         setMode();
     }
-
-    private void textWatcher() {
-        // Set a text watcher for et_numPlayer
-        et_numPlayer.addTextChangedListener(textWatcher);
-    }
-    private final TextWatcher textWatcher = new TextWatcher() {
-
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-
-        }
-    };
 
     private void populateDifficultySpinner() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
@@ -117,20 +94,37 @@ public class GameActivity extends AppCompatActivity {
                     .show();
             return;
         }
+        // Add already entered scores into an ArrayList
+        ArrayList<Integer> scoreList = addScoresToArrayList();
+
         // remove old views
         linearlayoutForScores.removeAllViews();
+
         // add new view
-        addEditTextToLinerLayout(numPlayer,null);
+        addEditTextToLinerLayout(numPlayer,scoreList);
+    }
+
+    // This method adds previously added scores to an ArrayList to populate the edit texts
+    // when the number of players are changed.
+    private ArrayList<Integer> addScoresToArrayList() {
+        ArrayList<Integer> scoreList = new ArrayList<>();
+        for (int i = 0; i < linearlayoutForScores.getChildCount(); ++i) {
+            EditText etScore = (EditText) linearlayoutForScores.getChildAt(i);
+            scoreList.add(Integer.parseInt(etScore.getText().toString()));
+        }
+        return scoreList;
     }
 
     private void addEditTextToLinerLayout(int numOfPlayers, ArrayList<Integer> scoreList) {
+        int count = 0;
         for(int i = 0; i < numOfPlayers; i++)
         {
             EditText editText = new EditText(this);
-            if(scoreList != null)
+            if(scoreList != null && count < scoreList.size())
             {
                 int score = scoreList.get(i);
                 editText.setText(String.valueOf(score));
+                count++;
             }
             editText.setInputType(InputType.TYPE_CLASS_NUMBER);
             linearlayoutForScores.addView(editText);
