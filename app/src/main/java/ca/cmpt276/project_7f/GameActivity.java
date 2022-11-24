@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,12 +57,35 @@ public class GameActivity extends AppCompatActivity {
 
         initial();
         initialSoundPool();
+        textWatcher();
         onButtonsClick();
         extractDataFromIntent();
         populateDifficultySpinner();
         populateThemeSpinner();
         setMode();
     }
+
+    private void textWatcher() {
+        // Set a text watcher for et_numPlayer
+        et_numPlayer.addTextChangedListener(textWatcher);
+    }
+    private final TextWatcher textWatcher = new TextWatcher() {
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
 
     private void populateDifficultySpinner() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
@@ -268,6 +293,7 @@ public class GameActivity extends AppCompatActivity {
     {
         // play sound
         playSounds();
+
         // pop up dialog
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         MessageFragment messageFragment = new MessageFragment();
