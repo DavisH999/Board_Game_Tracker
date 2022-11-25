@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -92,20 +94,42 @@ public class GameActivity extends AppCompatActivity {
                     .show();
             return;
         }
+        // Add already entered scores into an ArrayList
+        ArrayList<Integer> scoreList = addScoresToArrayList();
+
         // remove old views
         linearlayoutForScores.removeAllViews();
+
         // add new view
-        addEditTextToLinerLayout(numPlayer,null);
+        addEditTextToLinerLayout(numPlayer,scoreList);
+    }
+
+    // This method adds previously added scores to an ArrayList to populate the edit texts
+    // when the number of players are changed.
+    private ArrayList<Integer> addScoresToArrayList() {
+        ArrayList<Integer> scoreList = new ArrayList<>();
+        for (int i = 0; i < linearlayoutForScores.getChildCount(); ++i) {
+            EditText etScore = (EditText) linearlayoutForScores.getChildAt(i);
+            if (etScore.length() == 0) {
+                // Do not do anything if the edit text empty
+            }
+            else {
+                scoreList.add(Integer.parseInt(etScore.getText().toString()));
+            }
+        }
+        return scoreList;
     }
 
     private void addEditTextToLinerLayout(int numOfPlayers, ArrayList<Integer> scoreList) {
+        int count = 0;
         for(int i = 0; i < numOfPlayers; i++)
         {
             EditText editText = new EditText(this);
-            if(scoreList != null)
+            if(scoreList != null && count < scoreList.size())
             {
                 int score = scoreList.get(i);
                 editText.setText(String.valueOf(score));
+                count++;
             }
             editText.setInputType(InputType.TYPE_CLASS_NUMBER);
             linearlayoutForScores.addView(editText);
@@ -268,6 +292,7 @@ public class GameActivity extends AppCompatActivity {
     {
         // play sound
         playSounds();
+
         // pop up dialog
         FragmentManager supportFragmentManager = getSupportFragmentManager();
         MessageFragment messageFragment = new MessageFragment();

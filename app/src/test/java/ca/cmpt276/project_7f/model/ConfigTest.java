@@ -2,7 +2,6 @@ package ca.cmpt276.project_7f.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
 import org.junit.jupiter.api.Test;
 
 class ConfigTest {
