@@ -110,7 +110,12 @@ public class GameActivity extends AppCompatActivity {
         ArrayList<Integer> scoreList = new ArrayList<>();
         for (int i = 0; i < linearlayoutForScores.getChildCount(); ++i) {
             EditText etScore = (EditText) linearlayoutForScores.getChildAt(i);
-            scoreList.add(Integer.parseInt(etScore.getText().toString()));
+            if (etScore.length() == 0) {
+                // Do not do anything if the edit text empty
+            }
+            else {
+                scoreList.add(Integer.parseInt(etScore.getText().toString()));
+            }
         }
         return scoreList;
     }
