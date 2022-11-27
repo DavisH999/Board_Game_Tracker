@@ -301,7 +301,6 @@ public class GameActivity extends AppCompatActivity {
             Toast.makeText(this,"You need to take a photo before save game",Toast.LENGTH_SHORT).show();
             return;
         }
-
         GameManager instanceOfGameM = GameManager.getInstance();
         if(isAddMode)
         {

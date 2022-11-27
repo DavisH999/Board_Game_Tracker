@@ -32,6 +32,7 @@ public class PhotoActivity extends AppCompatActivity {
     private ImageView iv_photo;
     private Button btn_take_photo;
     private Button btn_confirm_photo;
+    private ImageView iv_toolbar_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class PhotoActivity extends AppCompatActivity {
         btn_take_photo = findViewById(R.id.btn_take_photo);
         iv_photo = findViewById(R.id.iv_photo);
         btn_confirm_photo = findViewById(R.id.btn_confirm_photo);
+        iv_toolbar_back = findViewById(R.id.game_photo_back_button);
     }
 
     public static Intent makeIntent(Context context, int indexOfGameInList, String configName)
@@ -86,6 +88,11 @@ public class PhotoActivity extends AppCompatActivity {
     private void onButtonsCLick() {
         btn_take_photo.setOnClickListener(v->onTakePhotoButtonClick());
         btn_confirm_photo.setOnClickListener(v->onConfirmPhotoButtonClick());
+        iv_toolbar_back.setOnClickListener(v->onGoBackClick());
+    }
+
+    private void onGoBackClick() {
+        onBackPressed();
     }
 
     private void onConfirmPhotoButtonClick() {
