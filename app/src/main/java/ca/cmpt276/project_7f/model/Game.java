@@ -15,6 +15,15 @@ public class Game {
     private String difficulty;
     private String theme;
     private ArrayList<Integer> scoreList;
+    private String imageString;
+
+    public String getImageString() {
+        return imageString;
+    }
+
+    public void setImageString(String imageString) {
+        this.imageString = imageString;
+    }
 
     public ArrayList<Integer> getScoreList() {
         return scoreList;
@@ -55,12 +64,13 @@ public class Game {
         return theme;
     }
 
-    public Game(String _configName, int _numOfPlayer, ArrayList<Integer> _scoreList, String difficulty, String theme) {
+    public Game(String _configName, int _numOfPlayer, ArrayList<Integer> _scoreList, String difficulty, String theme, String imageString) {
         configName = _configName;
         numOfPlayers = _numOfPlayer;
         scoreList = _scoreList;
         this.difficulty = difficulty;
         this.theme = theme;
+        this.imageString = imageString;
         if (_scoreList != null) {
             double difficultyLevel = convertStrDifficultyToDouble(difficulty);
             computeAchievement(difficultyLevel);
@@ -250,7 +260,6 @@ public class Game {
 
         return AchievementBasedOnTheme;
     }
-
 
     public String getStringOfDisplayGame()
     {

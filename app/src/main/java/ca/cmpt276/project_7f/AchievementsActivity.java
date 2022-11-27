@@ -203,7 +203,7 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
         ArrayList<String> rangesArray = new ArrayList<>();
         // We pass an empty string for the theme in Achievement activity because
         // theme is not important in this activity for the game object
-        Game game = new Game(name, numOfPlayers, null, difficulty, "");
+        Game game = new Game(name, numOfPlayers, null, difficulty, "","");
 
         switch(difficulty) {
             case "Normal":
