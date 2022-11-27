@@ -1,5 +1,9 @@
 package ca.cmpt276.project_7f;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -8,9 +12,8 @@ import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,6 +47,23 @@ public class GameActivity extends AppCompatActivity {
     private Spinner spinner_theme_game;
     private SoundPool soundPool;
     private int soundGameId;
+    private ImageView btn_goToPhoto;
+
+    private String imageString;
+    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if(result.getResultCode() == 100) {
+                        Intent intent = result.getData();
+                        if(intent != null) {
+                            imageString = intent.getStringExtra("imageString");
+                        }
+                    }
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +165,7 @@ public class GameActivity extends AppCompatActivity {
         linearlayoutForScores = findViewById(R.id.linearlayoutForScores);
         spinner_difficulty_game = findViewById(R.id.spinner_difficulty_game);
         spinner_theme_game = findViewById(R.id.spinner_theme_game);
+        btn_goToPhoto = findViewById(R.id.iv_camera_game);
     }
 
     private void initialSoundPool()
@@ -218,6 +239,12 @@ public class GameActivity extends AppCompatActivity {
         btn_saveGame.setOnClickListener(v->onSaveClick());
         btn_back.setOnClickListener(v->onBackClick());
         btn_generateEditTexts.setOnClickListener(v-> onGenerateEditTextButtonClick());
+        btn_goToPhoto.setOnClickListener(v-> goToPhotoPage());
+    }
+
+    private void goToPhotoPage() {
+        Intent intent = PhotoActivity.makeIntent(getApplicationContext(), indexOfGameInList, configName);
+        activityResultLauncher.launch(intent);
     }
 
     private void onBackClick() {
@@ -269,10 +296,15 @@ public class GameActivity extends AppCompatActivity {
         }
 
         // Do the logical part
+        if(imageString == null && isAddMode)
+        {
+            Toast.makeText(this,"You need to take a photo before save game",Toast.LENGTH_SHORT).show();
+            return;
+        }
         GameManager instanceOfGameM = GameManager.getInstance();
         if(isAddMode)
         {
-            instanceOfGameM.addGame(configName,numOfPlayers,scoreList,strDifficultyInGame,strTheme);
+            instanceOfGameM.addGame(configName,numOfPlayers,scoreList,strDifficultyInGame,strTheme, imageString);
         }
         else
         {
@@ -281,7 +313,9 @@ public class GameActivity extends AppCompatActivity {
                     strDifficultyInGame,
                     scoreList,
                     numOfPlayers,
-                    strTheme);
+                    strTheme,
+                    imageString
+            );
         }
 
         saveDataToSP();

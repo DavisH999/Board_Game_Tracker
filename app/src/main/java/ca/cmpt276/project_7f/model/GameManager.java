@@ -65,9 +65,9 @@ public class GameManager {
             return stringList;
     }
 
-    public void addGame(String configName, int numOfPlayer, ArrayList<Integer> scoreList, String difficulty, String theme)
+    public void addGame(String configName, int numOfPlayer, ArrayList<Integer> scoreList, String difficulty, String theme, String photoJson)
     {
-        Game game = new Game(configName,numOfPlayer,scoreList,difficulty,theme);
+        Game game = new Game(configName,numOfPlayer,scoreList,difficulty,theme,photoJson);
         gameList.add(game);
     }
 
@@ -115,13 +115,14 @@ public class GameManager {
 
     public void updateOneGameWhenGameChanges(
             String configName, int indexInGameList, String difficulty, ArrayList<Integer> scoreList,
-            int numberOfPlayers, String strTheme)
+            int numberOfPlayers, String strTheme, String photoJson)
     {
         Game targetGame = getGame(configName,indexInGameList);
         targetGame.setDifficulty(difficulty);
         targetGame.setScoreList(scoreList);
         targetGame.setNumOfPlayers(numberOfPlayers);
         targetGame.setTheme(strTheme);
+        targetGame.setImageString(photoJson);
 
         // Determine the level of difficulty
         if (Objects.equals(difficulty, "Normal")) {
