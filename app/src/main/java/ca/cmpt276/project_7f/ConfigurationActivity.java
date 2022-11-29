@@ -25,9 +25,10 @@ public class ConfigurationActivity extends AppCompatActivity {
     private int indexOfConfigInList;
     private Button btn_goToGameList;
     private Button btn_goToAchievements;
+    private Button btn_delete;
     private ImageView btn_save;
     private ImageView btn_back;
-    private Button btn_delete;
+    private ImageView btn_photo;
     private EditText et_configName;
     private EditText et_configGreatScore;
     private EditText et_configPoorScore;
@@ -51,6 +52,54 @@ public class ConfigurationActivity extends AppCompatActivity {
         onClickButtons();
     }
 
+    public static Intent makeIntent(Context context, int index) {
+        Intent intent = new Intent(context, ConfigurationActivity.class);
+        intent.putExtra("indexOfConfigInList", index);
+        return intent;
+    }
+
+    private void initial() {
+        btn_goToGameList = findViewById(R.id.btn_goToGameList);
+        btn_goToAchievements = findViewById(R.id.btn_goToAchievements);
+        btn_save = findViewById(R.id.config_save_button_config);
+        btn_back = findViewById(R.id.config_back_button);
+        btn_delete = findViewById(R.id.btn_delete);
+        btn_photo = findViewById(R.id.config_photo_button);
+        et_configName = findViewById(R.id.et_configName);
+        et_configGreatScore = findViewById(R.id.et_configGreatScore);
+        et_configPoorScore = findViewById(R.id.et_configPoorScore);
+        instanceOfCM = ConfigManager.getInstance();
+    }
+
+    private void extractDataFromIntent() {
+        Intent intent = getIntent();
+        indexOfConfigInList = intent.getIntExtra("indexOfConfigInList", -1);
+        if(indexOfConfigInList == -1) {
+            isAddMode = true;
+        }
+        else {
+            isAddMode = false;
+        }
+    }
+
+    private void toolbar() {
+        TextView tv_title = findViewById(R.id.tv_config_toolbar_title);
+        if(isAddMode){
+            tv_title.setText("Add a configuration");
+        }
+        else {
+            tv_title.setText("Edit a configuration");
+        }
+    }
+
+    private void setButtonInvisible() {
+        if(isAddMode) {
+            btn_goToGameList.setVisibility(View.INVISIBLE);
+            btn_goToAchievements.setVisibility(View.INVISIBLE);
+            btn_delete.setVisibility(View.INVISIBLE);
+        }
+    }
+
     private void fillData() {
         if(!isAddMode) {
             Config configByIndex = instanceOfCM.getConfigByIndex(indexOfConfigInList);
@@ -64,16 +113,27 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     private void onClickButtons() {
-        // click save
+        // Click save
         btn_save.setOnClickListener(v->onSaveCLick());
-        // click delete
+
+        // Click delete
         btn_delete.setOnClickListener(v->onDeleteClick());
-        // click go_to_game_list
+
+        // Click go_to_game_list
         btn_goToGameList.setOnClickListener(v->onGameListClick());
-        // click go_to_achievements
+
+        // Click go_to_achievements
         btn_goToAchievements.setOnClickListener(v->onAchievements());
-        // click to go back
+
+        // Click to go back
         btn_back.setOnClickListener(v->onBackClick());
+
+        // Click to go to photo activity
+        btn_photo.setOnClickListener(view -> onPhotoClick());
+    }
+
+    private void onPhotoClick() {
+        Toast.makeText(this, "Photo button was clicked!", Toast.LENGTH_SHORT).show();
     }
 
     private void onAchievements() {
@@ -166,52 +226,5 @@ public class ConfigurationActivity extends AppCompatActivity {
     private int stringToInt(String str)
     {
         return Integer.parseInt(str);
-    }
-
-     private void setButtonInvisible() {
-        if(isAddMode) {
-            btn_goToGameList.setVisibility(View.INVISIBLE);
-            btn_goToAchievements.setVisibility(View.INVISIBLE);
-            btn_delete.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    private void initial() {
-        btn_goToGameList = findViewById(R.id.btn_goToGameList);
-        btn_goToAchievements = findViewById(R.id.btn_goToAchievements);
-        btn_save = findViewById(R.id.config_save_button_config);
-        btn_back = findViewById(R.id.config_back_button);
-        btn_delete = findViewById(R.id.btn_delete);
-        et_configName = findViewById(R.id.et_configName);
-        et_configGreatScore = findViewById(R.id.et_configGreatScore);
-        et_configPoorScore = findViewById(R.id.et_configPoorScore);
-        instanceOfCM = ConfigManager.getInstance();
-    }
-
-    private void extractDataFromIntent() {
-        Intent intent = getIntent();
-        indexOfConfigInList = intent.getIntExtra("indexOfConfigInList", -1);
-        if(indexOfConfigInList == -1) {
-            isAddMode = true;
-        }
-        else {
-            isAddMode = false;
-        }
-    }
-
-    public static Intent makeIntent(Context context, int index) {
-        Intent intent = new Intent(context, ConfigurationActivity.class);
-        intent.putExtra("indexOfConfigInList", index);
-        return intent;
-    }
-
-    private void toolbar() {
-        TextView tv_title = findViewById(R.id.tv_config_toolbar_title);
-        if(isAddMode){
-            tv_title.setText("Add a configuration");
-        }
-        else {
-            tv_title.setText("Edit a configuration");
-        }
     }
 }
