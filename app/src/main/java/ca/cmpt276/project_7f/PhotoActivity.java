@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ca.cmpt276.project_7f.model.Game;
@@ -27,6 +28,7 @@ public class PhotoActivity extends AppCompatActivity {
 
     public static final int REQUEST_CODE_FOR_CAMERA = 1;
     public static final int REQUEST_CODE_TAKE_A_PHOTO = 2;
+    private boolean isFromConfigActivity;
     private int indexOfGameInList;
     private String configName;
     private ImageView iv_photo;
@@ -41,8 +43,10 @@ public class PhotoActivity extends AppCompatActivity {
 
         initial();
         extractDataFromIntent();
+        updateToolBarTitle();
         loadPhoto();
     }
+
 
     @Override
     protected void onResume() {
@@ -83,7 +87,21 @@ public class PhotoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         indexOfGameInList = intent.getIntExtra("indexOfGameInList", -1);
         configName = intent.getStringExtra("configName");
+
+        // Check if PhotoActivity was launch from GameActivity or ConfigurationActivity
+        isFromConfigActivity = indexOfGameInList == -1;
     }
+
+    private void updateToolBarTitle() {
+        TextView toolbar_title = findViewById(R.id.tv_game_photo_toolbar_title);
+        if(isFromConfigActivity) {
+            toolbar_title.setText("Configuration Photo");
+        }
+        else {
+            toolbar_title.setText("Game Photo");
+        }
+    }
+
 
     private void onButtonsCLick() {
         btn_take_photo.setOnClickListener(v->onTakePhotoButtonClick());
