@@ -13,7 +13,6 @@ import android.media.AudioAttributes;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
