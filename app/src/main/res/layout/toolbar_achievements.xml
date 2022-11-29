@@ -25,7 +25,7 @@
             android:fontFamily="monospace"
             android:text="@string/toolbar_achievements"
             android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
 
     </RelativeLayout>
 </RelativeLayout>
