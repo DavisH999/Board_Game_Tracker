@@ -15,8 +15,8 @@ import ca.cmpt276.project_7f.model.GameManager;
 public class AchievementStatisticsActivity extends AppCompatActivity {
 
     private int indexOfConfigInList;
-    private ArrayList<String> stringOfRanges = null;
     private String configName;
+    private ArrayList<String> stringOfRanges = null;
     private ArrayList<Integer> countOfEachAchievementInCorrespondingGameList;
 
     @Override
@@ -40,12 +40,10 @@ public class AchievementStatisticsActivity extends AppCompatActivity {
         if(stringOfRanges == null)
         {
             // TODO: all count should be 0.
-
         }
         else
         {
             // TODO: all count should be from countOfEachAchievementInCorrespondingGameList.
-
         }
     }
 

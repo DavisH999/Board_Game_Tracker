@@ -42,7 +42,6 @@ public class GameManager {
         double greatScore = configByName.getGreatScore();
         double poorScore = configByName.getPoorScore();
         ArrayList<Game> gameListByConfigName = getGameListByConfigName(_configName);
-
         for(int i = 0; i < gameListByConfigName.size(); i++) {
             Game game = gameListByConfigName.get(i);
             int score = game.getScore();
@@ -98,8 +97,7 @@ public class GameManager {
                 resultList.set(0,++integer);
             }
         }
-
-        return null;
+        return resultList;
     }
 
     public void setGameList(ArrayList<Game> gameList) {
