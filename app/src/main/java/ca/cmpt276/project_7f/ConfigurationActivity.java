@@ -1,5 +1,9 @@
 package ca.cmpt276.project_7f;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -32,6 +36,21 @@ public class ConfigurationActivity extends AppCompatActivity {
     private EditText et_configName;
     private EditText et_configGreatScore;
     private EditText et_configPoorScore;
+    private String imageString;
+    private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if(result.getResultCode() == 100) {
+                        Intent intent = result.getData();
+                        if(intent != null) {
+                            imageString = intent.getStringExtra("imageString");
+                        }
+                    }
+                }
+            }
+    );
 
 
     @Override
@@ -133,7 +152,16 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
     private void onPhotoClick() {
-        Toast.makeText(this, "Photo button was clicked!", Toast.LENGTH_SHORT).show();
+        if (et_configName.length() != 0) {
+            Intent intent = PhotoActivity.makeIntent(getApplicationContext(), -1,
+                    String.valueOf(et_configName));
+            activityResultLauncher.launch(intent);
+        }
+
+        else {
+            Toast.makeText(this, "Add a configuration name to proceed.",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void onAchievements() {

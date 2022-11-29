@@ -50,7 +50,7 @@ public class GameActivity extends AppCompatActivity {
     private ImageView btn_goToPhoto;
 
     private String imageString;
-    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+    private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
