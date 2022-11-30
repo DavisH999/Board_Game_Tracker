@@ -42,7 +42,7 @@ public class ConfigurationActivity extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    if(result.getResultCode() == 100) {
+                    if(result.getResultCode() == 101) {
                         Intent intent = result.getData();
                         if(intent != null) {
                             imageString = intent.getStringExtra("imageString");
@@ -153,8 +153,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     private void onPhotoClick() {
         if (et_configName.length() != 0) {
-            Intent intent = PhotoActivity.makeIntent(getApplicationContext(), -1,
-                    String.valueOf(et_configName));
+            Intent intent = PhotoActivity.makeIntentForConfig(getApplicationContext(),indexOfConfigInList);
             activityResultLauncher.launch(intent);
         }
 
@@ -211,6 +210,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         config.setName(configName);
         config.setGreatScore(greatScore);
         config.setPoorScore(poorScore);
+        config.setImageString(imageString);
 
         if(indexOfConfigInList == -1) {
             if(instanceOfCM.isNameExisted(configName)) {
@@ -239,7 +239,7 @@ public class ConfigurationActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // if name not existed, then edit it.
+                // if name did not exist, then edit it.
                 else {
                     Log.e("TAG2",config.toString());
                     Log.e("TAG2",indexOfConfigInList+"");
@@ -247,6 +247,7 @@ public class ConfigurationActivity extends AppCompatActivity {
                 }
             }
         }
+
         saveData();
         finish();
     }
