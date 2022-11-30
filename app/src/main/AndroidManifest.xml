@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Project_7F"
         tools:targetApi="31">
         <activity
+            android:name=".AchievementStatisticsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".PhotoActivity"
             android:exported="false">
             <meta-data

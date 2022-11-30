@@ -31,7 +31,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     private EditText et_configName;
     private EditText et_configGreatScore;
     private EditText et_configPoorScore;
-
+    private Button btn_goToBarChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +74,13 @@ public class ConfigurationActivity extends AppCompatActivity {
         btn_goToAchievements.setOnClickListener(v->onAchievements());
         // click to go back
         btn_back.setOnClickListener(v->onBackClick());
+        // click to go chart
+        btn_goToBarChart.setOnClickListener(v-> onChartClick());
+    }
+
+    private void onChartClick() {
+        Intent intent = AchievementStatisticsActivity.makeIntent(getApplicationContext(), indexOfConfigInList);
+        startActivity(intent);
     }
 
     private void onAchievements() {
@@ -186,6 +193,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         et_configGreatScore = findViewById(R.id.et_configGreatScore);
         et_configPoorScore = findViewById(R.id.et_configPoorScore);
         instanceOfCM = ConfigManager.getInstance();
+        btn_goToBarChart = findViewById(R.id.btn_goToBarChart);
     }
 
     private void extractDataFromIntent() {
