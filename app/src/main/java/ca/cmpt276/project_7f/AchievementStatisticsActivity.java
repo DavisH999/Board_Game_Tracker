@@ -6,7 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
@@ -28,6 +29,7 @@ public class AchievementStatisticsActivity extends AppCompatActivity {
     private int indexOfConfigInList;
     private ArrayList<Integer> countOfEachAchievementInCorrespondingGameList;
     private BarChart barChart;
+    private ImageView statistics_back_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +45,16 @@ public class AchievementStatisticsActivity extends AppCompatActivity {
         extractDataFromIntent();
         getAchievementCountList();
         generateBarChart();
+        onButtonsClick();
+    }
+
+    private void onButtonsClick() {
+        statistics_back_button.setOnClickListener(v -> onBackPressed());
     }
 
     private void initial() {
         barChart = findViewById(R.id.barChart);
-        barChart.setFitBars(true);
+        statistics_back_button = findViewById(R.id.statistics_back_button);
     }
 
     private void extractDataFromIntent() {
@@ -100,6 +107,7 @@ public class AchievementStatisticsActivity extends AppCompatActivity {
         barChart.setPinchZoom(false);
         barChart.setFitBars(true);
         barChart.setDrawBarShadow(false);
+        barChart.setFitBars(true);
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setGranularity(0);
@@ -108,7 +116,6 @@ public class AchievementStatisticsActivity extends AppCompatActivity {
         xAxis.setAxisMaximum(10);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(levels));
-
     }
 
     public static Intent makeIntent(Context context, int indexOfConfigInList)
@@ -117,5 +124,4 @@ public class AchievementStatisticsActivity extends AppCompatActivity {
         intent.putExtra("indexOfConfigInList",indexOfConfigInList);
         return intent;
     }
-
 }
