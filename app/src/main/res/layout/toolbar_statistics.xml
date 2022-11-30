@@ -9,11 +9,19 @@
         android:padding="16dp"
         android:background="@color/black">
 
-        <TextView
-            android:id="@+id/tv_List_of_configuration_toolbar_title"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/toolbar_configuration_list"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:id="@+id/statistics_back_button"/>
+
+        <TextView
+            android:id="@+id/tv_statistics_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Statistics"
             android:textSize="25sp"
             android:fontFamily="monospace"
             android:layout_centerHorizontal="true"
@@ -21,5 +29,4 @@
             android:textColor="@color/white"/>
 
     </RelativeLayout>
-
 </RelativeLayout>
