@@ -151,6 +151,9 @@ public class ConfigurationActivity extends AppCompatActivity {
 
         // Click to go to photo activity
         btn_photo.setOnClickListener(view -> onPhotoClick());
+
+        // Click to go to chart
+        btn_goToBarChart.setOnClickListener(v -> onChartClick());
     }
 
     private void onPhotoClick() {
@@ -219,6 +222,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         config.setName(configName);
         config.setGreatScore(greatScore);
         config.setPoorScore(poorScore);
+        config.setImageString(imageString);
 
         if(indexOfConfigInList == -1) {
             if(instanceOfCM.isNameExisted(configName)) {
