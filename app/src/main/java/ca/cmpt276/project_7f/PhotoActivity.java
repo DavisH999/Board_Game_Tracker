@@ -15,10 +15,14 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import ca.cmpt276.project_7f.model.Config;
+import ca.cmpt276.project_7f.model.ConfigManager;
 import ca.cmpt276.project_7f.model.Game;
 import ca.cmpt276.project_7f.model.GameManager;
 import ca.cmpt276.project_7f.utils.Base64Utils;
@@ -27,12 +31,14 @@ public class PhotoActivity extends AppCompatActivity {
 
     public static final int REQUEST_CODE_FOR_CAMERA = 1;
     public static final int REQUEST_CODE_TAKE_A_PHOTO = 2;
+    private boolean isFromConfigActivity;
     private int indexOfGameInList;
     private String configName;
     private ImageView iv_photo;
     private Button btn_take_photo;
     private Button btn_confirm_photo;
     private ImageView iv_toolbar_back;
+    private int indexOfConfigInList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +47,10 @@ public class PhotoActivity extends AppCompatActivity {
 
         initial();
         extractDataFromIntent();
+        updateToolBarTitle();
         loadPhoto();
     }
+
 
     @Override
     protected void onResume() {
@@ -52,7 +60,8 @@ public class PhotoActivity extends AppCompatActivity {
     }
 
     private void loadPhoto() {
-        // edit mode
+
+        // From GameActivity
         if(indexOfGameInList != -1)
         {
             GameManager instanceGM = GameManager.getInstance();
@@ -61,6 +70,27 @@ public class PhotoActivity extends AppCompatActivity {
             Bitmap bitmap = Base64Utils.stringToBitmap(imageString);
             iv_photo.setImageBitmap(bitmap);
         }
+        else if(indexOfConfigInList != -1)
+        {
+            ConfigManager instanceCM = ConfigManager.getInstance();
+            Config configByIndex = instanceCM.getConfigByIndex(indexOfConfigInList);
+            if (configByIndex.getImageString() != null) {
+                String imageString = configByIndex.getImageString();
+                Bitmap bitmap = Base64Utils.stringToBitmap(imageString);
+                iv_photo.setImageBitmap(bitmap);
+            }
+        }
+//        // From ConfigurationActivity
+//        else if (){
+//            ConfigManager instanceCM = ConfigManager.getInstance();
+//            Config config = instanceCM.getConfigByName(configName);
+//            if (config.getImageString() == null) {
+//                Log.e("TAG11",config.getImageString()+"");
+//            }
+//            String imageString = config.getImageString();
+//            Bitmap bitmap = Base64Utils.stringToBitmap(imageString);
+//            iv_photo.setImageBitmap(bitmap);
+//        }
     }
 
     private void initial() {
@@ -70,11 +100,17 @@ public class PhotoActivity extends AppCompatActivity {
         iv_toolbar_back = findViewById(R.id.game_photo_back_button);
     }
 
-    public static Intent makeIntent(Context context, int indexOfGameInList, String configName)
+    public static Intent makeIntentForGame(Context context, int indexOfGameInList, String configName)
     {
         Intent intent = new Intent(context,PhotoActivity.class);
         intent.putExtra("indexOfGameInList", indexOfGameInList);
         intent.putExtra("configName", configName);
+        return intent;
+    }
+    public static Intent makeIntentForConfig(Context context, int indexOfConfigInList)
+    {
+        Intent intent = new Intent(context,PhotoActivity.class);
+        intent.putExtra("indexOfConfigInList", indexOfConfigInList);
         return intent;
     }
 
@@ -83,7 +119,22 @@ public class PhotoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         indexOfGameInList = intent.getIntExtra("indexOfGameInList", -1);
         configName = intent.getStringExtra("configName");
+        indexOfConfigInList = intent.getIntExtra("indexOfConfigInList",-1);
+
+        // Check if PhotoActivity was launch from GameActivity or ConfigurationActivity
+        isFromConfigActivity = indexOfConfigInList != -1;
     }
+
+    private void updateToolBarTitle() {
+        TextView toolbar_title = findViewById(R.id.tv_game_photo_toolbar_title);
+        if(isFromConfigActivity) {
+            toolbar_title.setText("Configuration Photo");
+        }
+        else {
+            toolbar_title.setText("Game Photo");
+        }
+    }
+
 
     private void onButtonsCLick() {
         btn_take_photo.setOnClickListener(v->onTakePhotoButtonClick());
@@ -162,9 +213,17 @@ public class PhotoActivity extends AppCompatActivity {
         Bitmap bitmap = bitmapDrawable.getBitmap();
         String imageString = Base64Utils.bitmapToString(bitmap);
 
-        Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra("imageString", imageString);
-        setResult(100,intent);
+        if (!isFromConfigActivity) {
+            Intent intent = new Intent(this, GameActivity.class);
+            intent.putExtra("imageString", imageString);
+            setResult(100,intent);
+        }
+        else {
+            Intent intent = new Intent(this, ConfigurationActivity.class);
+            intent.putExtra("imageString", imageString);
+            setResult(101,intent);
+        }
+
         finish();
     }
 }

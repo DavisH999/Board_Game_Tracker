@@ -5,8 +5,17 @@ public class Config {
     private String configName;
     private int poorScore;
     private int greatScore;
+    private String imageString;
 
     public Config() {
+    }
+
+    public String getImageString() {
+        return imageString;
+    }
+
+    public void setImageString(String imageString) {
+        this.imageString = imageString;
     }
 
     public String getName() {

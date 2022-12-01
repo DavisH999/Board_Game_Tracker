@@ -11,7 +11,7 @@ public class Game {
     private int numOfPlayers;
     private int score;
     private String achievement;
-    private String time;
+    private final String time;
     private String difficulty;
     private String theme;
     private ArrayList<Integer> scoreList;

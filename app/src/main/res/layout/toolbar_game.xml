@@ -24,9 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="monospace"
-            android:text="Game"
+            android:text="@string/game"
             android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:textSize="15sp" />
 
         <ImageView
             android:id="@+id/game_save_button_game"
@@ -42,7 +42,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-
             android:layout_marginStart="265dp"
             android:layout_marginTop="1dp"
             android:layout_toEndOf="@+id/game_back_button"

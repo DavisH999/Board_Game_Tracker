@@ -49,7 +49,7 @@ public class GameActivity extends AppCompatActivity {
     private ImageView btn_goToPhoto;
 
     private String imageString;
-    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+    private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
@@ -242,7 +242,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void goToPhotoPage() {
-        Intent intent = PhotoActivity.makeIntent(getApplicationContext(), indexOfGameInList, configName);
+        Intent intent = PhotoActivity.makeIntentForGame(getApplicationContext(), indexOfGameInList, configName);
         activityResultLauncher.launch(intent);
     }
 
