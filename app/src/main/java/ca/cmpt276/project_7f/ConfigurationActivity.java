@@ -36,6 +36,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     private EditText et_configName;
     private EditText et_configGreatScore;
     private EditText et_configPoorScore;
+    private Button btn_goToBarChart;
     private String imageString;
     private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -88,6 +89,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         et_configGreatScore = findViewById(R.id.et_configGreatScore);
         et_configPoorScore = findViewById(R.id.et_configPoorScore);
         instanceOfCM = ConfigManager.getInstance();
+        btn_goToBarChart = findViewById(R.id.btn_goToBarChart);
     }
 
     private void extractDataFromIntent() {
@@ -161,6 +163,13 @@ public class ConfigurationActivity extends AppCompatActivity {
             Toast.makeText(this, "Add a configuration name to proceed.",
                     Toast.LENGTH_SHORT).show();
         }
+        // click to go chart
+        btn_goToBarChart.setOnClickListener(v-> onChartClick());
+    }
+
+    private void onChartClick() {
+        Intent intent = AchievementStatisticsActivity.makeIntent(getApplicationContext(), indexOfConfigInList);
+        startActivity(intent);
     }
 
     private void onAchievements() {
@@ -210,7 +219,6 @@ public class ConfigurationActivity extends AppCompatActivity {
         config.setName(configName);
         config.setGreatScore(greatScore);
         config.setPoorScore(poorScore);
-        config.setImageString(imageString);
 
         if(indexOfConfigInList == -1) {
             if(instanceOfCM.isNameExisted(configName)) {

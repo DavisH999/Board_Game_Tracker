@@ -1,7 +1,16 @@
 package ca.cmpt276.project_7f.model;
 
+import android.annotation.SuppressLint;
+import android.app.Application;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.Log;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
+
+import ca.cmpt276.project_7f.R;
 
 // managing the list of game.
 public class GameManager {
@@ -15,6 +24,46 @@ public class GameManager {
 
     public ArrayList<Game> getGameList() {
         return gameList;
+    }
+
+    public ArrayList<Game> getGameListByConfigName(String _configName)
+    {
+        ArrayList<Game> targetGameList = new ArrayList<>();
+        for (int i = 0; i < gameList.size(); i++)
+        {
+            Game game = gameList.get(i);
+            String configName = game.getConfigName();
+            if(configName.equals(_configName))
+            {
+                targetGameList.add(game);
+            }
+        }
+        return targetGameList;
+    }
+
+    // return the list with considering all games as normal different.
+    public ArrayList<Integer> getCountOfEachAchievementInCorrespondingGameList(Context context, String _configName)
+    {
+        ArrayList<Integer> resultList = new ArrayList<>(Arrays.asList(0,0,0,0,0,0,0,0,0,0));
+        ArrayList<Game> gameListByConfigName = getGameListByConfigName(_configName);
+        for(int i = 0; i < gameListByConfigName.size(); i++)
+        {
+            Game game = gameListByConfigName.get(i);
+            String achievement = game.getAchievement();
+
+            String[] stringsA = context.getResources().getStringArray(R.array.achievement_level_animals);
+            String[] stringsB = context.getResources().getStringArray(R.array.achievement_level_disney);
+            String[] stringsC = context.getResources().getStringArray(R.array.achievement_level_marvel);
+            for(int j = 0; j < 10; j++)
+            {
+                if ((achievement.equals(stringsA[j])) || achievement.equals(stringsB[j]) || achievement.equals(stringsC[j]))
+                {
+                    Integer integer = resultList.get(j);
+                    resultList.set(j, ++integer);
+                }
+            }
+        }
+        return resultList;
     }
 
     public void setGameList(ArrayList<Game> gameList) {
@@ -147,7 +196,10 @@ public class GameManager {
                 tempGameList.add(game);
             }
         }
-        return tempGameList.get(indexInGameList);
+        if(tempGameList.size()!=0)
+            return tempGameList.get(indexInGameList);
+        else
+            return null;
     }
 
 

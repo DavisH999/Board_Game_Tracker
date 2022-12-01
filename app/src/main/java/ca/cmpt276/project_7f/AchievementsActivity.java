@@ -224,7 +224,7 @@ public class AchievementsActivity extends AppCompatActivity implements AdapterVi
 
     private void extractDataFromIntent() {
         Intent intent = getIntent();
-        intent.getIntExtra("indexOfConfigInList",indexOfConfigInList);
+        indexOfConfigInList = intent.getIntExtra("indexOfConfigInList",-1);
     }
 
     private void initial() {

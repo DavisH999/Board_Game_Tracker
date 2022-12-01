@@ -7,9 +7,6 @@
     tools:context=".ConfigurationActivity"
     android:background="@drawable/wallpaper">
 
-    <include
-        layout="@layout/toolbar_configuration"/>
-
     <TextView
         android:id="@+id/tv_configGreatScore"
         android:layout_width="wrap_content"
@@ -43,7 +40,7 @@
         android:layout_width="187dp"
         android:layout_height="54dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:background="@color/purple_700"
         android:fontFamily="monospace"
         android:text="@string/delete"
@@ -51,31 +48,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_goToGameList" />
 
+    <include
+        layout="@layout/toolbar_configuration" />
+
     <Button
-        android:id="@+id/btn_goToGameList"
+        android:id="@+id/btn_goToBarChart"
         android:layout_width="187dp"
         android:layout_height="54dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/purple_700"
+        android:layout_marginTop="40dp"
+        android:background="@color/black"
         android:fontFamily="monospace"
-        android:text="@string/go_to_games_list"
+        android:text="go to bar chart"
         android:theme="@style/Theme.AppCompat"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_goToAchievements" />
+        app:layout_constraintTop_toBottomOf="@+id/et_configPoorScore" />
 
     <Button
         android:id="@+id/btn_goToAchievements"
         android:layout_width="187dp"
         android:layout_height="54dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="16dp"
         android:background="@color/black"
         android:fontFamily="monospace"
         android:text="@string/go_to_achievements"
         android:theme="@style/Theme.AppCompat"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_configPoorScore" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_goToBarChart" />
+
+    <Button
+        android:id="@+id/btn_goToGameList"
+        android:layout_width="187dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/purple_700"
+        android:fontFamily="monospace"
+        android:text="@string/go_to_games_list"
+        android:theme="@style/Theme.AppCompat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_goToAchievements" />
 
     <EditText
         android:id="@+id/et_configName"
