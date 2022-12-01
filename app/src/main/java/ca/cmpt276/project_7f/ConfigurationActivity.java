@@ -118,6 +118,7 @@ public class ConfigurationActivity extends AppCompatActivity {
             btn_goToGameList.setVisibility(View.INVISIBLE);
             btn_goToAchievements.setVisibility(View.INVISIBLE);
             btn_delete.setVisibility(View.INVISIBLE);
+            btn_goToBarChart.setVisibility(View.INVISIBLE);
         }
     }
 
