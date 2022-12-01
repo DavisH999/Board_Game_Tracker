@@ -82,6 +82,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
         ArrayList<Config> configList = instanceOfConfigM.getConfigList();
 
         // Create a list of items
+        configsToDisplay.clear();
         for (int i = 0; i < configList.size(); ++i) {
             String nameOfConfig = configList.get(i).getName();
             configsToDisplay.add(nameOfConfig);
