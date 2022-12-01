@@ -26,5 +26,8 @@
         android:layout_marginTop="42dp"
         android:layout_marginEnd="126dp"
         android:layout_toEndOf="@+id/image_config_list"
-        android:text="Name of the config goes here!" />
+        android:text="Name of the config goes here!"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 </RelativeLayout>
