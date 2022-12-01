@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +23,8 @@ import ca.cmpt276.project_7f.utils.SharedPreferencesUtils;
 // showing the configuration.
 public class ConfigurationActivity extends AppCompatActivity {
 
+    public static final String ADD_A_CONFIGURATION = "Add a configuration";
+    public static final String EDIT_A_CONFIGURATION = "Edit a configuration";
     private ConfigManager instanceOfCM;
     private boolean isAddMode;
     private int indexOfConfigInList;
@@ -52,7 +53,6 @@ public class ConfigurationActivity extends AppCompatActivity {
                 }
             }
     );
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,10 +106,10 @@ public class ConfigurationActivity extends AppCompatActivity {
     private void toolbar() {
         TextView tv_title = findViewById(R.id.tv_config_toolbar_title);
         if(isAddMode){
-            tv_title.setText("Add a configuration");
+            tv_title.setText(ADD_A_CONFIGURATION);
         }
         else {
-            tv_title.setText("Edit a configuration");
+            tv_title.setText(EDIT_A_CONFIGURATION);
         }
     }
 
@@ -254,8 +254,6 @@ public class ConfigurationActivity extends AppCompatActivity {
                 }
                 // if name did not exist, then edit it.
                 else {
-                    Log.e("TAG2",config.toString());
-                    Log.e("TAG2",indexOfConfigInList+"");
                     instanceOfCM.editConfig(indexOfConfigInList,config);
                 }
             }
