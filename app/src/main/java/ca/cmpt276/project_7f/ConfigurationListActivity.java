@@ -23,8 +23,6 @@ import ca.cmpt276.project_7f.utils.SharedPreferencesUtils;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.w3c.dom.Text;
-
 // showing the list of configuration and providing an add button.
 
 public class ConfigurationListActivity extends AppCompatActivity {
@@ -33,6 +31,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
     private ListView listview_config_list;
     private TextView tv_noConfigHint;
     private final ArrayList<String> configsToDisplay = new ArrayList<>();
+    private ImageView btn_about;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +74,7 @@ public class ConfigurationListActivity extends AppCompatActivity {
         fab_config_list = findViewById(R.id.fab_config_list);
         listview_config_list = findViewById(R.id.listview_config_list);
         tv_noConfigHint = findViewById(R.id.tv_noConfigHint);
+        btn_about = findViewById(R.id.btn_about_config_list);
     }
 
     private void populateListView() {
@@ -149,10 +149,16 @@ public class ConfigurationListActivity extends AppCompatActivity {
 
     private void onClick() {
         fab_config_list.setOnClickListener(v -> onClickFab());
+        btn_about.setOnClickListener(v -> onClickAbout());
     }
 
     private void onClickFab() {
         Intent intent = ConfigurationActivity.makeIntent(this, -1);
         startActivity(intent);
     }
+    private void onClickAbout() {
+        Intent intent = AboutActivity.makeIntent(this);
+        startActivity(intent);
+    }
+
 }
