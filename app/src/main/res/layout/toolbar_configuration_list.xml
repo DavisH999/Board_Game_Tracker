@@ -10,12 +10,16 @@
         android:background="@color/black">
 
         <ImageView
+            android:id="@+id/btn_about_config_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_info_24"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
-            android:id="@+id/btn_about_config_list"/>
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/ic_baseline_badge_24" />
 
         <TextView
             android:id="@+id/tv_List_of_configuration_toolbar_title"
@@ -29,5 +33,4 @@
             android:textColor="@color/white"/>
 
     </RelativeLayout>
-
 </RelativeLayout>
