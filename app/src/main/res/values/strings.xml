@@ -17,6 +17,7 @@
     <string name="toolbar_game_list">Played Games</string>
     <string name="toolbar_game">Record a Game</string>
     <string name="toolbar_theme">Theme</string>
+    <string name="toolbar_about">About Fluorine-7</string>
 
     <string name="theme">Theme:</string>
     <string name="configuration_hint_name">Poker</string>
@@ -42,6 +43,15 @@
     <string name="game">Game</string>
     <string name="confirm_photo">Confirm Photo</string>
     <string name="take_a_photo">take a photo</string>
+
+    <string name="about_developers">Developers:</string>
+    <string name="about_Daniel">Daniel Surina - dsa108@sfu.ca</string>
+    <string name="about_Davis">Dongwei Han (Davis) - dongweih@sfu.ca</string>
+    <string name="about_Niall">Niall Shaidullin - nsa109@sfu.ca</string>
+    <string name="about_Arvin">Arvin Bayat Manesh- aba191@sfu.ca</string>
+    <string name="about_references">References:</string>
+    <string name="about_wallpaper_link">Wallpaper - https://www.desktopbackground.org/wallpaper/cool-simple-white-backgrounds-picture-gallery-3405</string>
+
 
     <string-array name="difficulty_list">
         <item>Easy</item>
