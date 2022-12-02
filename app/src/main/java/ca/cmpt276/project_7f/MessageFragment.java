@@ -39,6 +39,9 @@ public class MessageFragment extends AppCompatDialogFragment {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.message_layout, null);
         view.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.fade_out));
 
+        // TODO: HINT
+        String[] stringArray = getContext().getResources().getStringArray(R.array.achievement_level_marvel);
+
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
