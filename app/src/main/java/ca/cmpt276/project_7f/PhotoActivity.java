@@ -67,8 +67,10 @@ public class PhotoActivity extends AppCompatActivity {
             GameManager instanceGM = GameManager.getInstance();
             Game game = instanceGM.getGame(configName, indexOfGameInList);
             String imageString = game.getImageString();
-            Bitmap bitmap = Base64Utils.stringToBitmap(imageString);
-            iv_photo.setImageBitmap(bitmap);
+            if(imageString != null) {
+                Bitmap bitmap = Base64Utils.stringToBitmap(imageString);
+                iv_photo.setImageBitmap(bitmap);
+            }
         }
         else if(indexOfConfigInList != -1)
         {
