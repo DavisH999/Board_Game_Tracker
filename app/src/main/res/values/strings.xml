@@ -46,8 +46,11 @@
 
     <string name="about_developers">Developers:</string>
     <string name="about_Daniel">Daniel Surina - dsa108@sfu.ca</string>
-    <string name="about_developers">take a photo</string>
-    <string name="about_developers">take a photo</string>
+    <string name="about_Davis">Dongwei Han (Davis) - dongweih@sfu.ca</string>
+    <string name="about_Niall">Niall Shaidullin - nsa109@sfu.ca</string>
+    <string name="about_Arvin">Arvin Bayat Manesh- aba191@sfu.ca</string>
+    <string name="about_references">References:</string>
+    <string name="about_wallpaper_link">Wallpaper - https://www.desktopbackground.org/wallpaper/cool-simple-white-backgrounds-picture-gallery-3405</string>
 
 
     <string-array name="difficulty_list">
