@@ -40,7 +40,9 @@ public class MessageFragment extends AppCompatDialogFragment {
         view.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.fade_out));
 
         // TODO: HINT
-        String[] stringArray = getContext().getResources().getStringArray(R.array.achievement_level_marvel);
+        String[] stringArrayMarvel = getContext().getResources().getStringArray(R.array.achievement_level_marvel);
+        String[] stringArrayAnimals = getContext().getResources().getStringArray(R.array.achievement_level_animals);
+        String[] stringArrayDisney = getContext().getResources().getStringArray(R.array.achievement_level_disney);
 
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
