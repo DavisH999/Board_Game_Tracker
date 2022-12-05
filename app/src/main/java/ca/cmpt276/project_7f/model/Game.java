@@ -214,6 +214,41 @@ public class Game {
         }
     }
 
+    public double getUpperBound()
+    {
+        ConfigManager configManager = ConfigManager.getInstance();
+        Config configByName = configManager.getConfigByName(configName);
+        int greatScore = configByName.getGreatScore();
+        int poorScore = configByName.getPoorScore();
+        double highestExpectedLevel = greatScore * numOfPlayers * convertStrDifficultyToDouble(difficulty);
+        double lowestExpectedLevel = poorScore * numOfPlayers * convertStrDifficultyToDouble(difficulty);
+        double unit = (highestExpectedLevel - lowestExpectedLevel) / 8;
+        double ret = 0;
+
+        if (score >= highestExpectedLevel)
+            ret = -1;
+        else if (score >= lowestExpectedLevel + unit * 7 && score < lowestExpectedLevel + unit * 8)
+            ret = lowestExpectedLevel + unit * 8;
+        else if (score >= lowestExpectedLevel + unit * 6 && score < lowestExpectedLevel + unit * 7)
+            ret = lowestExpectedLevel + unit * 7;
+        else if (score >= lowestExpectedLevel + unit * 5 && score < lowestExpectedLevel + unit * 6)
+            ret = lowestExpectedLevel + unit * 6;
+        else if (score >= lowestExpectedLevel + unit * 4 && score < lowestExpectedLevel + unit * 5)
+            ret = lowestExpectedLevel + unit * 5;
+        else if (score >= lowestExpectedLevel + unit * 3 && score < lowestExpectedLevel + unit * 4)
+            ret = lowestExpectedLevel + unit * 4;
+        else if (score >= lowestExpectedLevel + unit * 2 && score < lowestExpectedLevel + unit * 3)
+            ret = lowestExpectedLevel + unit * 3;
+        else if (score >= lowestExpectedLevel + unit && score < lowestExpectedLevel + unit * 2)
+            ret = lowestExpectedLevel + unit * 2;
+        else if (score >= lowestExpectedLevel + unit * 0 && score < lowestExpectedLevel + unit * 1)
+            ret = lowestExpectedLevel + unit * 1;
+        else if (score < lowestExpectedLevel)
+            ret = lowestExpectedLevel;
+
+        return ret;
+    }
+
     private ArrayList<String> populateAchievementBasedOnTheme() {
         ArrayList<String>  AchievementBasedOnTheme = new ArrayList<>();
 
