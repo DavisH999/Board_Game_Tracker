@@ -162,7 +162,7 @@ public class GameActivity extends AppCompatActivity {
         tv_game_toolbar_title = findViewById(R.id.tv_game_toolbar_title);
         btn_generateEditTexts = findViewById(R.id.btn_generateEditTexts);
         linearlayoutForScores = findViewById(R.id.linearlayoutForScores);
-        spinner_difficulty_game = findViewById(R.id.spinner_difficultyInGame);
+        spinner_difficulty_game = findViewById(R.id.spinner_difficulty_game);
         spinner_theme_game = findViewById(R.id.spinner_theme_game);
         btn_goToPhoto = findViewById(R.id.iv_camera_game);
     }
