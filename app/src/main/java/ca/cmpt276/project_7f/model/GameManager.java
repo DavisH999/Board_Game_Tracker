@@ -66,6 +66,23 @@ public class GameManager {
         return resultList;
     }
 
+    public int getIndexInAchievementList(String achievementName)
+    {
+        String[] stringsA = getResources().getStringArray(R.array.achievement_level_animals);
+        String[] stringsB = getResources().getStringArray(R.array.achievement_level_disney);
+        String[] stringsC = getResources().getStringArray(R.array.achievement_level_marvel);
+        int ret = 0;
+        for(int i = 0; i < 10; i++)
+        {
+            if ((achievementName.equals(stringsA[i])) || achievementName.equals(stringsB[i]) || achievementName.equals(stringsC[i]))
+            {
+                ret = i;
+                break;
+            }
+        }
+        return ret;
+    }
+
     public void setGameList(ArrayList<Game> gameList) {
         this.gameList = gameList;
     }
