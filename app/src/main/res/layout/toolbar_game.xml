@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="265dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="2.5dp"
             android:layout_toEndOf="@+id/game_back_button"
             app:srcCompat="@android:drawable/ic_menu_camera" />
 
