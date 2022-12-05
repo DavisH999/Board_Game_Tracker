@@ -36,20 +36,22 @@ public class MessageFragment extends AppCompatDialogFragment {
     private Animation animation;
     private ImageView imageView_celebrate;
     private int score;
+    private double diff;
+    private Game game;
 
     public void setter(String configName, int indexOfGameInList,boolean isAddMode)
     {
         GameManager instanceOfGM = GameManager.getInstance();
         if(!isAddMode)
         {
-            Game game = instanceOfGM.getGame(configName, indexOfGameInList);
+            game = instanceOfGM.getGame(configName, indexOfGameInList);
             score = game.getScore();
             achievement = game.getAchievement();
         }
         else
         {
             ArrayList<Game> gameList = instanceOfGM.getGameList();
-            Game game = gameList.get(gameList.size() - 1);
+            game = gameList.get(gameList.size() - 1);
             score = game.getScore();
             achievement = game.getAchievement();
         }
@@ -108,19 +110,19 @@ public class MessageFragment extends AppCompatDialogFragment {
                 {
                     String temp = animalsAchievements[indexInAchievementList];
                     stringBuilder.replace(0,stringBuilder.capacity()-1,temp);
-                    alertDialog.setMessage("You have got the achievement:\n " + "< " + stringBuilder.toString() + " >");
+                    alertDialog.setMessage("You have got the achievement:\n " + "< " + stringBuilder.toString() + ">.\n" + "Number of point to achieve the next level is <" + diff + ">.");
                 }
                 else if(selection.equals(disney))
                 {
                     String temp = disneyAchievements[indexInAchievementList];
                     stringBuilder.replace(0,stringBuilder.capacity()-1,temp);
-                    alertDialog.setMessage("You have got the achievement:\n " + "< " + stringBuilder.toString() + " >");
+                    alertDialog.setMessage("You have got the achievement:\n " + "< " + stringBuilder.toString() + ">.\n" + "Number of point to achieve the next level is <" + diff + ">.");
                 }
                 else if(selection.equals(marvel))
                 {
                     String temp = marvelAchievement[indexInAchievementList];
                     stringBuilder.replace(0,stringBuilder.capacity()-1,temp);
-                    alertDialog.setMessage("You have got the achievement:\n " + "< " + stringBuilder.toString() + " >");
+                    alertDialog.setMessage("You have got the achievement:\n " + "< " + stringBuilder.toString() + ">.\n" + "Number of point to achieve the next level is <" + diff + ">.");
                 }
             }
 
@@ -131,6 +133,20 @@ public class MessageFragment extends AppCompatDialogFragment {
 
     }
 
+    private void computeDiff()
+    {
+        double upperBound = game.getUpperBound();
+        if(upperBound == -1)
+        {
+            diff = 0;
+        }
+        else
+        {
+            int score = game.getScore();
+            diff = upperBound - score;
+        }
+    }
+
 
     @NonNull
     @SuppressLint("MissingInflatedId")
@@ -139,6 +155,7 @@ public class MessageFragment extends AppCompatDialogFragment {
 
 
         initial();
+        computeDiff();
         animation();
         spinner();
         generateDialog();
@@ -158,7 +175,7 @@ public class MessageFragment extends AppCompatDialogFragment {
 
         alertDialog = new AlertDialog.Builder(getActivity())
                 .setTitle("Congratulations!")
-                .setMessage("You have got the achievement:\n " + "< " + stringBuilder.toString() + " >")
+                .setMessage("You have got the achievement:\n " + "< " + stringBuilder.toString() + ">.\n" + "Number of point to achieve the next level is <" + diff + ">.")
                 .setView(view)
                 .setNeutralButton("Replay the animation",null)
                 .setPositiveButton(android.R.string.ok, listener)
