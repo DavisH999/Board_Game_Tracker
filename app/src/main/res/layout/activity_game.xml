@@ -8,7 +8,6 @@
     android:background="@drawable/wallpaper">
 
     <include
-        android:id="@+id/include2"
         layout="@layout/toolbar_game"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
