@@ -86,7 +86,8 @@
         tools:ignore="MissingConstraints">
 
         <LinearLayout
-            android:paddingTop="20dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
             android:id="@+id/linearlayoutForScores"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
