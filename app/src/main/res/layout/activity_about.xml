@@ -11,6 +11,19 @@
         layout="@layout/toolbar_about" />
 
     <TextView
+        android:id="@+id/textView9"
+        android:layout_width="376dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="84dp"
+        android:autoLink="all"
+        android:fontFamily="monospace"
+        android:text="@string/sound_https_freesound_org_people_mlaudio_sounds_615099"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
         android:id="@+id/textView8"
         android:layout_width="376dp"
         android:layout_height="55dp"
@@ -99,14 +112,14 @@
         app:layout_constraintTop_toTopOf="@+id/include5" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/celebrationSource"
         android:layout_width="376dp"
         android:layout_height="55dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="84dp"
-        android:fontFamily="monospace"
+        android:layout_marginTop="156dp"
         android:autoLink="all"
-        android:text="@string/sound_https_freesound_org_people_mlaudio_sounds_615099"
+        android:fontFamily="monospace"
+        android:text="CelebrationPhoto - https://www.vectorstock.com/royalty-free-vector/pixel-bubble-congratulations-vector-29564794"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
