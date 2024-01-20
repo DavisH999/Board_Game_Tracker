@@ -1,2 +1,2 @@
-Board Game Tracker
-An Android app tracking game scores, player performance, and gaming history. 
+Board Game Tracker.<br />
+An Android app tracking game scores, player performance, and gaming history.
